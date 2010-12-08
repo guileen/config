@@ -1,0 +1,13 @@
+#! /bin/sh
+
+powerpill -Syu
+
+while true; do
+    read -p "Do you wish to recompile vboxdrv (y/n)?" yn
+    case $yn in
+        [Yy]* ) /etc/rc.d/vboxdrv setup; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+esac
+done
+

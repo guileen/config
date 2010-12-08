@@ -1,0 +1,5 @@
+#! /bin/sh
+
+java -jar ~/toolkits/closure-compiler/build/compiler.jar $*
+
+
