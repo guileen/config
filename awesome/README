@@ -1,0 +1,28 @@
+Personal configuration for awesome WM
+
+Diffrent with default configs:
+
+1. mod + c = mod + shift + c
+2. mod + i = show client informations, useful when write rules
+3. mod + enter = run or raise terminal
+4. mod + shift + enter = run terminal
+5. mod + BackSpace = raise opened VIM
+6. mod + ` = run or raise browser
+
+Themes:
+
+1. basiclly default awesome wm theme
+2. xcompmgr with fading and shading
+3. one level menu, no groups, with icons
+   Tips: mod + w = open menu
+4. archlinux icon at as root menu
+5. Wallpaper use nitrogen --restore, so you can change your wallpaper without edit codes.
+
+Planning:
+
+term,EDITOR,Browser,Mail,Chat,Music, all in "run or raise" mode
+(vim ?), cmus goes to own tag when title change
+others goes to "others" tag,
+seprate very personal configs, for easy share and maintain
+Hide terminal,EDITORs,Browser in taskbar, taskbar is for others
+

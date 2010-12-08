@@ -1,0 +1,13 @@
+[ui]
+username = guilin <guileen@gmail.com>
+#verbose = True
+style = compact
+
+[extensions]
+graphlog =
+color =
+progress = 
+pager =
+
+[pager]
+pager = LESS='FSRX' less

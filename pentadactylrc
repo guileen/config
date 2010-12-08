@@ -1,0 +1,11 @@
+set defsearch=googlelucky
+
+" disable new tab button:
+style chrome://* .tabs-newtab-button {display:none;}
+
+set guioptions=b
+noremap j 2j
+noremap k 2k
+
+noremap h <C-p>
+noremap l <C-n>

@@ -1,0 +1,94 @@
+ URxvt.geometry: 120x45+256+64
+
+ URxvt.visualBell: False
+
+ urxvt*inheritPixmap: true
+ URxvt.tintColor: white
+ URxvt.shading: 50
+ urxvt*fading: 30 
+
+! urxvt*title:Leo's Rxvt-Unicode
+
+ urxvt*cursorBlink: true
+
+ urxvt*scrollBar: false
+ URxvt.secondaryScroll: true # enable Shift-PageUp/Down in screen
+ urxvt*saveLines: 65535
+
+! urxvt*borderLess: true   
+
+ urxvt*colorBD: white
+ urxvt*colorIT: green
+!! URxvt.background: gray
+!! URxvt.background:[rgba]0000/0000/0000/dddd 
+ URxvt.foreground: gray85
+ URxvt.cursorColor: red3
+ URxvt.color0: #000000
+ URxvt.color1: #800000
+ URxvt.color2: #008000
+ URxvt.color3: #d0d090
+ URxvt.color4: #000080
+ URxvt.color5: #800080
+ URxvt.color6: #d0d0d0
+ URxvt.color7: #b0b0b0
+ URxvt.color8: #f08060
+ URxvt.color9: #f08060
+ URxvt.color10: #60f080
+ URxvt.color11: #e0c060
+ URxvt.color12: #80c0e0
+ URxvt.color13: #f0c0f0
+ URxvt.color14: #c0d8f8
+ URxvt.color15: #e0e0e0
+
+!!colors ripped from rezza: http://metawire.org/~rezza/index.php
+*foreground:     rgb:dd/dd/dd
+*background:     rgb:22/22/22
+!black
+*color0:         rgb:19/19/19
+*color8:         rgb:25/25/25
+!red
+*color1:         rgb:80/32/32
+*color9:         rgb:98/2b/2b
+!green
+*color2:         rgb:5b/76/2f
+*color10:        rgb:89/b8/3f
+!brown/yellow
+*color3:         rgb:aa/99/43
+*color11:        rgb:ef/ef/60
+!blue
+*color4:         rgb:32/4c/80
+*color12:        rgb:2b/4f/98
+!magenta
+*color5:         rgb:70/6c/9a
+*color13:        rgb:82/6a/b1
+!cyan
+*color6:         rgb:92/b1/9e
+*color14:        rgb:a1/cd/cd
+!white
+*color7:         rgb:ff/ff/ff
+*color15:        rgb:dd/dd/dd
+
+
+ URxvt.preeditType: Root
+
+! urxvt*font: -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso10646-1,\
+    -wenquanyi-*-medium-r-normal--13-*-*-*-p-*-iso10646-1
+
+# URxvt.font:             xft:DejaVu Sans Mono-9,xft:AR PL ShanHeiSun Uni-10                                                                
+URxvt.font:xft:DejaVu sans Mono:size=9,xft:WenQuanYi Micro Hei:size=10 
+ URxvt.boldFont:         xft:DejaVu Sans Mono-9:Bold,xft:AR PL ShanHeiSun Uni-10:Bold
+
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+URxvt.urgentOnBell: True
+URxvt.buffered: true
+URxvt.cursorColor: green
+
+
+# Xcursor.theme =========
+Xcursor.theme: aero-drop
+
+
