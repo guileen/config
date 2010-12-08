@@ -197,7 +197,29 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock({ align = "right" }," %Y年%d月%m日 %H:%M:%S", 1)
+local zh_numbers={"零","一","二","三","四","五","六","七","八","九",
+   "十", "十一","十二","十三","十四","十五","十六","十七","十八","十九",
+   "二十","二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九",
+   "三十","三十一","三十二","三十三","三十四","三十五","三十六","三十七","三十八","三十九",
+   "四十","四十一","四十二","四十三","四十四","四十五","四十六","四十七","四十八","四十九",
+   "五十","五十一","五十二","五十三","五十四","五十五","五十六","五十七","五十八","五十九"
+   }
+
+local function zh_date(s)
+    return zh_numbers[tonumber(os.date(s)) + 1]
+end
+
+local mytextclock = widget{type = "textbox"}
+local mydate_timer = timer {timeout = 1}
+local function mydate_update()
+   os.setlocale("zh_CN.UTF8", "time")
+   mytextclock.text = os.date("周%a %B")..  zh_date("%e").."日 "..  os.date("%H:%M:%S")
+   os.setlocale("en_US.UTF8", "time")
+end
+mydate_update()
+mydate_timer:add_signal("timeout", mydate_update)
+mydate_timer:start()
+--mytextclock = awful.widget.textclock({ align = "right" }," %Y年%d月%m日 %H:%M:%S %A", 1)
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
