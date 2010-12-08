@@ -63,7 +63,8 @@ function run_or_raise(cmd, properties)
       c:raise()
       return
    end
-   awful.util.spawn(cmd)
+   awful.util.spawn_with_shell(cmd)
+   --awful.util.spawn(cmd)
 end
 --}}}
 
@@ -144,7 +145,8 @@ layouts =
     MAX,
     FULLSCREEN,
     TILE_B,
-    TILE
+    TILE,
+    MAGNIFIER
 }
 
 -- }}}
@@ -154,12 +156,12 @@ layouts =
 tags = {}
 tags = {
     -- names = { "☠", "⌥", "✇", "⌤", "⍜", "✣", "⌨", "⌘", "☕" },
-   names  = { "term", "vim", "web", "im", "others", 6, 7 },
-   layout = {TILE, TILE, FLT, TILE, FLT, FLT, FLT}
+   names  = { "风", "林", "火", "山",5, 6, 7 },
+   layout = {TILE, MAX, MAGNIFIER, FLT, FLT, FLT, FLT}
 }
  for s = 1, screen.count() do
      tags[s] = awful.tag(tags.names, s, tags.layout)
-     awful.tag.setproperty(tags[s][5], "mwfact", 0.13)
+     awful.tag.setproperty(tags[s][5], "hide", 0.13)
      awful.tag.setproperty(tags[s][6], "hide",   true)
      awful.tag.setproperty(tags[s][7], "hide",   true)
  end
@@ -176,7 +178,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "chromium", "chromium", configdir .. "/icons/chromium.png" },
-                                    { "firefox", "firefox-nightly", configdir .. "/icons/firefox.png" },
+                                    { "firefox", "firefox", configdir .. "/icons/firefox.png" },
                                     { "eclipse", "eclipse", configdir .. "/icons/eclipse.xpm" },
                                     { "inkscape", "inkscape", configdir .. "/icons/inkscape.png" },
                                     { "nitrogen", "nitrogen", configdir .. "/icons/nitrogen.png" },
@@ -355,13 +357,13 @@ globalkeys = awful.util.table.join(
     -- Run and Raise
     awful.key({ modkey, }, "Return", function () run_or_raise("urxvt -e tmuxat", { instance = "urxvt" }) end),
     awful.key({ modkey, }, "BackSpace", function () run_or_raise("", { name = "VIM", instance="urxvt" }) end),
-    awful.key({ modkey, }, "F2", function () run_or_raise("eclipse", { class = "Eclipse" }) end),
-    awful.key({ modkey, }, "F3", function () run_or_raise("sylpheed", { class = "Sylpheed" }) end),
-    awful.key({ modkey, }, "v", function () run_or_raise("VirtualBox --startvm XP", { class = "VirtualBox" }) end),
+    awful.key({ modkey, }, "e", function () run_or_raise("eclipse", { class = "Eclipse" }) end),
+    awful.key({ modkey, }, "p", function () run_or_raise("sylpheed", { class = "Sylpheed" }) end),
+    awful.key({ modkey, }, "v", function () run_or_raise("startxp", { class = "VirtualBox" }) end),
     awful.key({ modkey, }, "'", function () run_or_raise("pidgin", { class = "Pidgin" }) end),
     awful.key({ modkey, }, "\"", function () run_or_raise("pidgin", { class = "Pidgin" }) end),
-    awful.key({ modkey, }, "`", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end),
-    awful.key({ modkey, }, "~", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end)
+    awful.key({ modkey, }, "`", function () run_or_raise("firefox", { instance = "Navigator" }) end),
+    awful.key({ modkey, }, "~", function () run_or_raise("firefox", { instance = "Navigator" }) end)
 --    awful.key({ modkey, }, "w", function () run_or_raise("google-chrome", { name = "Google Chrome" }) end),
 
 )
@@ -466,14 +468,14 @@ awful.rules.rules = {
 --    { rule = { name = "urxvt" }, properties = { tag = tags[screen.count()][1], switchtotag = true }},
 --    { rule = { name = "VIM" }, properties = { tag = tags[screen.count()][2], switchtotag = true }},
 --    { rule = { name = "cmus" }, properties = { tag = tags[screen.count()][5], switchtotag = true }},
-    { rule = { instance = "Eclipse" }, properties = { tag = tags[1][3], switchtotag = true }},
-    { rule = { class = "Namoroka" }, properties = { tag = tags[1][3], switchtotag = true }},
-    { rule = { instance = "Navigator" }, properties = { tag = tags[1][3], switchtotag = true }},
-    { rule = { instance = "firefox" }, properties = { tag = tags[1][3], switchtotag = true }},
-    { rule = { instance = "Pidgin" }, properties = { tag = tags[1][4], switchtotag = true }},
+    { rule = { instance = "Eclipse" }, properties = { tag = tags[1][2], switchtotag = true }},
+    { rule = { class = "Namoroka" }, properties = { tag = tags[1][2], switchtotag = true }},
+    { rule = { instance = "Navigator" }, properties = { tag = tags[1][2], switchtotag = true }},
+    { rule = { instance = "firefox" }, properties = { tag = tags[1][2], switchtotag = true }},
+    { rule = { instance = "Pidgin" }, properties = { tag = tags[screen.count()][3], switchtotag = true }},
     { rule = { instance = "Pidgin", name = "Buddy List" }, properties = { floating = true }},
-    { rule = { class = "Sylpheed" }, properties = { tag = tags[1][4], switchtotag = true, minimized = true }},
-    { rule = { class = "VirtualBox" }, properties = { tag = tags[1][3], switchtotag = true }},
+    { rule = { class = "Sylpheed" }, properties = { tag = tags[1][2], switchtotag = true, minimized = true }},
+    { rule = { class = "VirtualBox" }, properties = { tag = tags[1][2], switchtotag = true }},
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
@@ -511,17 +513,6 @@ client.add_signal("manage", function (c, startup)
             awful.placement.no_overlap(c)
             awful.placement.no_offscreen(c)
         end
-    end
-end)
-client.add_signal("property::name",function() 
-    naughty.notify({
-                text = 'properties name change',
-                timeout = 30,
-            })
-   if c.name:find('VIM') then
-        c.tag = tags[c.screen][2]
-    elseif c.name == 'urxvt' then
-        c.tag = tags[c.screen][1]
     end
 end)
 client.add_signal("focus", function(c) 
