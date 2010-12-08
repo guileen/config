@@ -1,0 +1,18 @@
+[user]
+	email = guileen@gmail.com
+	name = guilin 桂林
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 0x0+0+0
+	main-window-view = FileView
+	history-view-vpane-position = 427
+	file-view-vpane-position = 220
+	file-view-hpane-position = 288
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+[core]
+	execludesfile = /home/gl/.gitignore
