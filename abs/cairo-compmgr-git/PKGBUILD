@@ -1,0 +1,52 @@
+# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Contributor: catalyst <catalyst@xaker.ru>
+# Contributor: Jacob Winther <jacob.winther@gmail.com>
+
+pkgname=cairo-compmgr-git
+pkgver=20101018
+pkgrel=1
+pkgdesc="Cairo based composite manager - Git version"
+arch=(i686 x86_64)
+url="http://cairo-compmgr.tuxfamily.org/"
+license=(GPL)
+conflicts=(cairo-compmgr)
+provides=(cairo-compmgr)
+makedepends=(gettext git gtk-doc "intltool>=0.41" gconf)
+depends=("cairo>=1.8.0" "gtk2>=2.16.0" libxcomposite "pixman>=0.16.0" "vala>=0.9.7")
+options=(!makeflags)
+source=(cairo-compmgr-git-vala-path.patch)
+md5sums=(c4874e3494e338152e039338732f0111)
+
+_gitroot="git://git.tuxfamily.org/gitroot/ccm/cairocompmgr.git"
+_gitname="cairocompmgr"
+
+build() {
+  cd "$srcdir"
+
+  msg "Connecting to GIT server..."
+  if [[ -d $_gitname ]]; then
+    (cd $_gitname && git pull )
+  else
+    git clone $_gitroot $_gitname
+  fi
+  msg "GIT checkout done or server timeout"
+  msg "Starting make..."
+
+  rm -rf $_gitname-build
+  cp -r $_gitname $_gitname-build
+  cd $_gitname-build
+  patch -Np2 -i "$srcdir/cairo-compmgr-git-vala-path.patch"
+
+  ./autogen.sh --prefix=/usr --sysconfdir=/etc
+
+  make
+}
+
+package() {
+  cd $_gitname-build
+
+  make DESTDIR="$pkgdir" install
+
+  rm -rf "$pkgdir/etc"
+  rm -rf "$pkgdir/usr/share/vala"
+}
