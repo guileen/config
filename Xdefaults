@@ -75,8 +75,8 @@
     -wenquanyi-*-medium-r-normal--13-*-*-*-p-*-iso10646-1
 
 # URxvt.font:             xft:DejaVu Sans Mono-9,xft:AR PL ShanHeiSun Uni-10                                                                
-URxvt.font:xft:DejaVu sans Mono:size=9,xft:WenQuanYi Micro Hei:size=10 
- URxvt.boldFont:         xft:DejaVu Sans Mono-9:Bold,xft:AR PL ShanHeiSun Uni-10:Bold
+URxvt.font:xft:DejaVu sans Mono:size=11,xft:WenQuanYi Micro Hei:size=11 
+URxvt.boldFont:         xft:DejaVu Sans Mono-11:Bold,xft:AR PL ShanHeiSun Uni-11:Bold
 
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: firefox
