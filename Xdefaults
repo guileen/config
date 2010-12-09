@@ -4,7 +4,7 @@
 
  urxvt*inheritPixmap: true
  URxvt.tintColor: white
- URxvt.shading: 60
+ URxvt.shading: 40
  urxvt*fading: 30 
 
 ! urxvt*title:Leo's Rxvt-Unicode
