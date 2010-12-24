@@ -1,0 +1,27 @@
+#!/bin/sh
+
+open_generic()
+{
+    url=$1
+    if [ `echo "$url" | grep ^file://` ] ; then
+      url=`echo "$url" | sed "s/^file\:\/\///"`
+    elif [ `echo "$url" | grep ^https?://` ]; then
+        google-chrome "$url"
+        exit 0
+    fi
+
+    opener=google-chrome
+    if [ `echo "$url" | egrep "\.(tar\.(gz|bz2)|zip|rar|7z)$"` ] ; then
+        opener=xarchiver
+    elif [ `echo "$url" | egrep "\.(jpg|gif|png)$"` ] ; then
+        opener=feh
+    elif [ `echo "$url" | egrep "\.pdf$"` ] ; then
+        opener=zathura
+    else
+        opener=rox
+    fi
+
+    "$opener" "$url"
+}
+
+open_generic $1
