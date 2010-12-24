@@ -1,0 +1,10 @@
+#!/bin/sh
+for file in `find . -name '*.sqlite'`;
+do
+    #echo $file
+    echo "vacuum ${file}"
+    sqlite3 $file 'VACUUM'
+done
+
+
+

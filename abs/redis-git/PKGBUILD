@@ -1,0 +1,70 @@
+# Maintainer: David Trail <napalm10 at gmail>
+# Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
+# Thank you to Jan-Erik for the rc.d script, very helpful.
+# Redis is a key-value database, very fast, runs in ram but backs up to hard drive.
+# See: http://code.google.com/p/redis/
+
+pkgname=redis-git
+pkgver=20101219
+pkgrel=1
+pkgdesc="Fast memcached key-value database"
+arch=('i686' 'x86_64')
+url="http://github.com/antirez/redis"
+license=('BSD')
+depends=('bash')
+makedepends=('gcc>=3.1' 'git' 'make' 'pkgconfig')
+conflicts=('redis')
+provides=('redis')
+source=("redis.d")
+md5sums=('7de0d0e70cef571a2da9a431e4b40917')
+
+_gitroot="git://github.com/antirez/redis.git"
+_gitname="redis"
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [ -d $_gitname ]; then
+    cd $_gitname && git pull origin
+    msg "The local files are updated"
+  else
+    git clone $_gitroot
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting make..."
+
+  rm -rf "$srcdir/$_gitname-build"
+  cp -r "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+  # checkout specific branche or tag
+  # git checkout -b 2.2-alpha0
+
+  # must run under c99
+  CFLAGS="-std=c99 -O3 -W" \
+  make || return 1
+
+  # run as deamon
+  sed -i 's/daemonize no/daemonize yes/' redis.conf
+
+  # change location of save / load database location
+  sed -i 's|dir \./|dir /var/lib/redis|' redis.conf
+
+  # change logfile from console output to /var/log/redis.log
+  sed -i 's|logfile stdout|logfile /var/log/redis.log|' redis.conf
+
+  install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/redis/COPYING" || return 1
+
+  install -D -m644 "redis.conf" "$pkgdir/etc/redis.conf" || return 1
+
+  install -D -m755 "src/redis-server" "$pkgdir/usr/bin/redis-server" || return 1
+  install -D -m755 "src/redis-cli" "$pkgdir/usr/bin/redis-cli" || return 1
+  install -D -m755 "src/redis-benchmark" "$pkgdir/usr/bin/redis-benchmark" || return 1
+
+  # I put this together, at the moment `redis-server $conf` fails but
+  # I _think_ it will work in future..
+  install -D -m755 "$srcdir/redis.d" "$pkgdir/etc/rc.d/redis" || return 1
+}
+
+# vim:set ts=2 sw=2 et:
