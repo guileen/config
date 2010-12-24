@@ -178,7 +178,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "chromium", "chromium", configdir .. "/icons/chromium.png" },
-                                    { "firefox", "firefox", configdir .. "/icons/firefox.png" },
+                                    { "firefox", "firefox-nightly", configdir .. "/icons/firefox.png" },
                                     { "eclipse", "eclipse", configdir .. "/icons/eclipse.xpm" },
                                     { "inkscape", "inkscape", configdir .. "/icons/inkscape.png" },
                                     { "nitrogen", "nitrogen", configdir .. "/icons/nitrogen.png" },
@@ -384,8 +384,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, }, "v", function () run_or_raise("startxp", { class = "VirtualBox" }) end),
     awful.key({ modkey, }, "'", function () run_or_raise("pidgin", { class = "Pidgin" }) end),
     awful.key({ modkey, }, "\"", function () run_or_raise("pidgin", { class = "Pidgin" }) end),
-    awful.key({ modkey, }, "`", function () run_or_raise("firefox", { instance = "Navigator" }) end),
-    awful.key({ modkey, }, "~", function () run_or_raise("firefox", { instance = "Navigator" }) end)
+    awful.key({ modkey, }, "`", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end),
+    awful.key({ modkey, }, "~", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end),
+    awful.key({ modkey, }, "f", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end),
+    awful.key({ modkey, }, "g", function () run_or_raise("google-chrome", { instance = "google-chrome" }) end)
 --    awful.key({ modkey, }, "w", function () run_or_raise("google-chrome", { name = "Google Chrome" }) end),
 
 )
@@ -487,13 +489,14 @@ awful.rules.rules = {
                      switchtotag = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
---    { rule = { name = "urxvt" }, properties = { tag = tags[screen.count()][1], switchtotag = true }},
+    { rule = { instance = "urxvt" }, properties = { tag = tags[1][1], switchtotag = true }},
 --    { rule = { name = "VIM" }, properties = { tag = tags[screen.count()][2], switchtotag = true }},
 --    { rule = { name = "cmus" }, properties = { tag = tags[screen.count()][5], switchtotag = true }},
     { rule = { instance = "Eclipse" }, properties = { tag = tags[1][2], switchtotag = true }},
     { rule = { class = "Namoroka" }, properties = { tag = tags[1][2], switchtotag = true }},
     { rule = { instance = "Navigator" }, properties = { tag = tags[1][2], switchtotag = true }},
     { rule = { instance = "firefox" }, properties = { tag = tags[1][2], switchtotag = true }},
+    { rule = { instance = "google-chrome" }, properties = { tag = tags[1][2], switchtotag = true }},
     { rule = { instance = "Pidgin" }, properties = { tag = tags[screen.count()][3], switchtotag = true }},
     { rule = { instance = "Pidgin", name = "Buddy List" }, properties = { floating = true }},
     { rule = { class = "Sylpheed" }, properties = { tag = tags[screen.count()][3], switchtotag = true }},

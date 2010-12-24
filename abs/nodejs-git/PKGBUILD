@@ -1,12 +1,13 @@
 # Contributor: Dongsheng Cai <dongsheng@moodle.com>
 pkgname=nodejs-git
-pkgver=0.3.2
-pkgrel=38
+pkgver=20101219
+pkgrel=1
 pkgdesc="Evented I/O for V8 javascript"
 arch=('i686' 'x86_64')
 url="http://nodejs.org/"
 license=('custom:nodejs')
 depends=('gcc' 'coreutils' 'python2')
+_gitroot='git://github.com/ry/node.git'
 _gitname='node'
 
 build() {
@@ -14,13 +15,30 @@ build() {
     if [ -d $_gitname ]; then
         cd $_gitname
         msg "Updating local files"
+        git checkout -- .
         git pull . master
     else
         msg "Cloning git repository"
-        git clone https://github.com/ry/node.git
+        git clone $_gitroot
     fi
     cd ${srcdir}/${_gitname}
-    ./configure --prefix=/usr/ || return 1
+    # python2 fix
+    for file in $(find . -name '*.py' -print) wscript tools/waf-light tools/node-waf; do
+        sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' "$file"
+        sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' "$file"
+    done
+    sed -i "s|cmd_R = 'python |cmd_R = 'python2 |" wscript
+    sed -i "s|python |python2 |" Makefile
+
+    ./configure --prefix=/usr || return 1
     make || return 1
-    tools/waf-light install --destdir=$pkgdir || return 1
 }
+
+package() {
+    cd ${srcdir}/${_gitname}
+
+    make DESTDIR="$pkgdir/" install
+    install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
+}
+
+

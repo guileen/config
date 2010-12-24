@@ -4,7 +4,7 @@
 
  urxvt*inheritPixmap: true
  URxvt.tintColor: white
- URxvt.shading: 40
+ URxvt.shading: 30
  urxvt*fading: 30 
 
 ! urxvt*title:Leo's Rxvt-Unicode
@@ -79,7 +79,7 @@ URxvt.font:xft:DejaVu sans Mono:size=11,xft:WenQuanYi Micro Hei:size=11
 URxvt.boldFont:         xft:DejaVu Sans Mono-11:Bold,xft:AR PL ShanHeiSun Uni-11:Bold
 
 URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: firefox
+URxvt.urlLauncher: google-chrome
 URxvt.matcher.button: 1
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 

@@ -9,3 +9,6 @@ noremap k 2k
 
 noremap h <C-p>
 noremap l <C-n>
+
+noremap <F6> :set guioptions=bCTrsmB<CR>
+noremap <F7> :set guioptions=b<CR>

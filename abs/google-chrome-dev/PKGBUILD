@@ -1,8 +1,8 @@
+# Maintainer: t3ddy  <t3ddy1988 "at" gmail {dot} com>
 # Contributor: Lex Rivera aka x-demon <aur@x-demon.org>                
-# Maintainer: Lex Rivera aka x-demon <aur@x-demon.org>
 
 pkgname=google-chrome-dev
-pkgver=9.0.597.0
+pkgver=10.0.612.1
 pkgrel=1
 pkgdesc="Google Chrome Developer preview channel for Linux"
 arch=('i686' 'x86_64')
@@ -10,34 +10,26 @@ url="http://dev.chromium.org/getting-involved/dev-channel"
 license=('custom:chrome')
 depends=('gcc-libs' 'gtk2' 'nss' 'gconf' 'libjpeg6' 'freetype2' 'cairo' 'libpng12' 'alsa-lib' 'libxss' 'hicolor-icon-theme')
 optdepends=('gecko-mediaplayer')
-_channel="dev"
+install=${pkgname}.install
 
-####
-case ${_channel}
-in
-    dev) _chanswitch="unstable";;
-    stable) _chanswitch="stable";;
-    beta) _chanswitch="beta";;
-esac
+_channel='unstable'
 
-    
-if [ "${CARCH}" = 'x86_64' ]; then
-    ARCH='amd64'
-    else
-    ARCH='i386'
+if [ "$CARCH" = "i686" ]; then
+    _arch='i386'
+    source=("http://dl.google.com/linux/direct/google-chrome-${_channel}_current_${_arch}.deb")
+    md5sums=('1d7788832c1369f389198ace27a3e46c')
+elif [ "$CARCH" = "x86_64" ]; then
+    _arch='amd64'
+    source=("http://dl.google.com/linux/direct/google-chrome-${_channel}_current_${_arch}.deb")
+    md5sums=('0efbe6e519a9e18b299fb1b5e32779ea')
 fi
 
-install=google-chrome-${_channel}.install
-
 build() {
-    #needs rewrite
-    msg "Downloading Google Chrome Distro"
-    wget -Nc http://dl.google.com/linux/direct/google-chrome-${_chanswitch}_current_$ARCH.deb || return 1
-    msg2 "Done downloading!"
     msg "Extracting Google Chrome"
-    ar -xv google-chrome-${_chanswitch}_current_$ARCH.deb || return 1
-    tar -xvf data.tar.lzma || return 1
+    ar -xv google-chrome-${_channel}_current_${_arch}.deb
+    tar -xvf data.tar.lzma
     msg2 "Done extracting!"
+
     msg "Preparing install"
     mkdir -p $pkgdir/opt $pkgdir/usr/bin $pkgdir/usr/share/applications $pkgdir/usr/lib
     mv -v opt/google $pkgdir/opt
