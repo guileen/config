@@ -1,11 +1,11 @@
 awesome/.hg/
 abs/*/src
 abs/*/pkg
-*/*.pkg.tar.xz
-*/*.xz
-*/*.gz
-*/*.bz2
-*/*.zip
-*/*.run
+*.xz
+*.deb
+*.gz
+*.bz2
+*.zip
+*.run
 */.*
 */*?download
