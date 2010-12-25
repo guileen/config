@@ -6,7 +6,7 @@ open_generic()
     if [ `echo "$url" | grep ^file://` ] ; then
       url=`echo "$url" | sed "s/^file\:\/\///"`
     elif [ `echo "$url" | grep ^https?://` ]; then
-        google-chrome "$url"
+        google-chrome --app="$url"
         exit 0
     fi
 
@@ -17,6 +17,8 @@ open_generic()
         opener=feh
     elif [ `echo "$url" | egrep "\.pdf$"` ] ; then
         opener=zathura
+    elif [ `echo "$url" | egrep "\.x?html?$"` ] ; then
+        opener=google-chrome
     else
         opener=rox
     fi

@@ -1,6 +1,7 @@
 awesome/.hg/
 abs/*/src
 abs/*/pkg
+vim/*
 *.xz
 *.deb
 *.gz
