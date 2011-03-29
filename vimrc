@@ -151,11 +151,12 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
-"let g:neocomplcache_dictionary_filetype_lists = {
-"    \ 'default' : '',
-"    \ 'vimshell' : $HOME.'/.vimshell_hist',
-"    \ 'scheme' : $HOME.'/.gosh_completions'
-"        \ }
+let g:neocomplcache_dictionary_filetype_lists = { 
+            \ 'javascript' : '~/.vim/dict/javascript.dict'
+            \ }
+"            \ 'default' : '', 
+"    'vimshell' : $HOME.'/.vimshell_hist',
+"    'scheme' : $HOME.'/.gosh_completions',
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
@@ -214,33 +215,20 @@ autocmd BufRead *.as set filetype=actionscript
 autocmd BufRead *.mxml set filetype=mxml
 autocmd BufRead *.hx set filetype=haxe
 autocmd BufRead *.ccss set filetype=clevercss
+autocmd BufRead *.js,*.jade,*.haml,*.html set shiftwidth=2
 
 let g:vim_haxe_haxe_src_dir='/opt/haxe/'
 
-fun! SetMkfile()
-    let filemk = "Makefile"
-    let pathmk = "./"
-    let depth = 1
-    while depth < 4
-        if filereadable(pathmk . filemk)
-            return pathmk
-        endif
-        let depth += 1
-        let pathmk = "../" . pathmk
-    endwhile
-    return "."
-endf
-
-let makepath = SetMkfile()
 set makeprg=make
 
 autocmd FileType python let &makeprg='pylint % -i y -r n -f parseable'
 autocmd FileType javascript let &makeprg='gjslint --unix_mode --nojsdoc %'
 au FileType javascript map # 0I//<Esc>
+au FileType javascript,coffee set shiftwidth=2
 "autocmd BufWritePost *.py !python PythonTidy.py % %
 "autocmd BufWritePost *.py e | syntax on
-autocmd BufWritePost *.js !fixjsstyle %
-autocmd BufWritePost *.js e | syntax on
+"autocmd BufWritePost *.js !fixjsstyle %
+"autocmd BufWritePost *.js e | syntax on
 autocmd BufWritePost *.py,*.hx,*.js make
 autocmd BufWritePost *.ccss !ccss %
 

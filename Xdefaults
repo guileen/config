@@ -24,13 +24,20 @@
  URxvt.foreground: gray85
  URxvt.cursorColor: red3
  URxvt.color0: #000000
- URxvt.color1: #800000
- URxvt.color2: #008000
- URxvt.color3: #d0d090
- URxvt.color4: #000080
- URxvt.color5: #800080
- URxvt.color6: #d0d0d0
- URxvt.color7: #b0b0b0
+#URxvt.color1: #800000
+ URxvt.color1: #ff3030
+#URxvt.color2: #008000
+ URxvt.color2: #30ff30
+#URxvt.color3: #d0d090
+ URxvt.color3: #ffffa0
+#URxvt.color4: #000080
+ URxvt.color4: #3030ff
+#URxvt.color5: #800080
+ URxvt.color5: #ff30ff
+#URxvt.color6: #d0d0d0
+ URxvt.color6: #e0e0e0
+#URxvt.color7: #b0b0b0
+ URxvt.color7: #c0c0c0
  URxvt.color8: #f08060
  URxvt.color9: #f08060
  URxvt.color10: #60f080
@@ -56,8 +63,10 @@
 *color3:         rgb:aa/99/43
 *color11:        rgb:ef/ef/60
 !blue
-*color4:         rgb:32/4c/80
-*color12:        rgb:2b/4f/98
+#*color4:         rgb:32/4c/80
+#*color12:        rgb:2b/4f/98
+*color4:         rgb:48/70/b0
+*color12:        rgb:30/9f/dd
 !magenta
 *color5:         rgb:70/6c/9a
 *color13:        rgb:82/6a/b1

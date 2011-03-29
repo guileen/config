@@ -157,7 +157,7 @@ tags = {}
 tags = {
     -- names = { "☠", "⌥", "✇", "⌤", "⍜", "✣", "⌨", "⌘", "☕" },
    names  = { "风", "林", "火", "山",5, 6, 7 },
-   layout = {TILE, MAX, MAGNIFIER, FLT, FLT, FLT, FLT}
+   layout = {TILE, MAX, FLT, FULLSCREEN, FLT, FLT, FLT}
 }
  for s = 1, screen.count() do
      tags[s] = awful.tag(tags.names, s, tags.layout)
@@ -311,11 +311,14 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-	awful.key({					  }, "Print",  function() awful.util.spawn("scrot -e 'mv $f ~/ 2>/dev/null'") end),
+	awful.key({					  }, "Print",  function() awful.util.spawn("scrot -e 'mv $f ~/snapshots 2>/dev/null'") end),
+	awful.key({ modkey            }, "Print",  function() awful.util.spawn_with_shell("scrot -s -e 'mv $f ~/snapshots 2>/dev/null'") end),
     --awful.key({ modkey,           }, "BackSpace", function() awful.util.spawn(term3) end),
     awful.key({ modkey,           }, "\\", function() awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    awful.key({ modkey,           }, "h",   awful.tag.viewprev       ),
+    awful.key({ modkey,           }, "l",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
@@ -355,8 +358,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
+--    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
+--    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
@@ -384,9 +387,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, }, "v", function () run_or_raise("startxp", { class = "VirtualBox" }) end),
     awful.key({ modkey, }, "'", function () run_or_raise("pidgin", { class = "Pidgin" }) end),
     awful.key({ modkey, }, "\"", function () run_or_raise("pidgin", { class = "Pidgin" }) end),
-    awful.key({ modkey, }, "`", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end),
-    awful.key({ modkey, }, "~", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end),
-    awful.key({ modkey, }, "f", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end),
+    awful.key({ modkey, }, "`", function () run_or_raise("google-chrome", { instance = "google-chrome" }) end),
+    awful.key({ modkey, }, "~", function () run_or_raise("google-chrome", { instance = "google-chrome" }) end),
+--    awful.key({ modkey, }, "f", function () run_or_raise("firefox-nightly", { instance = "Navigator" }) end),
     awful.key({ modkey, }, "g", function () run_or_raise("google-chrome", { instance = "google-chrome" }) end)
 --    awful.key({ modkey, }, "w", function () run_or_raise("google-chrome", { name = "Google Chrome" }) end),
 
@@ -490,6 +493,7 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { instance = "urxvt" }, properties = { tag = tags[1][1], switchtotag = true }},
+    { rule = { instance = "urxvt",name="tmuxat" }, properties = { tag = tags[1][2], switchtotag = true }},
 --    { rule = { name = "VIM" }, properties = { tag = tags[screen.count()][2], switchtotag = true }},
 --    { rule = { name = "cmus" }, properties = { tag = tags[screen.count()][5], switchtotag = true }},
     { rule = { instance = "Eclipse" }, properties = { tag = tags[1][2], switchtotag = true }},
@@ -497,12 +501,13 @@ awful.rules.rules = {
     { rule = { instance = "Navigator" }, properties = { tag = tags[1][2], switchtotag = true }},
     { rule = { instance = "firefox" }, properties = { tag = tags[1][2], switchtotag = true }},
     { rule = { instance = "google-chrome" }, properties = { tag = tags[1][2], switchtotag = true }},
-    { rule = { instance = "Pidgin" }, properties = { tag = tags[screen.count()][3], switchtotag = true }},
+    { rule = { instance = "alltray" }, properties = { tag = tags[1][2], switchtotag = true }},
+    { rule = { instance = "Pidgin" }, properties = { tag = tags[screen.count()][2], switchtotag = true }},
     { rule = { instance = "Pidgin", name = "Buddy List" }, properties = { floating = true }},
-    { rule = { class = "Sylpheed" }, properties = { tag = tags[screen.count()][3], switchtotag = true }},
-    { rule = { class = "VirtualBox" }, properties = { tag = tags[1][2], switchtotag = true }},
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
+    { rule = { class = "Sylpheed" }, properties = { tag = tags[screen.count()][2], switchtotag = true }},
+    { rule = { class = "VirtualBox" }, properties = { tag = tags[1][4], switchtotag = true }},
+    { rule = { class = "Vncviewer" }, properties = { tag = tags[1][4], switchtotag = true }},
+    { rule = { class = "MPlayer" }, properties = { tag = tags[1][4], switchtotag=true} },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },

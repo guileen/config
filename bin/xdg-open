@@ -2,7 +2,7 @@
 
 open_generic()
 {
-    url=$1
+    url=$*
     if [ `echo "$url" | grep ^file://` ] ; then
       url=`echo "$url" | sed "s/^file\:\/\///"`
     elif [ `echo "$url" | grep ^https?://` ]; then
@@ -15,7 +15,7 @@ open_generic()
         opener=xarchiver
     elif [ `echo "$url" | egrep "\.(jpg|gif|png)$"` ] ; then
         opener=feh
-    elif [ `echo "$url" | egrep "\.pdf$"` ] ; then
+    elif [`echo "$url" | egrep "\.pdf$"` ] ; then
         opener=zathura
     elif [ `echo "$url" | egrep "\.x?html?$"` ] ; then
         opener=google-chrome
@@ -26,4 +26,4 @@ open_generic()
     "$opener" "$url"
 }
 
-open_generic $1
+open_generic $*

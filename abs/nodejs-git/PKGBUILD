@@ -1,6 +1,6 @@
 # Contributor: Dongsheng Cai <dongsheng@moodle.com>
 pkgname=nodejs-git
-pkgver=20101219
+pkgver=20110222
 pkgrel=1
 pkgdesc="Evented I/O for V8 javascript"
 arch=('i686' 'x86_64')
