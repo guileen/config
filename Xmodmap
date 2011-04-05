@@ -25,7 +25,7 @@ keysym Alt_R = Mode_switch
 ! begin map
 ! ~` 1!¹ 2@²½ 3#³¾ 4$£¼ 5 6 7 8 9 0 - =+±
 ! q  w  e  rR®  t  y  u i oO° p [{¬  ]} \|¶
-! aAæª sS§  d  f  g  h  j  k l :;  '
+! aAæª sS§  d  f  g  h  j  k l ;  '
 ! z xX× cC©  v  b  n  m  ,<« .>» /?÷
 keysym grave = asciitilde grave
 keysym 1 = 1 exclam onesuperior
@@ -40,7 +40,6 @@ keysym bracketright = bracketright braceright
 keysym backslash = backslash bar paragraph
 keysym a = a A ae ordfeminine
 keysym s = s S section
-keysym semicolon = colon semicolon
 keysym x = x X multiply
 keysym c = c C copyright
 keysym comma = comma less guillemotleft
