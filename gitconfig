@@ -16,3 +16,5 @@
 	d = difftool
 [core]
 	execludesfile = /home/gl/.gitignore
+[color]
+	ui = auto
