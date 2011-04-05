@@ -1,4 +1,4 @@
-alias ls='ls --color=auto'
+alias ls='ls --color=auto -F'
 alias ll='ls -l -S -h'
 alias pss='ps aux|grep'
 alias vbox=VirtualBox
