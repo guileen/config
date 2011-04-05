@@ -1,12 +1,4 @@
-local laptop = false
-do
-    local f = io.open('/usr/bin/ibam', 'r')
-    if(f) then
-        laptop = true
-        f:close()
-    end
-end
-
+local laptop = true
 
 --=============================
 -- Standard awesome library
@@ -17,6 +9,7 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+require("sysinfo")
 
 -- vicious widgets library
 --require"vicious"
@@ -92,7 +85,6 @@ for _, c in next, {
     'xscreensaver -no-splash',
     'ibus-daemon --xim',
     laptop and 'wicd-client',
-    laptop and 'ibamtray',
     'sylpheed',
     'pidgin',
     'dualscreen.sh; #cairo-compmgr',
@@ -221,6 +213,90 @@ mydate_timer:add_signal("timeout", mydate_update)
 mydate_timer:start()
 --mytextclock = awful.widget.textclock({ align = "right" }," %Y年%d月%m日 %H:%M:%S %A", 1)
 
+-- Battery state if on laptop
+local myBattery
+if(laptop) then
+    myBattery = widget({type='textbox', align='right'})
+    myBattery.text = ' '
+    myBattery.width = 0
+    myBattery.align = 'right'
+end
+--local myVolume = widget({type='textbox', align='right'})
+--myVolume.text = ''
+--myVolume.width = 0
+--myVolume.align = 'right'
+
+awful.hooks.timer.register(3, function()
+    if(myVolume) then
+        local succ, volume = pcall(sysinfo.getVolume)
+        --print(volume)
+        if(volume) then
+            myVolume.text = ' VOL: ' .. volume .. ' '
+        else
+            myVolume.text = ' VOL: ERR '
+        end
+    end
+
+    if(myBattery) then
+        local succ, state = pcall(sysinfo.getBatteryState)
+        --print(state)
+        if(succ) then
+            myBattery.text = ' BAT: ' .. state .. ' '
+        else
+            myBattery.text = ' BAT: ERR '
+        end
+    end
+end)
+
+--calendar
+local calendar = nil
+local offset = 0
+
+function remove_calendar()
+    if calendar ~= nil then
+        naughty.destroy(calendar)
+        calendar = nil
+        offset = 0
+    end
+end
+
+function add_calendar(inc_offset)
+    local save_offset = offset
+    remove_calendar()
+    offset = save_offset + inc_offset
+    local datespec = os.date("*t")
+    datespec = datespec.year * 12 + datespec.month - 1 + offset
+    datespec = (datespec % 12 + 1) .. " " .. math.floor(datespec / 12)
+    local cal = awful.util.pread("cal -m " .. datespec)
+    cal = string.gsub(cal, "^%s*(.-)%s*$", "%1")
+    calendar = naughty.notify({
+        text = string.format('<span font_desc="%s">%s</span>', "monospace", os.date("%a, %d %B %Y") .. "\n" .. cal),
+    position = "bottom_right",
+        timeout = 0, hover_timeout = 0.5,
+        width = 160,
+    })
+end
+
+mytextclock.mouse_enter = function()
+    add_calendar(0)
+end
+mytextclock.mouse_leave = remove_calendar
+
+mytextclock:buttons({
+    button({ }, 1, function()
+        add_calendar(-1)
+    end),
+    button({ }, 3, function()
+        add_calendar(1)
+    end),
+    button({ 'Shift' }, 1, function()
+        add_calendar(-12)
+    end),
+    button({ 'Shift' }, 3, function()
+        add_calendar(12)
+    end)
+})
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
@@ -293,6 +369,7 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
+        myBattery,
         mytextclock,
         s == 1 and mysystray or nil,
         mytasklist[s],
