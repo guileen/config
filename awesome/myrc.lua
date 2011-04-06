@@ -241,7 +241,7 @@ awful.hooks.timer.register(3, function()
         local succ, state = pcall(sysinfo.getBatteryState)
         --print(state)
         if(succ) then
-            myBattery.text = ' BAT: ' .. state .. ' '
+            myBattery.text = state
         else
             myBattery.text = ' BAT: ERR '
         end
