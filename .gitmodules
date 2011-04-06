@@ -1,0 +1,3 @@
+[submodule "vim/bundle/simple-javascript-indenter"]
+	path = vim/bundle/simple-javascript-indenter
+	url = git://github.com/jiangmiao/simple-javascript-indenter.git
