@@ -7,3 +7,6 @@
 [submodule "vim/bundle/html5.vim"]
 	path = vim/bundle/html5.vim
 	url = git://github.com/othree/html5.vim.git
+[submodule "vim/bundle/xmledit"]
+	path = vim/bundle/xmledit
+	url = git://github.com/sukima/xmledit.git
