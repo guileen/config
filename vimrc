@@ -216,6 +216,7 @@ autocmd BufRead *.mxml set filetype=mxml
 autocmd BufRead *.hx set filetype=haxe
 autocmd BufRead *.ccss set filetype=clevercss
 autocmd BufRead *.js,*.jade,*.haml,*.html set shiftwidth=2
+autocmd BufRead *.md,*.markdown noremap <F8> :Mm<Enter>
 
 let g:vim_haxe_haxe_src_dir='/opt/haxe/'
 
@@ -223,13 +224,13 @@ set makeprg=make
 
 autocmd FileType python let &makeprg='pylint % -i y -r n -f parseable'
 autocmd FileType javascript let &makeprg='gjslint --unix_mode --nojsdoc %'
-au FileType javascript map # 0I//<Esc>
-au FileType javascript,coffee set shiftwidth=2
+autocmd FileType javascript map # 0I//<Esc>
+autocmd FileType javascript,coffee set shiftwidth=2
 "autocmd BufWritePost *.py !python PythonTidy.py % %
 "autocmd BufWritePost *.py e | syntax on
 "autocmd BufWritePost *.js !fixjsstyle %
 "autocmd BufWritePost *.js e | syntax on
-autocmd BufWritePost *.py,*.hx,*.js make
+"autocmd BufWritePost *.py,*.hx,*.js make
 autocmd BufWritePost *.ccss !ccss %
 
 nmap <F6> <Plug>DiffChangesDiffToggle
