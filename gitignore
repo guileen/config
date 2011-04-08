@@ -29,6 +29,15 @@
 *.sql
 *.sqlite
 
+# Temp file
+*.bak
+*.part
+*.tmp
+bak
+tmp
+backup
+temp
+
 # OS generated files #
 ######################
 .DS_Store?

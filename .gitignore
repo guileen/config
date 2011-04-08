@@ -8,5 +8,7 @@ vim/*
 *.bz2
 *.zip
 *.run
+*.bak
+*.part
 */.*
 */*?download
