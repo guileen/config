@@ -1,70 +1,74 @@
-# Maintainer: David Trail <napalm10 at gmail>
+# Maintainer: Hilton Medeiros <medeiros.hilton at gmail dot com>
+# Contributor: David Trail <napalm10 at gmail>
 # Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
-# Thank you to Jan-Erik for the rc.d script, very helpful.
-# Redis is a key-value database, very fast, runs in ram but backs up to hard drive.
-# See: http://code.google.com/p/redis/
 
 pkgname=redis-git
-pkgver=20101219
+pkgver=20110408
 pkgrel=1
 pkgdesc="Fast memcached key-value database"
 arch=('i686' 'x86_64')
-url="http://github.com/antirez/redis"
+url="http://redis.googlecode.com/"
 license=('BSD')
 depends=('bash')
-makedepends=('gcc>=3.1' 'git' 'make' 'pkgconfig')
+makedepends=('git')
 conflicts=('redis')
 provides=('redis')
-source=("redis.d")
-md5sums=('7de0d0e70cef571a2da9a431e4b40917')
+install=redis.install
+backup=('etc/conf.d/redis.conf' 'etc/logrotate.d/redis')
+source=("redis.d"
+        "redis.logrotate")
+md5sums=('4cb1f078848cc32989a97a3d01226773'
+         '9e2d75b7a9dc421122d673fe520ef17f')
 
 _gitroot="git://github.com/antirez/redis.git"
 _gitname="redis"
 
 build() {
   cd "$srcdir"
-  msg "Connecting to GIT server...."
+  msg "Connecting to Git server...."
 
   if [ -d $_gitname ]; then
-    cd $_gitname && git pull origin
+    pushd $_gitname && git pull origin && popd
     msg "The local files are updated"
   else
     git clone $_gitroot
   fi
 
-  msg "GIT checkout done or server timeout"
+  msg "Git checkout done or server timeout"
   msg "Starting make..."
 
-  rm -rf "$srcdir/$_gitname-build"
-  cp -r "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-  # checkout specific branche or tag
-  # git checkout -b 2.2-alpha0
+  rm -rf $_gitname-build
+  git clone $_gitname $_gitname-build
+  cd $_gitname-build
 
-  # must run under c99
-  CFLAGS="-std=c99 -O3 -W" \
-  make || return 1
+  # Must run under c99
+  export CFLAGS="$CFLAGS -std=c99 -pedantic -fPIC"
+  # Deactivate debug
+  export DEBUG=""
+  sed -i "s|-Os -g|-fPIC|" $(grep -Rl "\-Os \-g" .)
+  
+  # We force -j1 because the makefiles don't deal with dependencies very well
+  # One would have random build errors otherwise
+  make MAKEFLAGS="-j1"
+  #make test
 
-  # run as deamon
-  sed -i 's/daemonize no/daemonize yes/' redis.conf
-
-  # change location of save / load database location
-  sed -i 's|dir \./|dir /var/lib/redis|' redis.conf
-
-  # change logfile from console output to /var/log/redis.log
-  sed -i 's|logfile stdout|logfile /var/log/redis.log|' redis.conf
-
-  install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/redis/COPYING" || return 1
-
-  install -D -m644 "redis.conf" "$pkgdir/etc/redis.conf" || return 1
-
-  install -D -m755 "src/redis-server" "$pkgdir/usr/bin/redis-server" || return 1
-  install -D -m755 "src/redis-cli" "$pkgdir/usr/bin/redis-cli" || return 1
-  install -D -m755 "src/redis-benchmark" "$pkgdir/usr/bin/redis-benchmark" || return 1
-
-  # I put this together, at the moment `redis-server $conf` fails but
-  # I _think_ it will work in future..
-  install -D -m755 "$srcdir/redis.d" "$pkgdir/etc/rc.d/redis" || return 1
+  sed -i -e 's|daemonize no|daemonize yes|' \
+         -e "s|dir \./|dir /var/lib/$_gitname|" \
+         -e "s|logfile stdout|logfile /var/log/$_gitname.log|" \
+         "$srcdir/$_gitname-build/$_gitname.conf"
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "$srcdir/$_gitname-build"
+
+  make PREFIX="$pkgdir/usr" install
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_gitname/COPYING"
+  install -Dm644 $_gitname.conf "$pkgdir/etc/conf.d/$_gitname.conf"
+
+  install -d "$pkgdir/usr/share/doc/$_gitname"
+  install -m644 doc/* "$pkgdir/usr/share/doc/$_gitname"
+
+  install -Dm755 "$srcdir/$_gitname.d" "$pkgdir/etc/rc.d/$_gitname"
+  install -Dm644 "$srcdir/$_gitname.logrotate" "$pkgdir/etc/logrotate.d/$_gitname"
+}

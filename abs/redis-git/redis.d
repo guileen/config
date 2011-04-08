@@ -1,53 +1,66 @@
 #!/bin/bash
 
+daemon_name=redis
+
 . /etc/rc.conf
 . /etc/rc.d/functions
 
-PID=`cat /var/run/redis.pid 2>/dev/null`
+get_pid() {
+  pidof -o %PPID $daemon_name-server
+}
+
 case "$1" in
   start)
-    stat_busy "Starting Redis Server"
-    [ -d /var/lib/redis ] || { mkdir /var/lib/redis; }
-    if [ -z "$PID" ]; then
-        /usr/bin/redis-server /etc/redis.conf >/dev/null
-        RESULT=$?
-    else
-        REDIS_PID=`pidof redis-server`
-        if [ -z "$REDIS_PID" ]; then
-            /usr/bin/redis-server /etc/redis.conf >/dev/null
-            RESULT=$?
-        elif [ `pidof redis-server` -eq $PID ]; then
-            RESULT=1
-        else
-            /usr/bin/redis-server /etc/redis.conf >/dev/null
-            RESULT=$?
-        fi
-    fi
+    stat_busy "Starting $daemon_name daemon"
+    [ -d /var/lib/$daemon_name ] || mkdir /var/lib/$daemon_name
 
-    if [ $RESULT -gt 0 ]; then
-      stat_fail
+    if [ -z "$(get_pid)" ]; then
+      [ -f /var/run/$daemon_name.pid ] && rm -f /var/run/$daemon_name.pid
+      /usr/bin/$daemon_name-server /etc/conf.d/$daemon_name.conf >/dev/null
+
+      if [ $? -gt 0 ]; then
+        stat_fail
+        exit 1
+      else
+        # Redis itself writes the pid file
+        # echo $(get_pid) >/var/run/$daemon_name.pid
+        add_daemon $daemon_name
+        stat_done
+      fi
     else
-      add_daemon redis
-      stat_done
+      stat_fail
+      exit 1
     fi
     ;;
+
   stop)
-    stat_busy "Stopping Redis Server"
-    [ ! -z "$PID" ]  && kill $PID &> /dev/null
+    stat_busy "Stopping $daemon_name daemon"
+    PID=$(get_pid)
+    [ ! -z "$PID" ] && kill $PID &>/dev/null
     if [ $? -gt 0 ]; then
       stat_fail
+      exit 1
     else
-      rm /var/run/redis.pid
-      rm_daemon redis
+      rm -f /var/run/$daemon_name.pid &>/dev/null
+      rm_daemon $daemon_name
       stat_done
     fi
     ;;
+
   restart)
     $0 stop
     sleep 1
     $0 start
     ;;
+
+  status)
+    stat_busy "Checking $daemon_name status";
+    ck_status $daemon_name
+    ;;
+
   *)
-    echo "usage: $0 {start|stop|restart}"  
+    echo "usage: $0 {start|stop|restart|status}"  
 esac
 exit 0
+
+# vim: syntax=sh ts=2
