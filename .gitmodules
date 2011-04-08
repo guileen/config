@@ -19,3 +19,6 @@
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = git@github.com:guileen/vim-markdown.git
+[submodule "vim/bundle/vim-stylus"]
+	path = vim/bundle/vim-stylus
+	url = git://github.com/wavded/vim-stylus.git
