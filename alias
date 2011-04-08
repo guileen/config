@@ -8,5 +8,3 @@ PATH=/opt/eclipse:/opt/google-appengine:/home/gl/configs/bin:$PATH
 PYTHONPATH=/home/gl/projects/clevercss3/:$PYTHONPATH
 export HAXE_LIBRARY_PATH=/opt/haxe/std
 export EDITOR=vim
-
-. /home/gl/configs/bin/z.sh
