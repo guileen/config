@@ -1,13 +1,60 @@
 #! /bin/sh
-BASE_URL=http://github.com/guileen/config/raw/master/
-su root -c "wget $BASE_URL/tools/preinstall.sh && sh preinstall.sh && rm preinstall.sh"
+REPO_PKGS="git sudo vim tmux zsh ibus rxvt-unicode pidgin zathura cmus antiword"
+AUR_PKGS=(nodejs-git libpci libpng12 google-chrome-dev)
+TARGET_DIR=/tmp/abs
+F_ARG="-f"
+PAC_F_ARG="--noconfirm"
+COWER="`which cower`"
+
+echo '********************'
+echo '* install packages *'
+echo '********************'
+su -c "$PAC -Sy --noconfirm --needed $REPO_PKGS"
+
+if [ ! -f "`which cower`" ] 
+then
+echo '*****************'
+echo '* install cower *'
+echo '*****************'
+    mkdir -p $TARGET_DIR/cower-git
+    cd $TARGET_DIR/cower-git
+    wget http://aur.archlinux.org/packages/cower-git/PKGBUILD
+    makepkg -ics $PAC_F_ARG
+    COWER=/usr/bin/cower
+fi
+
+echo "cower is <$COWER>"
+
+echo '************************'
+echo '* install aur packages *'
+echo '************************'
+
+# download aur packages
+function cowerSy {
+    pkg=$1
+    echo '******************************'
+    echo "   install $pkg"
+    echo '******************************'
+    $COWER -d $F_ARG -t $TARGET_DIR $pkg
+    cd $TARGET_DIR/$pkg
+    makepkg -is $PAC_F_ARG
+}
+
+for pkg in ${AUR_PKGS[@]}
+do
+    cowerSy $pkg
+done
+
+echo '**********************************'
+echo '* create symbol link for configs *'
+echo '**********************************'
 git clone git://github.com/guileen/config.git ~/configs
-# os rc
+# sh rc
 ln -s ~/configs/bashrc ~/.bashrc
 ln -s ~/configs/zshrc ~/.zshrc
-ln -s ~/configs/xinitrc ~/.xinitrc
 
 # X config
+ln -s ~/configs/xinitrc ~/.xinitrc
 ln -s ~/configs/Xmodmap ~/.Xmodmap
 ln -s ~/configs/Xdefaults ~/.Xdefaults
 
@@ -31,20 +78,3 @@ ln -s ~/configs/awesome ~/.config/awesome
 
 # cower
 ln -s ~/configs/cower ~/.config/cower
-
-# download aur packages
-function mkaur {
-    pkg=$1
-    echo "downloading $pkg"
-    /usr/bin/cower -df $pkg
-    cd ~/configs/abs/$pkg
-    makepkg -s --noconfirm
-    sudo pacman -U --noconfirm *.pkg.tar.xz
-}
-
-pkgs=(cower-git nodejs-git libpci libpng12 google-chrome-dev)
-for pkg in ${pkgs[@]}
-do
-    echo $pkg
-    mkaur $pkg
-done
