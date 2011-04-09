@@ -1,0 +1,49 @@
+#! /bin/sh
+TARGET_DIR=/tmp/abs
+TARGET=
+S_ARG=
+sync=
+C_ARG=
+F_ARG=
+PAC_F_ARG=
+COWER=`which cower`
+
+while getopts 'Sycfh:' OPTION 
+do
+    case $OPTION in
+    S)  S_ARG="-i"
+        ;;
+    y)  sync=1
+        ;;
+    c)  C_ARG="-c"
+        ;;
+    f)  F_ARG="-f"
+        PAC_F_ARG="--noconfirm"
+        ;;
+    h) echo "additional args for cower: -S -y -f."
+    esac
+done
+shift $(($OPTIND - 1))
+TARGET=$1
+if [ ! -f "`which cower`" ] 
+then
+    mkdir -p $TARGET_DIR/cower-git
+    cd $TARGET_DIR/cower-git
+    wget http://aur.archlinux.org/packages/cower-git/PKGBUILD
+    makepkg -ics $PAC_F_ARG
+    COWER=/usr/bin/cower
+fi
+
+# how to get remain args from getopts to pass cower
+# how to get last ARGS to $ARGET
+if [ ! -f "$TARGET_DIR/$TARGE" ]
+then
+    sync=1
+fi
+if [ $sync ]
+then
+    mkdir -p $TARGET_DIR
+    $COWER -d $F_ARG -t $TARGET_DIR $TARGET
+fi
+cd $TARGET_DIR/$TARGET
+makepkg $S_ARG $C_ARG $PAC_F_ARG -s
