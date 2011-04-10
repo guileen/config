@@ -1,5 +1,5 @@
 #! /bin/sh
-REPO_PKGS="git sudo vim tmux zsh mongodb"
+REPO_PKGS="fakeroot git sudo vim tmux zsh mongodb"
 # tigervnc gtk-vnc impressive
 AUR_LIBS=""
 AUR_PKGS=($AUR_LIBS nodejs-git redis-git nodejs-npm)
@@ -14,11 +14,11 @@ COWER="`which cower`"
 echo '********************'
 echo '*  packages *'
 echo '********************'
-su -c "$PAC -Syu --noconfirm"
+su -c "$PAC -Syu "
 echo '********************'
 echo '* install packages *'
 echo '********************'
-su -c "$PAC -Sy --noconfirm --needed $REPO_PKGS"
+su -c "$PAC -Sy --needed $REPO_PKGS"
 
 echo '********************'
 echo '*  clone  configs  *'
