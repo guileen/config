@@ -1,0 +1,26 @@
+post_install() {
+  post_upgrade $1
+}
+
+post_upgrade() {
+  source /etc/profile.d/npm.sh || return 1
+  echo "### Global and Local Installation ###"
+  echo ""
+  echo ">>> Since nodejs-npm 1.0.0,"
+  echo ">>> The installation of nodejs module has been changed."
+  echo ""
+  echo "### Local Installation ###"
+  echo ">>> If you just want install module under the current working direcoty, type:"
+  echo "    npm install MODULE_NAME"
+  echo ""
+  echo "### Global Installation ###"
+  echo ">>> If you want install module globally, type:"
+  echo "    sudo npm install -g MODULE_NAME"
+  echo ">>> Then the module will be installed under the /usr/lib/node_modules direcoty."
+  echo ""
+  echo "### Old modules ###"
+  echo ">>> If you had installed nodejs-npm before,"
+  echo ">>> The old modules that under /usr/lib/node and /usr/local/lib/node are still available."
+  echo ""
+  echo "### End ###"
+}
