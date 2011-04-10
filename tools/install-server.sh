@@ -78,7 +78,7 @@ echo '************************'
 for pkg in ${NPM_PKGS[@]}
 do
     echo '**************************'
-    echo ' npm install $pkg '
+    echo " npm install $pkg "
     echo '**************************'
     sudo npm install -g $pkg
 done
