@@ -1,13 +1,16 @@
 # Contributor: Dongsheng Cai <dongsheng@moodle.com>
 pkgname=nodejs-git
-pkgver=20110222
+pkgver=20110410
 pkgrel=1
 pkgdesc="Evented I/O for V8 javascript"
 arch=('i686' 'x86_64')
 url="http://nodejs.org/"
 license=('custom:nodejs')
 depends=('gcc' 'coreutils' 'python2')
-_gitroot='git://github.com/ry/node.git'
+provides=("nodejs=$pkgver")
+conflicts=('nodejs')
+replace=('nodejs')
+_gitroot='git://github.com/joyent/node.git'
 _gitname='node'
 
 build() {
@@ -16,7 +19,7 @@ build() {
         cd $_gitname
         msg "Updating local files"
         git checkout -- .
-        git pull . master
+        git pull
     else
         msg "Cloning git repository"
         git clone $_gitroot
