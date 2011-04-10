@@ -1,5 +1,5 @@
 #! /bin/sh
-REPO_PKGS="base-devel git sudo vim tmux zsh mongodb"
+REPO_PKGS="base-devel git vim tmux zsh mongodb"
 # tigervnc gtk-vnc impressive
 AUR_LIBS=""
 AUR_PKGS=($AUR_LIBS nodejs-git redis-git nodejs-npm)
@@ -8,19 +8,19 @@ NPM_PKGS=(express mongoskin redis jade less stylus coffee-script)
 TARGET_DIR=/tmp/abs
 ABS_DIR=~/configs/abs
 F_ARG="-f"
-#PAC_F_ARG="--noconfirm"
-PAC_F_ARG=""
+PAC_F_ARG="--noconfirm"
+#PAC_F_ARG=""
 COWER="`which cower`"
 PAC="`which pacman`"
 
 echo '********************'
 echo '*  packages *'
 echo '********************'
-su -c "$PAC -Syu $PAC_F_ARG"
+sudo $PAC -Syu $PAC_F_ARG
 echo '********************'
 echo '* install packages *'
 echo '********************'
-su -c "$PAC -Sy --needed $PAC_F_ARG $REPO_PKGS"
+sudo $PAC -Sy --needed $PAC_F_ARG $REPO_PKGS
 
 echo '********************'
 echo '*  clone  configs  *'
