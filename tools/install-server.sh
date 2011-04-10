@@ -1,5 +1,5 @@
 #! /bin/sh
-REPO_PKGS="fakeroot git sudo vim tmux zsh mongodb"
+REPO_PKGS="base-devel git sudo vim tmux zsh mongodb"
 # tigervnc gtk-vnc impressive
 AUR_LIBS=""
 AUR_PKGS=($AUR_LIBS nodejs-git redis-git nodejs-npm)
@@ -8,23 +8,24 @@ NPM_PKGS=(express mongoskin redis jade less stylus coffee-script)
 TARGET_DIR=/tmp/abs
 ABS_DIR=~/configs/abs
 F_ARG="-f"
-PAC_F_ARG="--noconfirm"
+#PAC_F_ARG="--noconfirm"
+PAC_F_ARG=""
 COWER="`which cower`"
 PAC="`which pacman`"
 
 echo '********************'
 echo '*  packages *'
 echo '********************'
-su -c "$PAC -Syu "
+su -c "$PAC -Syu $PAC_F_ARG"
 echo '********************'
 echo '* install packages *'
 echo '********************'
-su -c "$PAC -Sy --needed $REPO_PKGS"
+su -c "$PAC -Sy --needed $PAC_F_ARG $REPO_PKGS"
 
 echo '********************'
 echo '*  clone  configs  *'
 echo '********************'
-if [ -f ~/configs ]
+if [ -d ~/configs ]
 then
     cd ~/configs
     git pull
@@ -56,7 +57,7 @@ function cowerSy {
     echo '******************************'
     echo "   install $pkg"
     echo '******************************'
-    if [ -f $ABS_DIR/$pkg ]
+    if [ -d $ABS_DIR/$pkg ]
     then
         cd $ABS_DIR/$pkg
     else
@@ -106,6 +107,7 @@ ln -s ~/configs/gitignore ~/.gitignore
 # vim
 ln -s ~/configs/vimrc ~/.vimrc
 ln -s ~/configs/vim ~/.vim
+mkdir ~/configs/vim/autoload
 ln -s ~/configs/tools/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim
 
 mkdir ~/.config
