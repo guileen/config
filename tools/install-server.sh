@@ -10,6 +10,7 @@ ABS_DIR=~/configs/abs
 F_ARG="-f"
 PAC_F_ARG="--noconfirm"
 COWER="`which cower`"
+PAC="`which pacman`"
 
 echo '********************'
 echo '*  packages *'
