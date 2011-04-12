@@ -61,6 +61,7 @@ function run_or_raise(cmd, properties)
 end
 --}}}
 
+
 -- Returns true if all pairs in table1 are present in table2
 function match (table1, table2)
    for k, v in pairs(table1) do
@@ -71,12 +72,22 @@ function match (table1, table2)
    return true
 end
 
+local function run(cmd)
+    return awful.util.spawn(cmd)
+end
+
+local function shell_run(cmd)
+    return awful.util.spawn_with_shell(cmd)
+end
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 local configdir = awful.util.getdir("config")
 beautiful.init(configdir .. "/theme.lua")
 local icons = "/usr/share/icons/hicolor/"
 local icons16 = icons .. "16x16/"
+
+local dmenu = "dmenu_run -p 'Run: ' -nb '#222222' -nf '#aaaaaa' -sb '#535d6c' -sf '#ffffff' "
 
 -- run at startup
 for _, c in next, {
@@ -98,7 +109,7 @@ for _, c in next, {
     'urxvtd -q -o -f',
 } do
     if(c)then
-        awful.util.spawn(c)
+        run(c)
     end
 end
 
@@ -388,10 +399,10 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-	awful.key({					  }, "Print",  function() awful.util.spawn("scrot -e 'mv $f ~/snapshots 2>/dev/null'") end),
-	awful.key({ modkey            }, "Print",  function() awful.util.spawn_with_shell("scrot -s -e 'mv $f ~/snapshots 2>/dev/null'") end),
-    --awful.key({ modkey,           }, "BackSpace", function() awful.util.spawn(term3) end),
-    awful.key({ modkey,           }, "\\", function() awful.util.spawn(terminal) end),
+	awful.key({					  }, "Print",  function() run("scrot -e 'mv $f ~/snapshots 2>/dev/null'") end),
+	awful.key({ modkey            }, "Print",  function() shell_run("scrot -s -e 'mv $f ~/snapshots 2>/dev/null'") end),
+    --awful.key({ modkey,           }, "BackSpace", function() run(term3) end),
+    awful.key({ modkey,           }, "\\", function() run(terminal) end),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "h",   awful.tag.viewprev       ),
@@ -431,7 +442,7 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn(term2) end),
+    awful.key({ modkey, "Shift"   }, "Return", function () run(term2) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
 
@@ -445,8 +456,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-    awful.key({ modkey },            "q",     function () awful.util.spawn('dmenu-run') end),
+    awful.key({ modkey },            "r",     function ()
+        -- awful.screen.focus(1)
+        -- mypromptbox[mouse.screen]:run()
+        run(dmenu) 
+    end),
 
     awful.key({ modkey }, "x",
               function ()
@@ -459,9 +473,9 @@ globalkeys = awful.util.table.join(
     -- Run and Raise
     awful.key({ modkey, }, "Return", function () run_or_raise("urxvt -e tmuxat", { instance = "urxvt" }) end),
     awful.key({ modkey, }, "BackSpace", function () run_or_raise("", { name = "VIM", instance="urxvt" }) end),
-    awful.key({ modkey, }, "e", function () run_or_raise("eclipse", { class = "Eclipse" }) end),
+--    awful.key({ modkey, }, "e", function () run_or_raise("eclipse", { class = "Eclipse" }) end),
     awful.key({ modkey, }, "s", function () run_or_raise("sylpheed", { class = "Sylpheed" }) end),
-    awful.key({ modkey, }, "v", function () run_or_raise("startxp", { class = "VirtualBox" }) end),
+    awful.key({ modkey, }, "v", function () run_or_raise("vbox", { class = "VirtualBox" }) end),
     awful.key({ modkey, }, "'", function () run_or_raise("pidgin", { class = "Pidgin" }) end),
     awful.key({ modkey, }, "\"", function () run_or_raise("pidgin", { class = "Pidgin" }) end),
     awful.key({ modkey, }, "`", function () run_or_raise("google-chrome", { instance = "google-chrome" }) end),
