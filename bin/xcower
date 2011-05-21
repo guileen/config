@@ -1,24 +1,22 @@
 #! /bin/sh
-TARGET_DIR=/tmp/abs
+TARGET_DIR=.
 TARGET=
-S_ARG=
 sync=
-C_ARG=
-F_ARG=
-PAC_F_ARG=
+COWER_ARG=
+PAC_ARG=
 COWER=`which cower`
 
 while getopts 'Sycfh:' OPTION 
 do
     case $OPTION in
-    S)  S_ARG="-i"
+    S)  PAC_ARG="-i $PAC_ARG"
         ;;
     y)  sync=1
+        COWER_ARG="-f $COWER_ARG"
         ;;
-    c)  C_ARG="-c"
+    c)  PAC_ARG="-c $PAC_ARG"
         ;;
-    f)  F_ARG="-f"
-        PAC_F_ARG="--noconfirm"
+    f)  PAC_ARG="$PAC_ARG --noconfirm"
         ;;
     h) echo "additional args for cower: -S -y -f."
     esac
@@ -43,7 +41,7 @@ fi
 if [ $sync ]
 then
     mkdir -p $TARGET_DIR
-    $COWER -d $F_ARG -t $TARGET_DIR $TARGET
+    $COWER -d $COWER_ARG -t $TARGET_DIR $TARGET
 fi
 cd $TARGET_DIR/$TARGET
-makepkg $S_ARG $C_ARG $PAC_F_ARG -s
+makepkg $PAC_ARG -s
