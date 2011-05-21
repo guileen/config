@@ -1,8 +1,7 @@
 alias ls='ls --color=auto -F'
 alias ll='ls -l -S -h'
 alias pss='ps aux|grep'
-alias vbox=VirtualBox
-alias xp="VirtualBox --startvm XP &> /dev/null &"
+alias vv='env|grep'
 alias vnc="vncviewer -FullColor=0 -LowColorLevel=2 192.168.1.110"
 PATH=/opt/eclipse:/opt/google-appengine:/home/gl/configs/bin:$PATH
 PYTHONPATH=/home/gl/projects/clevercss3/:$PYTHONPATH
