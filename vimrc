@@ -21,7 +21,7 @@ set fileencodings=ucs-bom,utf-8,gb-18030,gbk,gb2312,cp963,gb18030,big5,euc-jp,eu
 
 
 set tabstop=4 " tab表示4个空格
-set shiftwidth=4 " 缩进4个空格
+set shiftwidth=2 " 缩进2个空格
 set expandtab " 自动将tab展开成空格
 set softtabstop=0 " 删除空格缩进
 set smarttab " 行首按tab将自动转换为空格
@@ -47,7 +47,7 @@ filetype indent on
 
 "colo slate
 "colo torte
-colo lucius 
+colo lucius
 "colo yerik_night
 "colo moria
 "colo wombat
@@ -217,6 +217,8 @@ autocmd BufRead *.hx set filetype=haxe
 autocmd BufRead *.ccss set filetype=clevercss
 autocmd BufRead *.js,*.jade,*.haml,*.html set shiftwidth=2
 autocmd BufRead *.md,*.markdown noremap <F8> :Mm<Enter>
+autocmd BufRead *.coffee noremap <F8> :!coffee -p %<Enter>
+autocmd BufRead *.htm,*.html noremap <F8> :!google-chrome %<Enter>
 
 let g:vim_haxe_haxe_src_dir='/opt/haxe/'
 
@@ -225,7 +227,10 @@ set makeprg=make
 autocmd FileType python let &makeprg='pylint % -i y -r n -f parseable'
 autocmd FileType javascript let &makeprg='gjslint --unix_mode --nojsdoc %'
 autocmd FileType javascript map # 0I//<Esc>
+autocmd FileType javascript map ff :!fixjsstyle %<Enter>
 autocmd FileType javascript,coffee set shiftwidth=2
+autocmd FileType javascript let g:SimpleJsIndenter_CaseIndentLevel=-1
+
 "autocmd BufWritePost *.py !python PythonTidy.py % %
 "autocmd BufWritePost *.py e | syntax on
 "autocmd BufWritePost *.js !fixjsstyle %
@@ -236,5 +241,4 @@ autocmd BufWritePost *.ccss !ccss %
 nmap <F6> <Plug>DiffChangesDiffToggle
 nmap <F7> <Plug>DiffChangesPatchToggle
 
-set foldclose=all
-
+"set foldclose=all
