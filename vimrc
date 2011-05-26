@@ -93,7 +93,7 @@ map <C-s> :w<CR>
 " NERDTree toggle
 nnoremap <F11> :NERDTreeToggle<CR>
 " taglist
-nnoremap <F12> :TlistToggle<CR>
+nnoremap <F12> :TagbarOpenAutoClose<CR>
 
 autocmd BufRead *.as set filetype=actionscript
 autocmd BufRead *.mxml set filetype=mxml

@@ -31,6 +31,6 @@
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = git://github.com/vim-scripts/SuperTab-continued..git
-[submodule "vim/bundle/vim-taglist-plus"]
-	path = vim/bundle/vim-taglist-plus
-	url = git://github.com/int3/vim-taglist-plus.git
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
