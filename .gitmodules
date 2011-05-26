@@ -25,3 +25,15 @@
 [submodule "tools/vim-pathogen"]
 	path = tools/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
+[submodule "vim/bundle/vim-taglist"]
+	path = vim/bundle/vim-taglist
+	url = git://github.com/clones/vim-taglist.git
+[submodule "vim/bundle/The-NERD-tree"]
+	path = vim/bundle/The-NERD-tree
+	url = git://github.com/vim-scripts/The-NERD-tree.git
+[submodule "vim/bundle/neocomplcache"]
+	path = vim/bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.git
+[submodule "vim/bundle/javascript-syntax.vim"]
+	path = vim/bundle/javascript-syntax.vim
+	url = git://github.com/othree/javascript-syntax.vim.git
