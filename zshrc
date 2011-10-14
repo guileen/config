@@ -5,7 +5,7 @@ SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/gl/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit promptinit colors
 compinit
@@ -18,7 +18,7 @@ colors
 PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%} %1~>"
 RPROMPT="%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg[blue]%}%T%{$reset_color%}"
 
-source ~/configs/alias
+source ~/config/alias
 PATH=/opt/eclipse:$PATH
 
 EDITOR=vim

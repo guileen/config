@@ -1,5 +1,13 @@
-alias ls='ls --color=auto -F'
-alias ll='ls -l -S -h'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+  alias ls='ls --color=auto -F'
+  alias v='vim'
+else
+  alias ls='ls -G'
+  alias v='mvim'
+fi
+
+alias l='ls -l -S -h'
 alias pss='ps aux|grep'
 alias vv='env|grep'
 alias vnc="vncviewer -FullColor=0 -LowColorLevel=2 192.168.1.110"
