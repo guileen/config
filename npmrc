@@ -1,5 +1,2 @@
-_auth = Z3VpbGVlbjphNzg3ODc0OA==
-binroot = ~/bin
-email = guileen@gmail.com
-manroot = ~/share/man
-root = ~/.node_libraries
+registry = http://registry.npmjs.vitecho.com
+loglevel = info
