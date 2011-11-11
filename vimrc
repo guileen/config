@@ -4,6 +4,10 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
+" plugin settings
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+
+" basic settings
 set scrolloff=5
 
 set nocp
