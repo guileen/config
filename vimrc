@@ -5,11 +5,42 @@ call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
 " insert maps
-inoremap {<CR> {<CR>}<ESC>O
-inoremap , ,<SPACE>
-inoremap : <SPACE>:<SPACE>
-inoremap $<Tab> $("")<ESC>hi
-inoremap $( $("")<ESC>hi
+" see http://vim.wikia.com/wiki/Automatically_append_closing_characters
+function! SmartPairs(open, close)
+  exec 'inoremap ' . a:open . ' ' a:open . a:close . repeat('<left>', len(a:close))
+  exec 'inoremap ' . a:open . '<space> ' a:open . '<space><space>' . a:close . repeat('<left>', len(a:close) + 1)
+  exec 'inoremap ' . a:open . '<cr> ' a:open . '<cr>' . a:close . '<esc>O'
+  exec 'inoremap ' . a:open . a:close . ' ' . a:open . a:close
+endf
+
+function! CommonPairs()
+  call SmartPairs('"', '"')
+  call SmartPairs("'", "'")
+  call SmartPairs('(', ')')
+  call SmartPairs('{', '}')
+  call SmartPairs('[', ']')
+  call SmartPairs('/*', '*/')
+  call SmartPairs('/**', '*/')
+  inoremap /*<CR>  /*<CR>/<ESC>O
+  inoremap /**<CR>  /**<CR>/<ESC>O
+endf
+
+function! AutocmdJS()
+  call CommonPairs()
+  inoremap , ,<SPACE>
+  inoremap : <SPACE>:<SPACE>
+  inoremap $<Tab> $("")<left><left>
+  inoremap $( $("")<left><left>
+  let &makeprg='gjslint --unix_mode --nojsdoc %'
+  map # 0I//<Esc>
+  map ff :!fixjsstyle %<Enter>
+  set shiftwidth=2
+  let g:SimpleJsIndenter_CaseIndentLevel=-1
+endf
+
+au filetype javascript call AutocmdJS()
+
+"autocmd BufWritePre * :%s/\s*$//
 
 " window maps
 map <C-H> <C-W>h
@@ -28,10 +59,11 @@ nnoremap <F11> :NERDTreeToggle<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 " taglist
 nnoremap <F12> :TagbarOpenAutoClose<CR>
-nnoremap <C-t> :TagbarToggle<CR>
+nnoremap <C-m> :TagbarToggle<CR>
 
 " plugin settings
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+"let g:AutoClosePairs=AutoClose#ParsePairs("() [] {} ` \" '")
 
 " basic settings
 set scrolloff=5
@@ -123,12 +155,6 @@ let g:vim_haxe_haxe_src_dir='/opt/haxe/'
 set makeprg=make
 
 autocmd FileType python let &makeprg='pylint % -i y -r n -f parseable'
-autocmd FileType javascript let &makeprg='gjslint --unix_mode --nojsdoc %'
-autocmd FileType javascript map # 0I//<Esc>
-autocmd FileType javascript map ff :!fixjsstyle %<Enter>
-autocmd FileType javascript,coffee set shiftwidth=2
-autocmd FileType javascript let g:SimpleJsIndenter_CaseIndentLevel=-1
-
 "autocmd BufWritePost *.py !python PythonTidy.py % %
 "autocmd BufWritePost *.py e | syntax on
 "autocmd BufWritePost *.js !fixjsstyle %
