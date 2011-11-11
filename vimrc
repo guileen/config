@@ -4,6 +4,32 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
+" insert maps
+inoremap {<CR> {<CR>}<ESC>O
+inoremap , ,<SPACE>
+inoremap : <SPACE>:<SPACE>
+inoremap $<Tab> $("")<ESC>hi
+inoremap $( $("")<ESC>hi
+
+" window maps
+map <C-H> <C-W>h
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+
+map <MouseDown> <C-y>
+map <S-MouseDown> <C-u>
+map <MouseUp> <C-e>
+map <S-MouseUp> <C-d>
+
+map <C-s> :w<CR>
+" NERDTree toggle
+nnoremap <F11> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+" taglist
+nnoremap <F12> :TagbarOpenAutoClose<CR>
+nnoremap <C-t> :TagbarToggle<CR>
+
 " plugin settings
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 
@@ -82,24 +108,6 @@ endif
 set list
 set listchars=tab:>-,trail:`
 "hi SpecialKey guifg=#3a3a3a ctermfg=237
-
-map <C-H> <C-W>h
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-L> <C-W>l
-
-map <MouseDown> <C-y>
-map <S-MouseDown> <C-u>
-map <MouseUp> <C-e>
-map <S-MouseUp> <C-d>
-
-map <C-s> :w<CR>
-" NERDTree toggle
-nnoremap <F11> :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
-" taglist
-nnoremap <F12> :TagbarOpenAutoClose<CR>
-nnoremap <C-t> :TagbarToggle<CR>
 
 autocmd BufRead *.as set filetype=actionscript
 autocmd BufRead *.mxml set filetype=mxml
