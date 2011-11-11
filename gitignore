@@ -46,3 +46,5 @@ Icon?
 Thumbs.db
 .*
 
+# VIM temp
+*.swp
