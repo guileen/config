@@ -3,7 +3,8 @@
 
 " call pathogen to load the plugins
 filetype off
-call pathogen#runtime_append_all_bundles()
+let g:pathogen_disabled = ['vim-autoclose']
+call pathogen#infect()
 filetype plugin indent on
 
 " insert maps
