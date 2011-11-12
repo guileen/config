@@ -69,8 +69,9 @@ function! CommonPairs()
   inoremap <buffer> <silent> /**<CR>  /**<CR>/<ESC>O
   "inoremap <buffer> <silent> <expr> <buffer> ; SmartSimicolon()
   inoremap <buffer> <expr> <bs> SmartBackspace()
-  inoremap <buffer> <expr> ;<cr> "\<end>;" . (line('.')==line('$') ? "\<cr>" : "\<down>")
-  inoremap <buffer> ;;<cr> <down><end>;<cr>
+  inoremap <buffer> ;<cr> <end>;<cr>
+  inoremap <buffer> <expr> ;;<cr> getline('.')=~ '^\s*$' ? "\<esc>ddA;\<cr>" : "\<esc>jA;\<cr>"
+  inoremap <buffer> ;;; <down><end><cr>
   inoremap <buffer> .<cr> <end>.
   inoremap <buffer> ..<cr> <down><end>.
 endf
