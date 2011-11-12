@@ -20,6 +20,7 @@ RPROMPT="%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg
 
 source ~/config/alias
 PATH=/opt/eclipse:$PATH
+source ~/.profile
 
 EDITOR=vim
 
