@@ -31,6 +31,24 @@ function! SmartSimicolon()
   return ';'
 endf
 
+function! SmartBackspace()
+  " char before cursor
+  let l:chr = getline('.')[col('.')-2]
+  let l:cidx = stridx('{([''"', l:chr)
+  if l:cidx != -1
+    " str after cursor
+    let l:tail = getline('.')[col('.')-1:-1]
+    " get right pair
+    let l:rchr = '})]''"'[l:cidx]
+    let l:idx = stridx(l:tail, l:rchr)
+    if l:idx == 0 || l:tail[0:l:idx-1] =~ '^\s*$'
+      " e.g. ({|  }) press <bs> at |, got (|), then got |
+      return "\<bs>" . repeat("\<delete>", l:idx + 1)
+    endif
+  endif
+  return "\<bs>"
+endf
+
 function! HtmlPairs()
   call SmartPairs('<%', '%>', 1, 0)
   call SmartPairs('<%=', '%>', 1, 0)
@@ -46,13 +64,15 @@ function! CommonPairs()
   call SmartPairs('[', ']', 1, 1)
   call SmartPairs('/*', '*/', 1, 0)
   call SmartPairs('/**', '*/', 1, 0)
+  inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
   inoremap <buffer> <silent> /*<CR>  /*<CR>/<ESC>O
   inoremap <buffer> <silent> /**<CR>  /**<CR>/<ESC>O
-  "inoremap <expr> <buffer> ; SmartSimicolon()
-  inoremap ;<cr> <end>;<cr>
-  inoremap .<cr> <end>.
-  inoremap ;;<cr> <down><end>;<cr>
-  inoremap ..<cr> <down><end>.
+  "inoremap <buffer> <silent> <expr> <buffer> ; SmartSimicolon()
+  inoremap <buffer> <expr> <bs> SmartBackspace()
+  inoremap <buffer> <expr> ;<cr> "\<end>;" . (line('.')==line('$') ? "\<cr>" : "\<down>")
+  inoremap <buffer> ;;<cr> <down><end>;<cr>
+  inoremap <buffer> .<cr> <end>.
+  inoremap <buffer> ..<cr> <down><end>.
 endf
 
 function! AutocmdJS()
