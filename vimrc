@@ -31,14 +31,19 @@ function! SmartSimicolon()
   return ';'
 endf
 
+function! HtmlPairs()
+  call SmartPairs('<%', '%>', 1, 0)
+  call SmartPairs('<%=', '%>', 1, 0)
+  call SmartPairs('{%', '%}', 1, 0)
+  call SmartPairs('{%=', '%}', 1, 0)
+endf
+
 function! CommonPairs()
   call SmartPairs('"', '"', 0, 0)
   call SmartPairs("'", "'", 0, 0)
   call SmartPairs('(', ')', 0, 0)
   call SmartPairs('{', '}', 1, 1)
   call SmartPairs('[', ']', 1, 1)
-  call SmartPairs('<%', '%>', 1, 0)
-  call SmartPairs('<%=', '%>', 1, 0)
   call SmartPairs('/*', '*/', 1, 0)
   call SmartPairs('/**', '*/', 1, 0)
   inoremap <buffer> <silent> /*<CR>  /*<CR>/<ESC>O
@@ -63,6 +68,7 @@ function! AutocmdJS()
 endf
 
 au filetype javascript call AutocmdJS()
+au filetype html call HtmlPairs()
 
 "autocmd BufWritePre * :%s/\s*$//
 
