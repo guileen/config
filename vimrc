@@ -1,3 +1,5 @@
+" See http://vimcdoc.sourceforge.net/doc/usr_41.html#usr_41.txt for vim script
+" http://vimcdoc.sourceforge.net/doc/eval.html#functions
 
 " call pathogen to load the plugins
 filetype off
@@ -6,33 +8,54 @@ filetype plugin indent on
 
 " insert maps
 " see http://vim.wikia.com/wiki/Automatically_append_closing_characters
-function! SmartPairs(open, close)
-  exec 'inoremap ' . a:open . ' ' a:open . a:close . repeat('<left>', len(a:close))
-  exec 'inoremap ' . a:open . '<space> ' a:open . '<space><space>' . a:close . repeat('<left>', len(a:close) + 1)
-  exec 'inoremap ' . a:open . '<cr> ' a:open . '<cr>' . a:close . '<esc>O'
-  exec 'inoremap ' . a:open . a:close . ' ' . a:open . a:close
+function! SmartPairs(open, close, sp, brace)
+  exec 'inoremap <buffer> ' . a:open . ' ' a:open . a:close . repeat('<left>', len(a:close))
+  exec 'inoremap <buffer> ' . a:open . a:close . ' ' . a:open . a:close
+  if(a:sp)
+    exec 'inoremap <buffer> ' . a:open . ' ' a:open . '<space><space>' . a:close . repeat('<left>', len(a:close) + 1)
+    exec 'inoremap <buffer> ' . a:open . '<space> ' a:open . '<space><space>' . a:close . repeat('<left>', len(a:close) + 1)
+  endif
+  if(a:brace)
+    exec 'inoremap <buffer> ' . a:open . '<cr> ' a:open . '<cr>' . a:close . '<esc>O'
+  endif
+endf
+
+function! SmartSimicolon()
+  let l:str = getline('.')[col('.')-1:-1]
+  if l:str =~ '^[ )}\]''"]*[''")\]]$'
+    let b:lastSimLine = line('.')
+    let b:lastSimCol = col('.')
+    return "\<end>;"
+  endif
+  return ';'
 endf
 
 function! CommonPairs()
-  call SmartPairs('"', '"')
-  call SmartPairs("'", "'")
-  call SmartPairs('(', ')')
-  call SmartPairs('{', '}')
-  call SmartPairs('[', ']')
-  call SmartPairs('/*', '*/')
-  call SmartPairs('/**', '*/')
-  inoremap /*<CR>  /*<CR>/<ESC>O
-  inoremap /**<CR>  /**<CR>/<ESC>O
+  call SmartPairs('"', '"', 0, 0)
+  call SmartPairs("'", "'", 0, 0)
+  call SmartPairs('(', ')', 0, 0)
+  call SmartPairs('{', '}', 1, 1)
+  call SmartPairs('[', ']', 1, 1)
+  call SmartPairs('<%', '%>', 1, 0)
+  call SmartPairs('<%=', '%>', 1, 0)
+  call SmartPairs('/*', '*/', 1, 0)
+  call SmartPairs('/**', '*/', 1, 0)
+  inoremap <buffer> <silent> /*<CR>  /*<CR>/<ESC>O
+  inoremap <buffer> <silent> /**<CR>  /**<CR>/<ESC>O
+  "inoremap <expr> <buffer> ; SmartSimicolon()
+  inoremap ;<cr> <end>;<cr>
+  inoremap .<cr> <end>.
+  inoremap ;;<cr> <down><end>;<cr>
+  inoremap ..<cr> <down><end>.
 endf
 
 function! AutocmdJS()
   call CommonPairs()
-  inoremap , ,<SPACE>
-  inoremap : <SPACE>:<SPACE>
-  inoremap $<Tab> $("")<left><left>
-  inoremap $( $("")<left><left>
+  inoremap <buffer> , ,<SPACE>
+  inoremap <buffer> : <SPACE>:<SPACE>
+  inoremap <buffer> $<Tab> $("")<left><left>
+  inoremap <buffer> $( $("")<left><left>
   let &makeprg='gjslint --unix_mode --nojsdoc %'
-  map # 0I//<Esc>
   map ff :!fixjsstyle %<Enter>
   set shiftwidth=2
   let g:SimpleJsIndenter_CaseIndentLevel=-1
