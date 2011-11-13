@@ -58,3 +58,6 @@
 [submodule "vim/bundle/vim-node.js"]
 	path = vim/bundle/vim-node.js
 	url = git://github.com/mmalecki/vim-node.js.git
+[submodule "vim/bundle/actionscript"]
+	path = vim/bundle/actionscript
+	url = git://github.com/jeroenbourgois/vim-actionscript.git
