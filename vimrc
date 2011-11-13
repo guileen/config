@@ -54,6 +54,13 @@ function! HtmlPairs()
   call SmartPairs('<%=', '%>', 1, 0)
   call SmartPairs('{%', '%}', 1, 0)
   call SmartPairs('{%=', '%}', 1, 0)
+
+  let l:fname = $HOME . '/.vim/snippets/html5.html'
+  if(filereadable(l:fname))
+    let b:html5 = join(readfile(l:fname), "\<esc>==o")
+    inoremap <buffer> <expr> 5<tab> line('.')==1 && getline('.')=='' ? b:html5 : "5"
+  endif
+
 endf
 
 function! CommonPairs()
@@ -70,10 +77,16 @@ function! CommonPairs()
   "inoremap <buffer> <silent> <expr> <buffer> ; SmartSimicolon()
   inoremap <buffer> <expr> <bs> SmartBackspace()
   inoremap <buffer> ;<cr> <end>;<cr>
-  inoremap <buffer> <expr> ;;<cr> getline('.')=~ '^\s*$' ? "\<esc>ddA;\<cr>" : "\<esc>jA;\<cr>"
-  inoremap <buffer> ;;; <down><end><cr>
+  inoremap <buffer> <expr> ;<tab> getline('.')=~ '^\s*$' ? "\<esc>ddA;\<cr>" : "\<esc>jA;\<cr>"
+  inoremap <buffer> ;; <down><end><cr>
+  inoremap <buffer> .<tab> <esc>j0f)a.
   inoremap <buffer> .<cr> <end>.
-  inoremap <buffer> ..<cr> <down><end>.
+  inoremap <buffer> .. <esc>f)a.
+  "inoremap <buffer> <expr> ,<cr> stridx(getline('.')[col('.')-1:-1], ')') != -1 ? "\<esc>f)i,\<space>" : "\<esc>j0f)i,\<space>"
+  "TODO ,<tab> ,, integrated, find next )
+  inoremap <buffer> ,<tab> <esc>j0f)i,<space>
+  inoremap <buffer> ,<cr> <end><cr>,<space>
+  inoremap <buffer> ,, <esc>f)i,<space>
 endf
 
 function! AutocmdJS()
