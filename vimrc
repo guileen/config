@@ -1,11 +1,16 @@
 " See http://vimcdoc.sourceforge.net/doc/usr_41.html#usr_41.txt for vim script
 " http://vimcdoc.sourceforge.net/doc/eval.html#functions
+" http://stackoverflow.com/questions/1670983/getting-vim-to-be-efficient-in-actionscript-like-flex
+" https://bitbucket.org/kuy/dotfiles
 
 " call pathogen to load the plugins
 filetype off
 let g:pathogen_disabled = ['vim-autoclose']
 call pathogen#infect()
 filetype plugin indent on
+
+set nocp nobackup nowritebackup
+set complete+=k
 
 " insert maps
 " see http://vim.wikia.com/wiki/Automatically_append_closing_characters
@@ -79,9 +84,8 @@ function! CommonPairs()
   inoremap <buffer> ;<cr> <end>;<cr>
   inoremap <buffer> <expr> ;<tab> getline('.')=~ '^\s*$' ? "\<esc>ddA;\<cr>" : "\<esc>jA;\<cr>"
   inoremap <buffer> ;; <down><end><cr>
-  inoremap <buffer> .<tab> <esc>j0f)a.
-  inoremap <buffer> .<cr> <end>.
-  inoremap <buffer> .. <esc>f)a.
+  inoremap <buffer> .<cr> <esc>j0f)a.
+  inoremap <buffer> .. <end>.
   "inoremap <buffer> <expr> ,<cr> stridx(getline('.')[col('.')-1:-1], ')') != -1 ? "\<esc>f)i,\<space>" : "\<esc>j0f)i,\<space>"
   "TODO ,<tab> ,, integrated, find next )
   inoremap <buffer> ,<tab> <esc>j0f)i,<space>
@@ -97,8 +101,8 @@ function! AutocmdJS()
   inoremap <buffer> $( $("")<left><left>
   let &makeprg='gjslint --unix_mode --nojsdoc %'
   map ff :!fixjsstyle %<Enter>
-  set shiftwidth=2
   let g:SimpleJsIndenter_CaseIndentLevel=-1
+  let g:SimpleJsIndenter_GreedyIndent=0
 endf
 
 au filetype javascript call AutocmdJS()
@@ -147,7 +151,7 @@ set fileencodings=ucs-bom,utf-8,gb-18030,gbk,gb2312,cp963,gb18030,big5,euc-jp,eu
 
 
 set tabstop=4 " tab表示4个空格
-set shiftwidth=2 " 缩进2个空格
+set shiftwidth=4 " 缩进4个空格
 set expandtab " 自动将tab展开成空格
 set softtabstop=0 " 删除空格缩进
 set smarttab " 行首按tab将自动转换为空格
