@@ -61,3 +61,6 @@
 [submodule "vim/bundle/actionscript"]
 	path = vim/bundle/actionscript
 	url = git://github.com/jeroenbourgois/vim-actionscript.git
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = git://github.com/wincent/Command-T.git
