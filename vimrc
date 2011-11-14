@@ -2,6 +2,7 @@
 " http://vimcdoc.sourceforge.net/doc/eval.html#functions
 " http://stackoverflow.com/questions/1670983/getting-vim-to-be-efficient-in-actionscript-like-flex
 " https://bitbucket.org/kuy/dotfiles
+let mapleader = ","
 
 " call pathogen to load the plugins
 filetype off
@@ -59,13 +60,19 @@ function! HtmlPairs()
   call SmartPairs('<%=', '%>', 1, 0)
   call SmartPairs('{%', '%}', 1, 0)
   call SmartPairs('{%=', '%}', 1, 0)
+endf
 
-  let l:fname = $HOME . '/.vim/snippets/html5.html'
-  if(filereadable(l:fname))
-    let b:html5 = join(readfile(l:fname), "\<esc>==o")
-    inoremap <buffer> <expr> 5<tab> line('.')==1 && getline('.')=='' ? b:html5 : "5"
-  endif
-
+set nowrapscan
+function! SmartSymbol()
+  inoremap <buffer> ;; <end>;
+  inoremap <buffer> <expr> ;<tab> getline('.')=~ '^\s*$' ? "\<esc>ddA;\<cr>" : "\<esc>jA;\<cr>"
+  inoremap <buffer> ;<cr> <end>;<cr>
+  inoremap <buffer> .<cr> <esc>j/)<cr>a.
+  inoremap <buffer> .<tab> <esc>/[\]})]<cr>a.<space>
+  " inoremap <buffer> <expr> ,<cr> stridx(getline('.')[col('.')-1:-1], ')') != -1 ? "\<esc>f)i,\<space>" : "\<esc>j0f)i,\<space>"
+  "TODO ,<tab> ,, integrated, find next )
+  inoremap <buffer> ,<tab> <esc>/[\]})]<cr>a,<space>
+  inoremap <buffer> ,, <esc>/['"\]})]<cr>a,<space>
 endf
 
 function! CommonPairs()
@@ -81,20 +88,13 @@ function! CommonPairs()
   inoremap <buffer> <silent> /**<CR>  /**<CR>/<ESC>O
   "inoremap <buffer> <silent> <expr> <buffer> ; SmartSimicolon()
   inoremap <buffer> <expr> <bs> SmartBackspace()
-  inoremap <buffer> ;<cr> <end>;<cr>
-  inoremap <buffer> <expr> ;<tab> getline('.')=~ '^\s*$' ? "\<esc>ddA;\<cr>" : "\<esc>jA;\<cr>"
-  inoremap <buffer> ;; <down><end><cr>
-  inoremap <buffer> .<cr> <esc>j0f)a.
-  inoremap <buffer> .. <end>.
-  "inoremap <buffer> <expr> ,<cr> stridx(getline('.')[col('.')-1:-1], ')') != -1 ? "\<esc>f)i,\<space>" : "\<esc>j0f)i,\<space>"
-  "TODO ,<tab> ,, integrated, find next )
-  inoremap <buffer> ,<tab> <esc>j0f)i,<space>
-  inoremap <buffer> ,<cr> <end><cr>,<space>
-  inoremap <buffer> ,, <esc>f)i,<space>
 endf
 
 function! AutocmdJS()
   call CommonPairs()
+  call SmartSymbol()
+  " comma start style
+  inoremap <buffer> ,<cr> <end><cr>,<space>
   inoremap <buffer> , ,<SPACE>
   inoremap <buffer> ,<SPACE> ,<SPACE>
   inoremap <buffer> : <SPACE>:<SPACE>
@@ -123,6 +123,8 @@ map <MouseUp> <C-e>
 map <S-MouseUp> <C-d>
 
 map <C-s> :w<CR>
+
+
 
 " ack on the fly
 nnoremap <leader>a :Ack  <bs>
