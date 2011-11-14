@@ -96,13 +96,14 @@ endf
 function! AutocmdJS()
   call CommonPairs()
   inoremap <buffer> , ,<SPACE>
+  inoremap <buffer> ,<SPACE> ,<SPACE>
   inoremap <buffer> : <SPACE>:<SPACE>
   inoremap <buffer> $<Tab> $("")<left><left>
   inoremap <buffer> $( $("")<left><left>
   let &makeprg='gjslint --unix_mode --nojsdoc %'
   map ff :!fixjsstyle %<Enter>
   let g:SimpleJsIndenter_CaseIndentLevel=-1
-  let g:SimpleJsIndenter_GreedyIndent=0
+  "let g:SimpleJsIndenter_GreedyIndent=0
 endf
 
 au filetype javascript call AutocmdJS()
@@ -122,6 +123,20 @@ map <MouseUp> <C-e>
 map <S-MouseUp> <C-d>
 
 map <C-s> :w<CR>
+
+" ack on the fly
+nnoremap <leader>a :Ack  <bs>
+
+" TaskList
+map <unique> <leader>l <Plug>TaskList
+
+" FuzzyFinder
+nmap <leader>ff :FufFile **/<CR>
+
+" Command-T
+nnoremap <unique> <silent> <Leader>t :CommandT<CR>
+nnoremap <unique> <silent> <Leader>b :CommandTBuffer<CR>
+
 " NERDTree toggle
 nnoremap <F11> :NERDTreeToggle<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
