@@ -82,3 +82,6 @@
 [submodule "vim/bundle/mango"]
 	path = vim/bundle/mango
 	url = git://github.com/goatslacker/mango.vim.git
+[submodule "vim/bundle/javascript"]
+	path = vim/bundle/javascript
+	url = git@github.com:guileen/vim-javascript.git
