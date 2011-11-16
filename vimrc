@@ -140,8 +140,8 @@ map <S-MouseUp> <C-d>
 
 map <C-s> :w<CR>
 
-" TaskList
-map <unique> <leader>d <Plug>TaskList
+" TaskList (work)
+map <unique> <leader>w <Plug>TaskList
 
 " Command-T
 " goto
@@ -200,13 +200,6 @@ set smartindent
 filetype plugin on
 filetype indent on
 
-if has("gui_macvim")
-    colo lucius
-    hi normal guibg=black
-    set transp=16
-else
-    colo mango
-endif
 
 "colo slate
 "colo torte
@@ -217,12 +210,18 @@ endif
 if has('gui_running')
     set guioptions=mr
     if has('win32') || has('macunix')
-        set guifont=Monaco:h9:w5
-        set lines=40
-        set columns=200
+        set lines=80
+        set columns=240
+        colo lucius
+        hi normal guibg=black
+        set transp=16
+        "set guifont=Monaco:h11:w6
+        set guifont=Monaco:h12
     else " linux
         set guifont=Monospace:h9:w5
     endif
+else
+    colo mango
 endif
 
 set t_Co=256
