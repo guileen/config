@@ -79,10 +79,10 @@ function! CommonPairs()
   call SmartPairs('"', '"', 0, 0)
   call SmartPairs("'", "'", 0, 0)
   call SmartPairs('(', ')', 0, 0)
-  call SmartPairs('{', '}', 1, 1)
-  call SmartPairs('[', ']', 1, 1)
-  call SmartPairs('/*', '*/', 1, 0)
-  call SmartPairs('/**', '*/', 1, 0)
+  call SmartPairs('{', '}', 0, 1)
+  call SmartPairs('[', ']', 0, 1)
+  " call SmartPairs('/*', '*/', 1, 0)
+  " call SmartPairs('/**', '*/', 1, 0)
   inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
   inoremap <buffer> <silent> /*<CR>  /*<CR>/<ESC>O
   inoremap <buffer> <silent> /**<CR>  /**<CR>/<ESC>O
@@ -95,9 +95,8 @@ function! AutocmdJS()
   call SmartSymbol()
   " comma start style
   inoremap <buffer> ,<cr> <end><cr>,<space>
-  inoremap <buffer> , ,<SPACE>
-  inoremap <buffer> ,<SPACE> ,<SPACE>
-  inoremap <buffer> : <SPACE>:<SPACE>
+  " inoremap <buffer> , ,<SPACE>
+  " inoremap <buffer> ,<SPACE> ,<SPACE>
   inoremap <buffer> $<Tab> $("")<left><left>
   inoremap <buffer> $( $("")<left><left>
   let &makeprg='gjslint --unix_mode --nojsdoc %'
@@ -132,19 +131,14 @@ nnoremap <leader>a :Ack  <bs>
 " TaskList
 map <unique> <leader>l <Plug>TaskList
 
-" FuzzyFinder
-nmap <leader>ff :FufFile **/<CR>
-
 " Command-T
 nnoremap <unique> <silent> <Leader>t :CommandT<CR>
 nnoremap <unique> <silent> <Leader>b :CommandTBuffer<CR>
 
 " NERDTree toggle
-nnoremap <F11> :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
 " taglist
-nnoremap <F12> :TagbarOpenAutoClose<CR>
-nnoremap <C-m> :TagbarToggle<CR>
+nnoremap <leader>g :TagbarToggle<CR>
 
 " plugin settings
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
