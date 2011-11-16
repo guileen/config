@@ -76,3 +76,9 @@
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "vim/bundle/snipmate-nodejs"]
+	path = vim/bundle/snipmate-nodejs
+	url = git://github.com/jamescarr/snipmate-nodejs.git
+[submodule "vim/bundle/mango"]
+	path = vim/bundle/mango
+	url = git://github.com/goatslacker/mango.vim.git
