@@ -12,6 +12,7 @@ filetype plugin indent on
 
 set nocp nobackup nowritebackup
 set complete+=k
+set showcmd
 
 " insert maps
 " see http://vim.wikia.com/wiki/Automatically_append_closing_characters
@@ -84,6 +85,7 @@ function! CommonPairs()
   " call SmartPairs('/*', '*/', 1, 0)
   " call SmartPairs('/**', '*/', 1, 0)
   inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+  inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
   inoremap <buffer> <silent> /*<CR>  /*<CR>/<ESC>O
   inoremap <buffer> <silent> /**<CR>  /**<CR>/<ESC>O
   "inoremap <buffer> <silent> <expr> <buffer> ; SmartSimicolon()
@@ -108,6 +110,16 @@ endf
 au filetype javascript call AutocmdJS()
 au filetype html call HtmlPairs()
 
+" Tabularzie, alignment
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+" align the word after colon
+"nmap <Leader>a: :Tabularize /:\zs<CR>
+"vmap <Leader>a: :Tabularize /:\zs<CR>
+
+
 "autocmd BufWritePre * :%s/\s*$//
 
 " window maps
@@ -115,6 +127,11 @@ map <C-H> <C-W>h
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
+nmap <leader>h <C-W>h
+nmap <leader>j <C-W>j
+nmap <leader>k <C-W>k
+nmap <leader>l <C-W>l
+
 
 map <MouseDown> <C-y>
 map <S-MouseDown> <C-u>
@@ -123,22 +140,19 @@ map <S-MouseUp> <C-d>
 
 map <C-s> :w<CR>
 
-
-
-" ack on the fly
-nnoremap <leader>a :Ack  <bs>
-
 " TaskList
-map <unique> <leader>l <Plug>TaskList
+map <unique> <leader>d <Plug>TaskList
 
 " Command-T
-nnoremap <unique> <silent> <Leader>t :CommandT<CR>
+" goto
+nnoremap <unique> <silent> <Leader>g :CommandT<CR>
+" buffer
 nnoremap <unique> <silent> <Leader>b :CommandTBuffer<CR>
 
 " NERDTree toggle
 nnoremap <leader>f :NERDTreeToggle<CR>
 " taglist
-nnoremap <leader>g :TagbarToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
 
 " plugin settings
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
@@ -186,9 +200,16 @@ set smartindent
 filetype plugin on
 filetype indent on
 
+if has("gui_macvim")
+    colo lucius
+    hi normal guibg=black
+    set transp=16
+else
+    colo mango
+endif
+
 "colo slate
 "colo torte
-colo lucius
 "colo yerik_night
 "colo moria
 "colo wombat
