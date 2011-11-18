@@ -1,6 +1,6 @@
 [user]
 	email = guileen@gmail.com
-	name = guilin
+	name = Lin Gui
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
@@ -15,6 +15,6 @@
 [alias]
 	d = difftool
 [core]
-	execludesfile = /home/gl/.gitignore
+	execludesfile = ~/.gitignore
 [color]
 	ui = auto
