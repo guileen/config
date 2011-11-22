@@ -69,7 +69,7 @@ function! SmartSymbol()
   inoremap <buffer> <expr> ;<tab> getline('.')=~ '^\s*$' ? "\<esc>ddA;\<cr>" : "\<esc>jA;\<cr>"
   inoremap <buffer> ;<cr> <end>;<cr>
   inoremap <buffer> .<cr> <esc>j/)<cr>a.
-  inoremap <buffer> .<tab> <esc>/[\]})]<cr>a.<space>
+  " inoremap <buffer> .<tab> <esc>/[\]})]<cr>a.<space>
   " inoremap <buffer> <expr> ,<cr> stridx(getline('.')[col('.')-1:-1], ')') != -1 ? "\<esc>f)i,\<space>" : "\<esc>j0f)i,\<space>"
   "TODO ,<tab> ,, integrated, find next )
   inoremap <buffer> ,<tab> <esc>/[\]})]<cr>a,<space>
@@ -121,6 +121,8 @@ vmap <Leader>a: :Tabularize /:<CR>
 
 
 "autocmd BufWritePre * :%s/\s*$//
+
+vmap <leader>v :s/; *\n\( *\)var /\r\1  , /I<cr>
 
 " window maps
 map <C-H> <C-W>h
