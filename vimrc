@@ -86,6 +86,9 @@ function! CommonPairs()
   " call SmartPairs('/**', '*/', 1, 0)
   inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
   inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+  inoremap <expr> '  strpart(getline('.'), col('.')-1, 1) == "'" ? "\<Right>" : "'"
+  inoremap <expr> "  strpart(getline('.'), col('.')-1, 1) == '"' ? "\<Right>" : '"'
+  inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
   inoremap <buffer> <silent> /*<CR>  /*<CR>/<ESC>O
   inoremap <buffer> <silent> /**<CR>  /**<CR>/<ESC>O
   "inoremap <buffer> <silent> <expr> <buffer> ; SmartSimicolon()
@@ -107,6 +110,7 @@ function! AutocmdJS()
   "let g:SimpleJsIndenter_GreedyIndent=0
 endf
 
+au filetype c,cpp,python,ruby call CommonPairs()
 au filetype javascript call AutocmdJS()
 au filetype html call HtmlPairs()
 
@@ -209,6 +213,7 @@ filetype indent on
 "colo moria
 "colo wombat
 "colo wombat256mod
+colo lucius
 if has('gui_running')
     set guioptions=mr
     if has('win32') || has('macunix')
@@ -223,7 +228,7 @@ if has('gui_running')
         set guifont=Monospace:h9:w5
     endif
 else
-    colo mango
+    " colo mango
 endif
 
 set t_Co=256
