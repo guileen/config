@@ -100,3 +100,6 @@
 [submodule "vim/bundle/jquery"]
 	path = vim/bundle/jquery
 	url = git://github.com/vim-scripts/jQuery.git
+[submodule "vim/bundle/nginx"]
+	path = vim/bundle/nginx
+	url = git://github.com/jinfield/vim-nginx.git
