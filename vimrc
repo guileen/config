@@ -102,10 +102,8 @@ function! AutocmdJS()
   inoremap <buffer> ,<cr> <end><cr>,<space>
   " inoremap <buffer> , ,<SPACE>
   " inoremap <buffer> ,<SPACE> ,<SPACE>
-  inoremap <buffer> $<Tab> $("")<left><left>
-  inoremap <buffer> $( $("")<left><left>
-  let &makeprg='gjslint --unix_mode --nojsdoc %'
-  map ff :!fixjsstyle %<Enter>
+  let &makeprg='gjslint --unix_mode --nojsdoc --ignore_errors 110,5,1,120 %'
+  map ff :!fixjsstyle --nojsdoc --ignore_errors 1,131 %<Enter>
   let g:SimpleJsIndenter_CaseIndentLevel=-1
   "let g:SimpleJsIndenter_GreedyIndent=0
 endf
