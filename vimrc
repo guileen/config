@@ -77,8 +77,6 @@ function! SmartSymbol()
 endf
 
 function! CommonPairs()
-  call SmartPairs('"', '"', 0, 0)
-  call SmartPairs("'", "'", 0, 0)
   call SmartPairs('(', ')', 0, 0)
   call SmartPairs('{', '}', 0, 1)
   call SmartPairs('[', ']', 0, 1)
@@ -86,8 +84,8 @@ function! CommonPairs()
   " call SmartPairs('/**', '*/', 1, 0)
   inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
   inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-  inoremap <expr> '  strpart(getline('.'), col('.')-1, 1) == "'" ? "\<Right>" : "'"
-  inoremap <expr> "  strpart(getline('.'), col('.')-1, 1) == '"' ? "\<Right>" : '"'
+  inoremap <expr> '  strpart(getline('.'), col('.')-1, 1) == "'" ? "\<Right>" : "''\<Left>"
+  inoremap <expr> "  strpart(getline('.'), col('.')-1, 1) == '"' ? "\<Right>" : '""<Left>'
   inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
   inoremap <buffer> <silent> /*<CR>  /*<CR>/<ESC>O
   inoremap <buffer> <silent> /**<CR>  /**<CR>/<ESC>O
@@ -103,7 +101,7 @@ function! AutocmdJS()
   " inoremap <buffer> , ,<SPACE>
   " inoremap <buffer> ,<SPACE> ,<SPACE>
   let &makeprg='gjslint --unix_mode --nojsdoc --ignore_errors 110,5,1,120 %'
-  map ff :!fixjsstyle --nojsdoc --ignore_errors 1,131 %<Enter>
+  map <buffer> ff :!fixjsstyle --nojsdoc --ignore_errors 1,131 %<Enter>
   let g:SimpleJsIndenter_CaseIndentLevel=-1
   "let g:SimpleJsIndenter_GreedyIndent=0
 endf
@@ -264,6 +262,7 @@ autocmd FileType python let &makeprg='pylint % -i y -r n -f parseable'
 "autocmd BufWritePost *.js !fixjsstyle %
 "autocmd BufWritePost *.js e | syntax on
 "autocmd BufWritePost *.py,*.hx,*.js make
+"autocmd BufWritePre *.py,*.js :%s/\s\+$//g
 autocmd BufWritePost *.ccss !ccss %
 
 nmap <F6> <Plug>DiffChangesDiffToggle
