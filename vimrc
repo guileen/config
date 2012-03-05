@@ -6,15 +6,18 @@ let mapleader = ","
 
 " call pathogen to load the plugins
 filetype off
-let g:pathogen_disabled = ['vim-autoclose']
+" let g:pathogen_disabled = ['vim-autoclose']
 call pathogen#infect()
 filetype plugin indent on
+
+let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules"
 
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
 
 " insert maps
+imap <buffer> <s-bs> <del>
 " see http://vim.wikia.com/wiki/Automatically_append_closing_characters
 function! SmartPairs(open, close, sp, brace)
   exec 'inoremap <buffer> ' . a:open . ' ' a:open . a:close . repeat('<left>', len(a:close))
@@ -97,7 +100,7 @@ function! AutocmdJS()
   call CommonPairs()
   call SmartSymbol()
   " comma start style
-  inoremap <buffer> ,<cr> <end><cr>,<space>
+  " inoremap <buffer> ,<cr> <end><cr>,<space>
   " inoremap <buffer> , ,<SPACE>
   " inoremap <buffer> ,<SPACE> ,<SPACE>
   let &makeprg='gjslint --unix_mode --nojsdoc --ignore_errors 110,5,1,120 %'
@@ -106,9 +109,15 @@ function! AutocmdJS()
   "let g:SimpleJsIndenter_GreedyIndent=0
 endf
 
+function! AutoPython()
+    inoremap <buffer> ''' '''
+    inoremap <buffer> """ """
+endf
+
 au filetype c,cpp,python,ruby call CommonPairs()
 au filetype javascript call AutocmdJS()
 au filetype html call HtmlPairs()
+au filetype python call AutoPython()
 
 " Tabularzie, alignment
 nmap <Leader>a= :Tabularize /=<CR>
@@ -142,6 +151,8 @@ map <S-MouseUp> <C-d>
 
 map <C-s> :w<CR>
 
+nnoremap gf :vertical wincmd f<CR>
+
 " TaskList (work)
 map <unique> <leader>w <Plug>TaskList
 
@@ -158,14 +169,10 @@ nnoremap <leader>t :TagbarToggle<CR>
 
 " plugin settings
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-"let g:AutoClosePairs=AutoClose#ParsePairs("() [] {} ` \" '")
+let g:AutoClosePairs="() [] {} ` \" '"
 
 " basic settings
 set scrolloff=5
-
-set nocp
-set nobackup
-set nowritebackup
 set background=dark
 
 " Encoding

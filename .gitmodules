@@ -18,7 +18,7 @@
 	url = git://github.com/robgleeson/vim-markdown-preview.git
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
-	url = git@github.com:guileen/vim-markdown.git
+    url = git://github.com/hallison/vim-markdown.git
 [submodule "vim/bundle/vim-stylus"]
 	path = vim/bundle/vim-stylus
 	url = git://github.com/wavded/vim-stylus.git
@@ -52,9 +52,6 @@
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
-[submodule "vim/bundle/vim-node.js"]
-	path = vim/bundle/vim-node.js
-	url = git://github.com/mmalecki/vim-node.js.git
 [submodule "vim/bundle/actionscript"]
 	path = vim/bundle/actionscript
 	url = git://github.com/jeroenbourgois/vim-actionscript.git
