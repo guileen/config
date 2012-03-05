@@ -14,7 +14,9 @@
 	prompt = false
 [alias]
 	d = difftool
-[core]
-	execludesfile = ~/.gitignore
 [color]
 	ui = auto
+[core]
+	quotepath = false
+	autocrlf = input
+	excludesfile = /Users/gl/.gitignore
