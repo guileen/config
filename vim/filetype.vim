@@ -12,5 +12,8 @@ autocmd FileType actionscript setlocal noexpandtab
 au BufRead,BufNewFile */etc/nginx/* set ft=nginx
 au BufRead,BufNewFile *.json set ft=javascript
 
+" jade
+autocmd FileType jade set commentstring=//-\ %s
+
 " C/C++
 au FileType c,cpp set path+=/usr/local/include/**

@@ -1,8 +1,8 @@
 # Callback Function
 snippet ff
-	function(${1:err}, ${2:data}) {
-			if($1) {return ${3:next}(${4:$1});}
-			${5}
+	function(err, ${1:data}) {
+			if(err) {return ${2:next}(err);}
+			${3}
 	}
 snippet fff
 	function(req, res, next) {
