@@ -12,9 +12,12 @@ filetype plugin indent on
 
 let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules"
 
+let g:acp_ignorecaseOption = 0
+
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
+set wildignore+=node_modules/*
 
 " insert maps
 imap <buffer> <s-bs> <del>
@@ -114,10 +117,10 @@ function! AutoPython()
     inoremap <buffer> """ """
 endf
 
-au filetype c,cpp,python,ruby call CommonPairs()
-au filetype javascript call AutocmdJS()
-au filetype html call HtmlPairs()
-au filetype python call AutoPython()
+" au filetype c,cpp,python,ruby call CommonPairs()
+" au filetype javascript call AutocmdJS()
+" au filetype html call HtmlPairs()
+" au filetype python call AutoPython()
 
 " Tabularzie, alignment
 nmap <Leader>a= :Tabularize /=<CR>
@@ -216,7 +219,9 @@ filetype indent on
 "colo moria
 "colo wombat
 "colo wombat256mod
+
 colo lucius
+" colo bubblegum
 if has('gui_running')
     set guioptions=mr
     if has('win32') || has('macunix')
@@ -236,10 +241,15 @@ endif
 
 set t_Co=256
 
+" autocmd ColorScheme * highlight Folded guibg=#00 guifg=green
+" autocmd ColorScheme * highlight FoldColumn guibg=darkgrey guifg=white
+hi Folded guibg=NONE guifg=#666666
+hi Folded ctermbg=NONE ctermfg=yellow
+
+
 if (v:version>=703)
     hi ColorColumn ctermbg=236 guibg=#303030
-    "set colorcolumn=4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,80,100
-    set colorcolumn=80,100
+    " set colorcolumn=80,100
 endif
 
 "set cuc
