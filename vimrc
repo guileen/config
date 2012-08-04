@@ -17,7 +17,7 @@ let g:acp_ignorecaseOption = 0
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
-set wildignore+=node_modules/*
+set wildignore+=*node_modules/*,*.pyc
 
 " insert maps
 imap <buffer> <s-bs> <del>
@@ -225,7 +225,7 @@ colo lucius
 if has('gui_running')
     set guioptions=mr
     if has('win32') || has('macunix')
-        set lines=80
+        set lines=48
         set columns=240
         colo lucius
         hi normal guibg=black

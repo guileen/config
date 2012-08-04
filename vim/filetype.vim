@@ -1,5 +1,7 @@
 set foldmethod=indent
 set foldnestmax=2
+set foldminlines=10
+set fillchars=fold:\ ,vert:\|
 
 " " if you want enable syntax fold, use au FileType .. set foldmethod=syntax
 " set foldmethod=syntax
@@ -13,6 +15,14 @@ set foldnestmax=2
 " let sh_fold_enabled=1         " sh
 " let vimsyn_folding='af'       " Vim script
 " let xml_syntax_folding=1      " XML
+
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
 
 " as3
 autocmd FileType actionscript set omnifunc=actionscriptcomplete#CompleteAS
@@ -31,6 +41,8 @@ au BufRead,BufNewFile *.json set ft=javascript
 
 " jade
 autocmd FileType jade set commentstring=//-\ %s
+autocmd FileType python set commentstring=#\ %s
+autocmd FileType nginx set commentstring=#\ %s
 
 " C/C++
 au FileType c,cpp set path+=/usr/local/include/**
