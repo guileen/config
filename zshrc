@@ -11,10 +11,11 @@ autoload -Uz compinit promptinit colors
 compinit
 promptinit
 colors
+source ~/.zsh/git-prompt/zshrc.sh
 # End of lines added by compinstall
 #
 #PS1="${GREEN}%n@${ORANGE}%T %D ${BLUE}~ %# ${NORM}"
-PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%} %1~>"
+PROMPT='%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%} %1~$(git_super_status)>'
 RPROMPT="%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg[blue]%}%T%{$reset_color%}"
 
 source ~/config/alias
