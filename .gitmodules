@@ -37,9 +37,6 @@
 [submodule "vim/bundle/vim-autoclose"]
 	path = vim/bundle/vim-autoclose
 	url = git://github.com/Townk/vim-autoclose.git
-[submodule "vim/bundle/vim-zencoding"]
-	path = vim/bundle/vim-zencoding
-	url = git://github.com/mattn/zencoding-vim.git
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
