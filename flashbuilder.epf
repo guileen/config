@@ -210,7 +210,7 @@
 /instance/org.eclipse.cdt.ui/pp_default=224,226,228
 /instance/com.adobe.flexide.as.core/asClassUnderline=false
 /instance/com.adobe.flexide.mxml.core/asASDocBold=true
-/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.inColor=220,220,204
+/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.inColor=120,120,104
 /instance/org.eclipse.core.resources/pathvariable.FLASHPRO_APPCONFIG=/Applications/Adobe Flash CS5.5/Common/Configuration
 /instance/org.eclipse.php.ui/editorColorKeyword=\#93C763 | null | false | false | false | false
 /instance/com.adobe.flexide.as.core/asStringUnderline=false

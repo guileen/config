@@ -20,3 +20,6 @@
 	quotepath = false
 	autocrlf = input
 	excludesfile = /Users/gl/.gitignore
+    # mergeoptions = --no-ff --no-commit
+[merge]
+	tool = vimdiff

@@ -9,7 +9,8 @@ fi
 
 alias rm='rm -i'
 alias l='ls -l -S -h'
-alias pss='ps aux|grep'
+alias ll='ls -l -S -h'
+alias pss='ps -ef|grep'
 alias vv='env|grep'
 alias vnc="vncviewer -FullColor=0 -LowColorLevel=2 192.168.1.110"
 alias fixjsstyle="fixjsstyle --nojsdoc --ignore_errors 1,131"

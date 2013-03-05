@@ -1,7 +1,7 @@
 # Callback Function
 snippet ff
 	function(err, ${1:data}) {
-			if(err) {return ${2:next}(err);}
+			if(err) {return ${2:callback}(err);}
 			${3}
 	}
 snippet fff

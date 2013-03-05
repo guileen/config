@@ -1,7 +1,8 @@
-set foldmethod=indent
-set foldnestmax=2
-set foldminlines=10
-set fillchars=fold:\ ,vert:\|
+set foldenable
+" set foldmethod=indent
+" set foldnestmax=2
+" set foldminlines=10
+" set fillchars=fold:\ ,vert:\|
 
 " " if you want enable syntax fold, use au FileType .. set foldmethod=syntax
 " set foldmethod=syntax
@@ -29,11 +30,11 @@ autocmd FileType actionscript set omnifunc=actionscriptcomplete#CompleteAS
 autocmd FileType actionscript set dictionary+=$HOME/.vim/dict/actionscript.dict
 
 " javascript
-au FileType javascript set dictionary+=$HOME/.vim/dict/javascript.dict
-au FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
-au FileType javascript set dictionary+=$HOME/.vim/dict/jQuery.dict
+au FileType javascript,coffee set dictionary+=$HOME/.vim/dict/javascript.dict
+au FileType javascript,coffee set dictionary+=$HOME/.vim/dict/node.dict
+au FileType javascript,coffee set dictionary+=$HOME/.vim/dict/jQuery.dict
 
-autocmd FileType javascript,less,c,ruby,eruby,perl,tex,sass,scss,coffee,html,xhtml setlocal tabstop=2 shiftwidth=2 softtabstop=2 shiftwidth=2
+autocmd FileType javascript,less,c,ruby,eruby,perl,tex,sass,scss,coffee,html,xhtml :setlocal tabstop=2 shiftwidth=2 softtabstop=2 shiftwidth=2
 autocmd FileType actionscript setlocal noexpandtab
 
 au BufRead,BufNewFile */etc/nginx/* set ft=nginx

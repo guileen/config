@@ -21,6 +21,8 @@ set wildignore+=*node_modules/*,*.pyc
 
 " insert maps
 imap <buffer> <s-bs> <del>
+" fix autocomplete esc problem
+inoremap <esc> <esc><esc>
 " see http://vim.wikia.com/wiki/Automatically_append_closing_characters
 function! SmartPairs(open, close, sp, brace)
   exec 'inoremap <buffer> ' . a:open . ' ' a:open . a:close . repeat('<left>', len(a:close))
