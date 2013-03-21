@@ -10,14 +10,15 @@ filetype off
 call pathogen#infect()
 filetype plugin indent on
 
-let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules"
+" let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir *-cov --ignore-dir out"
+let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out"
 
 let g:acp_ignorecaseOption = 0
 
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
-set wildignore+=*node_modules/*,*.pyc
+set wildignore+=*node_modules/*,*.pyc,*lib-cov/*
 
 " insert maps
 imap <buffer> <s-bs> <del>
@@ -240,7 +241,7 @@ if has('gui_running')
 else
     " colo mango
 endif
-
+set vb
 set t_Co=256
 
 " autocmd ColorScheme * highlight Folded guibg=#00 guifg=green
@@ -266,7 +267,7 @@ autocmd BufRead *.as set filetype=actionscript
 autocmd BufRead *.mxml set filetype=mxml
 autocmd BufRead *.hx set filetype=haxe
 autocmd BufRead *.ccss set filetype=clevercss
-autocmd BufRead *.js,*.jade,*.haml,*.html set shiftwidth=2
+" autocmd BufRead *.js,*.jade,*.haml,*.html set shiftwidth=2
 autocmd BufRead *.md,*.markdown noremap <F8> :Mm<Enter>
 autocmd BufRead *.coffee noremap <F8> :!coffee -p %<Enter>
 autocmd BufRead *.htm,*.html noremap <F8> :!google-chrome %<Enter>
