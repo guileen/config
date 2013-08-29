@@ -111,9 +111,10 @@ function! AutocmdJS()
   " inoremap <buffer> ,<SPACE> ,<SPACE>
   let &makeprg='gjslint --unix_mode --nojsdoc --ignore_errors 110,5,1,120 %'
   map <buffer> ff :!fixjsstyle --nojsdoc --ignore_errors 1,131 %<Enter>
-  let g:SimpleJsIndenter_CaseIndentLevel=-1
-  "let g:SimpleJsIndenter_GreedyIndent=0
 endf
+
+let g:SimpleJsIndenter_CaseIndentLevel=-0.5
+"let g:SimpleJsIndenter_GreedyIndent=0
 
 function! AutoPython()
     inoremap <buffer> ''' '''
@@ -137,7 +138,9 @@ vmap <Leader>a: :Tabularize /:<CR>
 
 "autocmd BufWritePre * :%s/\s*$//
 
-vmap <leader>v :s/; *\n\( *\)var /\r\1  , /I<cr>
+" vmap <leader>v :s/; *\n\( *\)var /\r\1  , /I<cr>
+vmap <leader>v :s/, *\n\(\s*\)\(\S[^,]*\)/\r\1, \2/I<cr>
+
 
 " window maps
 map <C-H> <C-W>h
