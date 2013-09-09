@@ -7,6 +7,7 @@ else
   alias v='mvim'
 fi
 
+alias google='sr -browser=w3m google'
 alias rm='rm -i'
 alias l='ls -l -S -h'
 alias ll='ls -l -S -h'
