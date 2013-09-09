@@ -106,3 +106,6 @@
 [submodule "vim/bundle/vim-multiple-cursors"]
 	path = vim/bundle/vim-multiple-cursors
 	url = git@github.com:terryma/vim-multiple-cursors.git
+[submodule "tools/youdao-dict-cli"]
+	path = tools/youdao-dict-cli
+	url = git@github.com:qhwa/Command-Line-Youdao-Dictionary.git
