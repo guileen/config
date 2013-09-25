@@ -25,9 +25,6 @@
 [submodule "tools/vim-pathogen"]
 	path = tools/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/The-NERD-tree"]
-	path = vim/bundle/The-NERD-tree
-	url = git://github.com/vim-scripts/The-NERD-tree.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
@@ -109,3 +106,6 @@
 [submodule "tools/youdao-dict-cli"]
 	path = tools/youdao-dict-cli
 	url = git@github.com:qhwa/Command-Line-Youdao-Dictionary.git
+[submodule "vim/bundle/netrw"]
+	path = vim/bundle/netrw
+	url = git@github.com:vim-scripts/netrw.vim.git
