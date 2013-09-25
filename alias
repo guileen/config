@@ -1,12 +1,17 @@
+#!/bin/sh
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
   alias ls='ls --color=auto -F'
   alias v='vim'
 else
   alias ls='ls -G'
-  alias v='mvim'
+  alias v='vim'
+  alias vim='mvim'
+  alias qplayer='"$QUICK_COCOS2DX_ROOT"/player/bin/mac/quick-x-player.app/Contents/MacOS/quick-x-player'
 fi
 
+alias fy='dict'
+alias translate='dict'
 alias google='sr -browser=w3m google'
 alias rm='rm -i'
 alias l='ls -l -S -h'

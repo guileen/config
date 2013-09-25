@@ -14,6 +14,8 @@ filetype plugin indent on
 let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out"
 
 let g:acp_ignorecaseOption = 0
+" You complete me. <TAB> for snipmate
+let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
 
 set nocp nobackup nowritebackup
 set complete+=k
@@ -22,8 +24,7 @@ set wildignore+=*node_modules/*,*.pyc,*lib-cov/*
 
 " insert maps
 imap <buffer> <s-bs> <del>
-" fix autocomplete esc problem
-inoremap <esc> <esc><esc>
+imap <F3> <c-x><c-k>
 " see http://vim.wikia.com/wiki/Automatically_append_closing_characters
 function! SmartPairs(open, close, sp, brace)
   exec 'inoremap <buffer> ' . a:open . ' ' a:open . a:close . repeat('<left>', len(a:close))
@@ -226,16 +227,18 @@ filetype indent on
 "colo wombat
 "colo wombat256mod
 
-colo lucius
+let g:solarized_termcolors=256
+colo solarized
+" colo lucius
 " colo bubblegum
 if has('gui_running')
     set guioptions=mr
     if has('win32') || has('macunix')
         set lines=48
         set columns=240
-        colo lucius
+        " colo lucius
         hi normal guibg=black
-        set transp=16
+        set transp=9
         "set guifont=Monaco:h11:w6
         set guifont=Monaco:h12
     else " linux
