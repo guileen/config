@@ -1,0 +1,38 @@
+#! /bin/sh
+echo '**********************************'
+echo '* create symbol link for config  *'
+echo '**********************************'
+# sh rc
+ln -s ~/config/bashrc ~/.bashrc
+ln -s ~/config/zshrc ~/.zshrc
+ln -s ~/config/profile ~/.profile
+
+# X config
+# ln -s ~/config/xinitrc ~/.xinitrc
+# ln -s ~/config/Xmodmap ~/.Xmodmap
+# ln -s ~/config/Xdefaults ~/.Xdefaults
+
+# vimperator
+# ln -s ~/config/vimperatorrc ~/.vimperatorrc
+# ln -s ~/config/vimperatorrc ~/.pentadactylrc
+
+# version control
+ln -s ~/config/hgrc ~/.hgrc
+ln -s ~/config/gitconfig ~/.gitconfig
+ln -s ~/config/gitignore ~/.gitignore
+
+# vim
+ln -s ~/config/vimrc ~/.vimrc
+ln -s ~/config/vim ~/.vim
+ln -s ~/config/tools/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen.vim
+
+# mkdir ~/.config
+# awesome
+# ln -s ~/config/awesome ~/.config/awesome
+
+# cower
+# ln -s ~/config/cower ~/.config/cower
+
+mkdir ~/.zsh/
+# git-prompt
+ln -s ~/config/tools/zsh-git-prompt  ~/.zsh/git-prompt
