@@ -7,7 +7,7 @@ let mapleader = ","
 " call pathogen to load the plugins
 filetype off
 " let g:pathogen_disabled = ['vim-autoclose']
-let g:pathogen_disabled = ['YouCompleteMe']
+let g:pathogen_disabled = ['YouCompleteMe', 'snipmate-nodejs', 'mango', 'monokai']
 call pathogen#infect()
 filetype plugin indent on
 
@@ -18,7 +18,10 @@ let g:acp_ignorecaseOption = 0
 " You complete me. <TAB> for snipmate
 let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
 
-set nocp nobackup nowritebackup
+set nocp 
+set nobackup
+set nowritebackup
+set noswapfile
 set complete+=k
 set showcmd
 set wildignore+=*node_modules/*,*.pyc,*lib-cov/*
@@ -230,7 +233,8 @@ filetype indent on
 
 let g:solarized_termcolors=256
 " colo solarized
-colo lucius
+" colo lucius
+colo monokai
 " colo bubblegum
 if has('gui_running')
     set guioptions=mr
