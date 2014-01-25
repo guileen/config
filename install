@@ -36,5 +36,7 @@ ln -s ~/config/tools/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen
 mkdir ~/.zsh/
 # git-prompt
 ln -s ~/config/tools/zsh-git-prompt  ~/.zsh/git-prompt
+wget https://raw2.github.com/git/git/master/contrib/completion/git-completion.zsh && mv git-completion.zsh ~/.zsh/_git
+wget https://raw2.github.com/git/git/master/contrib/completion/git-completion.bash && mv git-completion.bash ~/.git-completion.sh
 
 cd vim/bundle/command-t && rake make

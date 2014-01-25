@@ -26,6 +26,8 @@ source ~/projects/go/misc/zsh/go
 
 EDITOR=vim
 
+fpath=(~/.zsh $fpath)
+
 ##################################################################
 # Stuff to make my life easier
 
