@@ -36,3 +36,5 @@ ln -s ~/config/tools/vim-pathogen/autoload/pathogen.vim ~/.vim/autoload/pathogen
 mkdir ~/.zsh/
 # git-prompt
 ln -s ~/config/tools/zsh-git-prompt  ~/.zsh/git-prompt
+
+cd vim/bundle/command-t && rake make
