@@ -7,7 +7,7 @@ let mapleader = ","
 " call pathogen to load the plugins
 filetype off
 " let g:pathogen_disabled = ['vim-autoclose']
-let g:pathogen_disabled = ['YouCompleteMe', 'snipmate-nodejs', 'mango', 'monokai']
+let g:pathogen_disabled = ['YouCompleteMe', 'snipmate-nodejs', 'mango', 'monokai', 'molokai']
 call pathogen#infect()
 filetype plugin indent on
 
@@ -234,7 +234,7 @@ filetype indent on
 let g:solarized_termcolors=256
 " colo solarized
 " colo lucius
-colo monokai
+colo molokai
 " colo bubblegum
 if has('gui_running')
     set guioptions=mr
