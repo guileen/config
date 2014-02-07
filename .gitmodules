@@ -57,7 +57,7 @@
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "vim/bundle/snippets"]
 	path = vim/bundle/snippets
-	url = git://github.com/honza/snipmate-snippets.git
+	url = git://github.com/honza/vim-snippets.git
 [submodule "vim/bundle/tlib"]
 	path = vim/bundle/tlib
 	url = git://github.com/tomtom/tlib_vim.git
@@ -109,3 +109,9 @@
 [submodule "vim/bundle/greplace"]
 	path = vim/bundle/greplace
 	url = git@github.com:vim-scripts/greplace.vim.git
+[submodule "vim/bundle/monokai"]
+	path = vim/bundle/monokai
+	url = git@github.com:sickill/vim-monokai.git
+[submodule "vim/bundle/molokai"]
+	path = vim/bundle/molokai
+	url = git@github.com:tomasr/molokai.git

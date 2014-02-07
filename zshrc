@@ -19,7 +19,7 @@ PROMPT='%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%} %1~$(gi
 RPROMPT="%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg[blue]%}%T%{$reset_color%}"
 
 source ~/config/alias
-PATH=/opt/eclipse:$PATH
+PATH=/opt/eclipse:$PATH:/sbin:/bin
 source ~/.profile
 
 source ~/projects/go/misc/zsh/go

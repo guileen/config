@@ -1,4 +1,9 @@
 # Callback Function
+#f
+snippet f
+	function(${1}) {
+		${2}
+	}
 #ff
 snippet ff
 	function(err, ${1:data}) {
@@ -9,4 +14,9 @@ snippet ff
 snippet fff
 	function(req, res, next) {
 			${1}
+	}
+
+snippet func
+	function ${1}(${2}) {
+		${3}
 	}
