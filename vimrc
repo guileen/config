@@ -7,24 +7,26 @@ let mapleader = ","
 " call pathogen to load the plugins
 filetype off
 " let g:pathogen_disabled = ['vim-autoclose']
+let g:pathogen_disabled = ['YouCompleteMe', 'snippets', 'snipmate-nodejs']
 call pathogen#infect()
 filetype plugin indent on
 
 " let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir *-cov --ignore-dir out"
-let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out"
+let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir bower_components --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out"
 
 let g:acp_ignorecaseOption = 0
 " You complete me. <TAB> for snipmate
 let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
 
+set noswapfile
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
-set wildignore+=*node_modules/*,*.pyc,*lib-cov/*
+set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*lib-cov/*
 
 " insert maps
 imap <buffer> <s-bs> <del>
-imap <F3> <c-x><c-k>
+imap <D-k> <c-x><c-k>
 " see http://vim.wikia.com/wiki/Automatically_append_closing_characters
 function! SmartPairs(open, close, sp, brace)
   exec 'inoremap <buffer> ' . a:open . ' ' a:open . a:close . repeat('<left>', len(a:close))
@@ -168,7 +170,7 @@ map <unique> <leader>w <Plug>TaskList
 
 " Command-T
 " goto
-nnoremap <unique> <silent> <Leader>g :CommandT<CR>
+nnoremap <unique> <silent> <Leader>g :CommandTFlush<CR>:CommandT<CR>
 " buffer
 nnoremap <unique> <silent> <Leader>b :CommandTBuffer<CR>
 
@@ -273,7 +275,8 @@ autocmd BufRead *.as set filetype=actionscript
 autocmd BufRead *.mxml set filetype=mxml
 autocmd BufRead *.hx set filetype=haxe
 autocmd BufRead *.ccss set filetype=clevercss
-" autocmd BufRead *.js,*.jade,*.haml,*.html set shiftwidth=2
+" autocmd BufRead *.js set shiftwidth=2
+autocmd BufRead *.jade,*.haml,*.html set shiftwidth=2
 autocmd BufRead *.md,*.markdown noremap <F8> :Mm<Enter>
 autocmd BufRead *.coffee noremap <F8> :!coffee -p %<Enter>
 autocmd BufRead *.htm,*.html noremap <F8> :!google-chrome %<Enter>
