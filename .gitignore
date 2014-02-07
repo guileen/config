@@ -12,3 +12,4 @@ abs/
 *.part
 */.*
 */*?download
+bin/gfw
