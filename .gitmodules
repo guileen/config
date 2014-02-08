@@ -106,6 +106,9 @@
 [submodule "vim/bundle/YouCompleteMe"]
 	path = vim/bundle/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
+[submodule "vim/bundle/greplace"]
+	path = vim/bundle/greplace
+	url = git@github.com:vim-scripts/greplace.vim.git
 [submodule "vim/bundle/monokai"]
 	path = vim/bundle/monokai
 	url = git@github.com:sickill/vim-monokai.git

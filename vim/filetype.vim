@@ -30,9 +30,10 @@ autocmd FileType actionscript set omnifunc=actionscriptcomplete#CompleteAS
 autocmd FileType actionscript set dictionary+=$HOME/.vim/dict/actionscript.dict
 
 " javascript
-au FileType javascript,coffee set dictionary+=$HOME/.vim/dict/javascript.dict
+au FileType javascript,coffee set dictionary+=$HOME/.vim/dict/jscore.dict
 au FileType javascript,coffee set dictionary+=$HOME/.vim/dict/node.dict
 " au FileType javascript,coffee set dictionary+=$HOME/.vim/dict/jQuery.dict
+
 hi javaScriptFunction ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 " hi javaScriptFuncName ctermfg=141 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 " hi javaScriptRailsFunction ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
