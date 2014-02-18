@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ssh -t $1 "adduser git && sudo chsh -s /usr/local/libexec/git-core/git-shell git"
