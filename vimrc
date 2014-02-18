@@ -18,7 +18,7 @@ let g:acp_ignorecaseOption = 0
 " You complete me. <TAB> for snipmate
 let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
 
-set noswapfile
+" set noswapfile
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
