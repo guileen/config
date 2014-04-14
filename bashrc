@@ -15,6 +15,7 @@ PYTHONPATH=~/projects/clevercss3/:$PYTHONPATH
 export HAXE_LIBRARY_PATH=/opt/haxe/std
 export EDITOR=vim
 
+source ~/config/alias
 complete -cf sudo
 source ~/config/bin/git-completion.bash
 source ~/config/bin/hg_bash_completion

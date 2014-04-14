@@ -1,6 +1,6 @@
 #Node.js
-node_modules
-bower_components
+#node_modules
+#bower_components
 
 
 # Compiled source #
@@ -49,7 +49,6 @@ temp
 ehthumbs.db
 Icon?
 Thumbs.db
-.*
 
 # VIM temp
 *.swp
