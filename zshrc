@@ -15,8 +15,8 @@ source ~/.zsh/git-prompt/zshrc.sh
 # End of lines added by compinstall
 #
 #PS1="${GREEN}%n@${ORANGE}%T %D ${BLUE}~ %# ${NORM}"
-PROMPT='%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$reset_color%} %1~$(git_super_status)>'
-RPROMPT="%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg[blue]%}%T%{$reset_color%}"
+PROMPT='%B%{$fg[green]%}%n@%m%{$reset_color%} %B%{$fg[blue]%}%1~$(git_super_status)>%{$reset_color%}'
+RPROMPT="%B%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg[blue]%}%T%{$reset_color%}"
 
 source ~/config/alias
 PATH=/opt/eclipse:$PATH:/sbin:/bin

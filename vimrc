@@ -11,8 +11,9 @@ let g:pathogen_disabled = ['YouCompleteMe', 'snippets', 'snipmate-nodejs', 'mang
 call pathogen#infect()
 filetype plugin indent on
 
-" let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir *-cov --ignore-dir out"
-let g:ackprg="ack -H --nocolor --nogroup --column --ignore-dir bower_components --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out"
+let s:ackcommand = executable('ack-grep') ? 'ack-grep' : 'ack'
+" let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir *-cov --ignore-dir out"
+let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir bower_components --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out"
 
 let g:acp_ignorecaseOption = 0
 " You complete me. <TAB> for snipmate
@@ -22,7 +23,7 @@ let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
-set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*lib-cov/*,node_modules/*,deps/*,*/deps/*
+set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*lib-cov/*,node_modules/*,deps/*,*/deps/*,*.jpg,*.gif,*.png
 
 " insert maps
 imap <buffer> <s-bs> <del>
