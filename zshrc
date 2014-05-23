@@ -72,3 +72,5 @@ if [[ -z $DISPLAY  && $(sw_vers -productVersion) < 10.5    && -z $SSH_CONNECTION
 
 fi
 
+
+[ -s "/Users/gl/.nvm/nvm.sh" ] && . "/Users/gl/.nvm/nvm.sh" # This loads nvm
