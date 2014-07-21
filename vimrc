@@ -23,7 +23,7 @@ let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
-set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*lib-cov/*,*deps*,*.png,*.jpg,*.gif
+set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*lib-cov/*,node_modules/*,deps/*,*/deps/*,*.jpg,*.gif,*.png
 
 " insert maps
 imap <buffer> <s-bs> <del>
@@ -139,6 +139,7 @@ vmap <Leader>a: :Tabularize /:<CR>
 "nmap <Leader>a: :Tabularize /:\zs<CR>
 "vmap <Leader>a: :Tabularize /:\zs<CR>
 
+nmap w :w<CR>
 
 "autocmd BufWritePre * :%s/\s*$//
 
