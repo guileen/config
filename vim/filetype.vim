@@ -54,4 +54,5 @@ autocmd FileType nginx set commentstring=#\ %s
 au FileType c,cpp set path+=/usr/local/include/**
 
 " Project special config
+au BufRead,BufNewFile *.js setlocal sw=2
 au BufRead,BufNewFile */node-mongoskin/*.js setlocal sw=2
