@@ -72,3 +72,11 @@ if [[ -z $DISPLAY  && $(sw_vers -productVersion) < 10.5    && -z $SSH_CONNECTION
 
 fi
 
+
+####################################
+#           oh-my-zsh              #
+####################################
+source ~/.oh-my-zsh/templates/zshrc.zsh-template
+
+#### nvm
+[ -s "/home/gl/.nvm/nvm.sh" ] && . "/home/gl/.nvm/nvm.sh" # This loads nvm

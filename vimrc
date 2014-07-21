@@ -13,7 +13,7 @@ filetype plugin indent on
 
 let s:ackcommand = executable('ack-grep') ? 'ack-grep' : 'ack'
 " let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir *-cov --ignore-dir out"
-let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir bower_components --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out"
+let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir bower_components --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out --ignore-dir deps"
 
 let g:acp_ignorecaseOption = 0
 " You complete me. <TAB> for snipmate
