@@ -27,6 +27,7 @@ alias vv='env|grep'
 alias vnc="vncviewer -FullColor=0 -LowColorLevel=2 192.168.1.110"
 alias fixjsstyle="fixjsstyle --nojsdoc --ignore_errors 1,131"
 alias g='git'
+alias serve='python -m SimpleHTTPServer'
 PATH=/opt/eclipse:/opt/google-appengine:~/config/bin:$PATH
 PYTHONPATH=/home/gl/projects/clevercss3/:$PYTHONPATH
 export HAXE_LIBRARY_PATH=/opt/haxe/std
