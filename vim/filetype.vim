@@ -56,3 +56,5 @@ au FileType c,cpp set path+=/usr/local/include/**
 " Project special config
 au BufRead,BufNewFile *.js setlocal sw=2
 au BufRead,BufNewFile */ipub/*.js setlocal sw=4
+au FileType go set noexpandtab
+au FileType go set nolist
