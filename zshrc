@@ -18,10 +18,11 @@ source ~/.zsh/git-prompt/zshrc.sh
 PROMPT='%B%{$fg[green]%}%n@%m%{$reset_color%} %B%{$fg[blue]%}%1~$(git_super_status)>%{$reset_color%}'
 RPROMPT="%B%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg[blue]%}%T%{$reset_color%}"
 
+export GOPATH=~/gowork
 source ~/config/alias
-PATH=/opt/eclipse:$PATH:/sbin:/bin
+PATH=/opt/eclipse:$PATH:/sbin:/bin:$GOPATH/bin
 source ~/.profile
-
+source ~/config/profile
 source ~/projects/go/misc/zsh/go
 
 EDITOR=vim
@@ -79,4 +80,4 @@ fi
 source ~/.oh-my-zsh/templates/zshrc.zsh-template
 
 #### nvm
-[ -s "~/.nvm/nvm.sh" ] && . "~/.nvm/nvm.sh" # This loads nvm
+[ -s "/home/gl/.nvm/nvm.sh" ] && . "/home/gl/.nvm/nvm.sh" # This loads nvm

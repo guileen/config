@@ -26,6 +26,7 @@ set showcmd
 set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*lib-cov/*,node_modules/*,deps/*,*/deps/*,*.jpg,*.gif,*.png
 
 " insert maps
+imap <c-o> <esc>o
 imap <buffer> <s-bs> <del>
 imap <D-k> <c-x><c-k>
 " see http://vim.wikia.com/wiki/Automatically_append_closing_characters
