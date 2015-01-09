@@ -53,6 +53,8 @@ autocmd FileType nginx set commentstring=#\ %s
 " C/C++
 au FileType c,cpp set path+=/usr/local/include/**
 
+autocmd FileType jade setlocal sw=2
+au FileType javascript setlocal sw=2
 " Project special config
 au BufRead,BufNewFile *.js setlocal sw=2
 au BufRead,BufNewFile */ipub/*.js setlocal sw=4

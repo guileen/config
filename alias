@@ -6,7 +6,6 @@ if [[ "$unamestr" == 'Linux' ]]; then
 else
   alias ls='ls -G'
   alias v='vim'
-  alias vim='mvim'
   alias qplayer='"$QUICK_COCOS2DX_ROOT"/player/bin/mac/quick-x-player.app/Contents/MacOS/quick-x-player'
 fi
 

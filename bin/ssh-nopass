@@ -1,3 +1,4 @@
 #!/bin/sh
+ssh $1 'mkdir ~/.ssh'
 # cat ~/.ssh/id_rsa.pub | ssh $1 'cat >> .ssh/authorized_keys'
 cat ~/.ssh/id_rsa.pub | ssh $1 'tee -a ~/.ssh/authorized_keys'
