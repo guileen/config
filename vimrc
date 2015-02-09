@@ -178,7 +178,8 @@ nnoremap <unique> <silent> <Leader>g :CommandTFlush<CR>:CommandT<CR>
 nnoremap <unique> <silent> <Leader>b :CommandTBuffer<CR>
 
 " NERDTree toggle
-nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFIND<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 " taglist
 nnoremap <leader>t :TagbarToggle<CR>
 
