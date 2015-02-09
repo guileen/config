@@ -1,3 +1,8 @@
+####################################
+#           oh-my-zsh              #
+####################################
+source ~/.oh-my-zsh/templates/zshrc.zsh-template
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -72,11 +77,6 @@ fi
 
 #### nvm
 [ -s ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
-
-####################################
-#           oh-my-zsh              #
-####################################
-source ~/.oh-my-zsh/templates/zshrc.zsh-template
 
 #### nvm
 [ -s "/home/gl/.nvm/nvm.sh" ] && . "/home/gl/.nvm/nvm.sh" # This loads nvm
