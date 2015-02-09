@@ -81,3 +81,4 @@ source ~/.oh-my-zsh/templates/zshrc.zsh-template
 
 #### nvm
 [ -s "/home/gl/.nvm/nvm.sh" ] && . "/home/gl/.nvm/nvm.sh" # This loads nvm
+export GOPATH=~/gowork:$GOPATH

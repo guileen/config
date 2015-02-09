@@ -1,6 +1,0 @@
-#!/bin/sh
-# usage: ssh-init-git-access <user@host>
-# <user> must be sudoer on the <host>
-# will add localhost ssh public key to remote git@host:.ssh/authorized_keys
-scp ~/.ssh/id_rsa.pub $1:~/_tmp_
-ssh -t $1 'cat ~/_tmp_ | sudo tee -a /home/git/.ssh/authorized_keys && sudo chown git:git /home/git/.ssh/authorized_keys && rm ~/_tmp_'
