@@ -115,9 +115,6 @@
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
 	url = git@github.com:tomasr/molokai.git
-[submodule "vim/bundle/operator-highlight"]
-	path = vim/bundle/operator-highlight
-	url = git@github.com:Valloric/vim-operator-highlight.git
 [submodule "vim/bundle/vim-go"]
 	path = vim/bundle/vim-go
 	url = git@github.com:fatih/vim-go.git
