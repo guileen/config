@@ -17,10 +17,7 @@ source ~/.zsh/git-prompt/zshrc.sh
 #PS1="${GREEN}%n@${ORANGE}%T %D ${BLUE}~ %# ${NORM}"
 PROMPT='%B%{$fg[green]%}%n@%m%{$reset_color%} %B%{$fg[blue]%}%1~$(git_super_status)>%{$reset_color%}'
 RPROMPT="%B%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg[blue]%}%T%{$reset_color%}"
-
-export GOPATH=~/gowork
 source ~/config/alias
-PATH=/opt/eclipse:$PATH:/sbin:/bin:$GOPATH/bin
 source ~/.profile
 source ~/config/profile
 source ~/projects/go/misc/zsh/go
@@ -73,6 +70,8 @@ if [[ -z $DISPLAY  && $(sw_vers -productVersion) < 10.5    && -z $SSH_CONNECTION
 
 fi
 
+#### nvm
+[ -s ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
 
 ####################################
 #           oh-my-zsh              #
@@ -81,4 +80,5 @@ source ~/.oh-my-zsh/templates/zshrc.zsh-template
 
 #### nvm
 [ -s "/home/gl/.nvm/nvm.sh" ] && . "/home/gl/.nvm/nvm.sh" # This loads nvm
+[[ -s "/Users/gl/.gvm/scripts/gvm" ]] && source "/Users/gl/.gvm/scripts/gvm" && gvm use 1
 export GOPATH=~/gowork:$GOPATH
