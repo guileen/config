@@ -18,6 +18,8 @@ let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir bower_c
 let g:acp_ignorecaseOption = 0
 " You complete me. <TAB> for snipmate
 let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabCrMapping = 0
 
 " set noswapfile
 set nocp nobackup nowritebackup

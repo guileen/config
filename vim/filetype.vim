@@ -60,6 +60,10 @@ au BufRead,BufNewFile *.js setlocal sw=2
 au BufRead,BufNewFile */ipub/*.js setlocal sw=4
 au FileType go setlocal noexpandtab
 au FileType go setlocal nolist
+au FileType go setlocal nolist
+au FileType go nmap gt :GoTest<CR>
+au FileType go nmap gb :GoBuild<CR>
+au FileType go nmap gc :GoCoverage<CR>
 let g:go_fmt_command = "goimports"
 
 
@@ -93,14 +97,15 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
+" " Recommended key-mappings.
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return neocomplete#close_popup() . "\<CR>"
+"   " For no inserting <CR> key.
+"   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+" endfunction
+
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
