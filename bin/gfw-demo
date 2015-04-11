@@ -1,0 +1,5 @@
+#!/bin/sh
+cat ~/.gfw.pid | xargs kill
+nohup ssh -CND 10080 XX@XXXX.XX  >/dev/null 2>&1 &
+echo $! > ~/.gfw.pid
+echo "fuck gfw `cat ~/.gfw.pid`"
