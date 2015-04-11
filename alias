@@ -7,6 +7,9 @@ else
   alias ls='ls -G'
   alias v='vim'
   alias qplayer='"$QUICK_COCOS2DX_ROOT"/player/bin/mac/quick-x-player.app/Contents/MacOS/quick-x-player'
+  # alias mcs='/Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Versions/Current/bin/mcs'
+  # alias mono='/Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Versions/Current/bin/mono'
+  export PATH=$PATH:/Applications/Unity/MonoDevelop.app/Contents/Frameworks/Mono.framework/Versions/Current/bin
 fi
 
 if command -v ack-grep > /dev/null; then
