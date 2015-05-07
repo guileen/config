@@ -16,7 +16,6 @@ if command -v ack-grep > /dev/null; then
     alias ack=ack-grep
 fi
 
-alias fy='dict'
 alias translate='dict'
 alias google='sr -browser=w3m google'
 alias rm='rm -i'
