@@ -24,7 +24,6 @@ PROMPT='%B%{$fg[green]%}%n@%m%{$reset_color%} %B%{$fg[blue]%}%1~$(git_super_stat
 RPROMPT="%B%{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}[%?]%{$reset_color%}%{$fg[blue]%}%T%{$reset_color%}"
 source ~/config/alias
 source ~/.profile
-source ~/config/profile
 source ~/projects/go/misc/zsh/go
 
 EDITOR=vim
