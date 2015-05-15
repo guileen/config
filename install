@@ -44,3 +44,4 @@ wget https://raw2.github.com/git/git/master/contrib/completion/git-completion.zs
 wget https://raw2.github.com/git/git/master/contrib/completion/git-completion.bash && mv git-completion.bash ~/.git-completion.sh
 
 cd vim/bundle/command-t && rake make
+cd vim/bundle/tern_for_vim && npm install
