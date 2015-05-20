@@ -16,6 +16,7 @@ set foldenable
 " let sh_fold_enabled=1         " sh
 " let vimsyn_folding='af'       " Vim script
 " let xml_syntax_folding=1      " XML
+let g:vim_markdown_folding_disabled=1
 
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
