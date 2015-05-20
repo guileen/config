@@ -127,3 +127,6 @@
 [submodule "vim/bundle/tern_for_vim"]
 	path = vim/bundle/tern_for_vim
 	url = git@github.com:marijnh/tern_for_vim.git
+[submodule "vim/bundle/vim-instant-markdown"]
+	path = vim/bundle/vim-instant-markdown
+	url = git@github.com:suan/vim-instant-markdown.git
