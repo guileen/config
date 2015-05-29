@@ -20,6 +20,7 @@ let g:acp_ignorecaseOption = 0
 let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabCrMapping = 0
+autocmd CompleteDone * pclose
 
 " set noswapfile
 set nocp nobackup nowritebackup
@@ -174,8 +175,10 @@ nnoremap gf :vertical wincmd f<CR>
 map <unique> <leader>w <Plug>TaskList
 
 " Command-T
+let g:CommandTMatchWindowAtTop = 1
 " goto
 nnoremap <unique> <silent> <Leader>g :CommandTFlush<CR>:CommandT<CR>
+nnoremap <unique> <silent> <Leader>s :split<CR>:CommandTFlush<CR>:CommandT<CR>
 " buffer
 nnoremap <unique> <silent> <Leader>b :CommandTBuffer<CR>
 
