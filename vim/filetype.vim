@@ -65,6 +65,7 @@ au FileType go setlocal nolist
 au FileType go nmap gt :GoTest<CR>
 au FileType go nmap gb :GoBuild<CR>
 au FileType go nmap gc :GoCoverage<CR>
+au FileType go nmap gs <Plug>(go-def-split)
 au FileType go nmap gr :GoRename<CR>
 au FileType go nmap gl :GoLint<CR>
 au FileType go nmap ge :GoErrCheck<CR>
