@@ -6,5 +6,6 @@ read -p "input remote username:" USERNAME
 read -p "input ssh pubkey:" PUBKEY
 echo $PUBKEY > ~/_tmp_
 scp ~/_tmp_ $1:~/_tmp_
+ssh -t $1 "sudo -u $USERNAME mkdir /home/$USERNAME/.ssh"
 ssh -t $1 "cat ~/_tmp_ | sudo tee -a /home/$USERNAME/.ssh/authorized_keys && sudo chown $USERNAME:$USERNAME /home/$USERNAME/.ssh/authorized_keys && rm ~/_tmp_"
 rm ~/_tmp_

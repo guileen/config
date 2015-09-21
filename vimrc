@@ -20,7 +20,8 @@ let g:acp_ignorecaseOption = 0
 let g:ycm_key_list_select_completion = ['<Down>'] " ['<TAB>', '<Down>']
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabCrMapping = 0
-autocmd CompleteDone * pclose
+" 自动关闭文档提示
+" autocmd CompleteDone * pclose
 
 " set noswapfile
 set nocp nobackup nowritebackup

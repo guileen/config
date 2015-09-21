@@ -30,6 +30,7 @@ alias fixjsstyle="fixjsstyle --nojsdoc --ignore_errors 1,131"
 alias g='git'
 alias serve='python -m SimpleHTTPServer'
 alias pyqt='ipython qtconsole --pylab=inline --colors=linux'
+alias pip='pip --trusted-host pypi.douban.com'
 PATH=/opt/eclipse:/opt/google-appengine:~/config/bin:$PATH
 PYTHONPATH=/home/gl/projects/clevercss3/:$PYTHONPATH
 export HAXE_LIBRARY_PATH=/opt/haxe/std

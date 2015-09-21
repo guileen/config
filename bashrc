@@ -29,3 +29,6 @@ function setproxy {
     export all_proxy=http://proxy.gxlu.com.cn:8888
 }
 
+
+export NVM_DIR="/Users/gl/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
