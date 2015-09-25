@@ -130,3 +130,6 @@
 [submodule "vim/bundle/vim-instant-markdown"]
 	path = vim/bundle/vim-instant-markdown
 	url = git@github.com:suan/vim-instant-markdown.git
+[submodule "vim/bundle/vim-wakatime.git"]
+	path = vim/bundle/vim-wakatime.git
+	url = git://github.com/wakatime/vim-wakatime.git
