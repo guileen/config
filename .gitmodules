@@ -136,3 +136,12 @@
 [submodule "vim/bundle/vim-wakatime"]
 	path = vim/bundle/vim-wakatime
 	url = git://github.com/wakatime/vim-wakatime.git
+[submodule "vim/bundle/yajs.vim"]
+	path = vim/bundle/yajs.vim
+	url = git@github.com:othree/yajs.vim.git
+[submodule "vim/bundle/vim-babel"]
+	path = vim/bundle/vim-babel
+	url = git@github.com:jbgutierrez/vim-babel.git
+[submodule "vim/bundle/webapi-vim"]
+	path = vim/bundle/webapi-vim
+	url = git@github.com:mattn/webapi-vim.git
