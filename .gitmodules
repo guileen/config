@@ -133,3 +133,6 @@
 [submodule "vim/bundle/vim-wakatime.git"]
 	path = vim/bundle/vim-wakatime.git
 	url = git://github.com/wakatime/vim-wakatime.git
+[submodule "vim/bundle/vim-wakatime"]
+	path = vim/bundle/vim-wakatime
+	url = git://github.com/wakatime/vim-wakatime.git
