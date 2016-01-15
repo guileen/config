@@ -31,7 +31,45 @@ alias g='git'
 alias serve='python -m SimpleHTTPServer'
 alias pyqt='ipython qtconsole --pylab=inline --colors=linux'
 alias pip='pip --trusted-host pypi.douban.com'
+alias l2='tree -L 2'
+alias l3='tree -L 3'
+alias l4='tree -L 4'
+alias newpost='cd ~/git/blog && ~/git/blog/newpost'
 PATH=/opt/eclipse:/opt/google-appengine:~/config/bin:$PATH
 PYTHONPATH=/home/gl/projects/clevercss3/:$PYTHONPATH
 export HAXE_LIBRARY_PATH=/opt/haxe/std
 export EDITOR=vim
+
+function init_light() {
+    export COLO=light
+    # export PS1="%{$fg[blue]%}$%{$reset_color%} "
+    # export RPROMPT=""
+    cd ~/workset
+    clear
+}
+
+function init_slide() {
+    export COLO=light
+    export PS1="%{$fg[blue]%}$%{$reset_color%} "
+    export RPROMPT=""
+    cd ~/git/blog/lessons
+    clear
+}
+
+function light() {
+    if [ -z "$2" ]
+    then src="pbpaste"
+    else
+        src="cat $2"
+    fi
+    $src | highlight -O rtf --syntax $1 --font Inconsolata --style solarized-light --font-size 24 | pbcopy
+}
+
+function dark() {
+    if [ -z "$2" ]
+    then src="pbpaste"
+    else
+        src="cat $2"
+    fi
+    $src | highlight -O rtf --syntax $1 --font Inconsolata --style molokai --font-size 24 | pbcopy
+}

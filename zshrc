@@ -56,12 +56,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins+=(git git-extras node npm pip python sudo safe-paste)
+plugins+=(git node npm pip python sudo)
 
 # User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -166,11 +163,3 @@ if [[ -z $DISPLAY  && $(sw_vers -productVersion) < 10.5    && -z $SSH_CONNECTION
     fi
 
 fi
-
-#### nvm
-[ -s ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
-
-#### nvm
-[ -s "/home/gl/.nvm/nvm.sh" ] && . "/home/gl/.nvm/nvm.sh" # This loads nvm
-[[ -s "/Users/gl/.gvm/scripts/gvm" ]] && source "/Users/gl/.gvm/scripts/gvm" && gvm use 1
-export GOPATH=~/gowork:$GOPATH
