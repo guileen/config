@@ -23,7 +23,7 @@
 [core]
 	quotepath = false
 	autocrlf = input
-	excludesfile = /home/gl/.gitignore
+	excludesfile = /Users/gl/.gitignore
     # mergeoptions = --no-ff --no-commit
 [merge]
 	tool = vimdiff

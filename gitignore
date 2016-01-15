@@ -45,6 +45,7 @@ temp
 
 # OS generated files #
 ######################
+.DS_Store
 .DS_Store?
 ehthumbs.db
 Icon?
@@ -52,3 +53,6 @@ Thumbs.db
 
 # VIM temp
 *.swp
+
+# Node_modules
+node_modules
