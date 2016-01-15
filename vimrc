@@ -7,7 +7,6 @@ let mapleader = ","
 
 " call pathogen to load the plugins
 filetype off
-" let g:pathogen_disabled = ['vim-autoclose']
 let g:pathogen_disabled = ['neocomplete', 'snippets', 'snipmate-nodejs', 'mango', 'monokai']
 call pathogen#infect()
 filetype plugin indent on
@@ -32,7 +31,6 @@ let g:SuperTabCrMapping = 0
 let g:vim_haxe_haxe_src_dir='/opt/haxe/'
 " plugin settings
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-let g:AutoClosePairs="() [] {} ` \" '"
 
 " 自动关闭文档提示
 " autocmd CompleteDone * pclose
@@ -152,10 +150,6 @@ vmap <Leader>a: :Tabularize /:<CR>
 "nmap <Leader>a: :Tabularize /:\zs<CR>
 "vmap <Leader>a: :Tabularize /:\zs<CR>
 
-nmap w :w<CR>
-
-"autocmd BufWritePre * :%s/\s*$//
-
 " vmap <leader>v :s/; *\n\( *\)var /\r\1  , /I<cr>
 vmap <leader>v :s/, *\n\(\s*\)\(\S[^,]*\)/\r\1, \2/I<cr>
 
@@ -168,18 +162,39 @@ nmap <leader>j <C-W>j
 nmap <leader>k <C-W>k
 nmap <leader>l <C-W>l
 
+" arrow key map
+" Because dot register preservation code remaps escape we have to remap
+" some terminal specific escape sequences first
+if &term =~ 'xterm' || &term =~ 'rxvt' || &term =~ 'screen' || &term =~ 'linux' || &term =~ 'gnome'
+    imap <silent> <Esc>OA <Up>
+    imap <silent> <Esc>OB <Down>
+    imap <silent> <Esc>OC <Right>
+    imap <silent> <Esc>OD <Left>
+    imap <silent> <Esc>OH <Home>
+    imap <silent> <Esc>OF <End>
+    imap <silent> <Esc>[5~ <PageUp>
+    imap <silent> <Esc>[6~ <PageDown>
+endif
 
+" mouse map
 map <MouseDown> <C-y>
 map <S-MouseDown> <C-u>
 map <MouseUp> <C-e>
 map <S-MouseUp> <C-d>
 
+" clipboard map
+nmap <leader>p "+P
+vmap <leader>y "+y
+
+" save map
 map <C-s> :w<CR>
+nmap w :w<CR>
+"autocmd BufWritePre * :%s/\s*$//
 
 nnoremap gf :vertical wincmd f<CR>
 
 " TaskList (work)
-map <unique> <leader>w <Plug>TaskList
+nmap <unique> <leader>w <Plug>TaskList
 
 " goto
 nnoremap <unique> <silent> <Leader>g :CommandTFlush<CR>:CommandT<CR>
@@ -192,4 +207,8 @@ nnoremap <leader>f :NERDTreeFIND<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 " taglist
 nnoremap <leader>t :TagbarToggle<CR>
-
+" <CR> close completion menu
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>\<Esc>" : "\<Esc>"
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+" inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"

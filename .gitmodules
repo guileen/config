@@ -160,3 +160,6 @@
 [submodule "vim/bundle/vim-mac-classic-theme"]
 	path = vim/bundle/vim-mac-classic-theme
 	url = git@github.com:nelstrom/vim-mac-classic-theme.git
+[submodule "vim/bundle/auto-pairs"]
+	path = vim/bundle/auto-pairs
+	url = git@github.com:jiangmiao/auto-pairs.git
