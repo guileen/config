@@ -14,6 +14,8 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.7)"
 # VIRTUAL_ENV_DISABLE_PROMPT can be set to '' to make bashprompt show that Canopy is active, otherwise 1
 # VIRTUAL_ENV_DISABLE_PROMPT=1 source /Users/gl/opt/enthought/canopy/User/bin/activate
 
+#### autojump
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh  ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 #### nvm
 [ -s ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh

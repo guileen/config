@@ -20,7 +20,7 @@ alias translate='dict'
 alias google='sr -browser=w3m google'
 alias rm='rm -i'
 alias l='ls -l -S -h'
-alias ll='ls -l -S -h'
+alias ll='ls -l -S -h -a'
 alias gs='git status'
 alias tmux='tmux -2'
 alias pss='ps -ef|grep'
@@ -44,7 +44,12 @@ function init_light() {
     export COLO=light
     # export PS1="%{$fg[blue]%}$%{$reset_color%} "
     # export RPROMPT=""
-    cd ~/workset
+    clear
+}
+
+function init_slide_dark() {
+    export PS1="%{$fg[blue]%}$%{$reset_color%} "
+    export RPROMPT=""
     clear
 }
 
@@ -52,7 +57,6 @@ function init_slide() {
     export COLO=light
     export PS1="%{$fg[blue]%}$%{$reset_color%} "
     export RPROMPT=""
-    cd ~/git/blog/lessons
     clear
 }
 
