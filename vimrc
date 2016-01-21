@@ -84,7 +84,6 @@ set makeprg=make
 " 以 >--- 显示制表符
 set list
 set listchars=tab:>-,trail:`
-"hi SpecialKey guifg=#3a3a3a ctermfg=237
 
 "colo slate
 "colo torte
@@ -99,6 +98,7 @@ let g:solarized_termcolors=256
 colo mymolokai
 if $COLO=='light'
     colo github
+    hi SpecialKey   guifg=#FFFFFF ctermfg=231  guibg=#FFDDDD ctermbg=224  gui=NONE cterm=NONE
 endif
 " colo bubblegum
 if has('gui_running')

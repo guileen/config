@@ -163,3 +163,9 @@
 [submodule "vim/bundle/auto-pairs"]
 	path = vim/bundle/auto-pairs
 	url = git@github.com:jiangmiao/auto-pairs.git
+[submodule "vim/bundle/editorconfig"]
+	path = vim/bundle/editorconfig
+	url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git

@@ -17,6 +17,7 @@ set foldenable
 " let vimsyn_folding='af'       " Vim script
 " let xml_syntax_folding=1      " XML
 let g:vim_markdown_folding_disabled=1
+let g:syntastic_javascript_checkers = ['eslint']
 
 autocmd BufRead *.as set filetype=actionscript
 autocmd BufRead *.mxml set filetype=mxml
