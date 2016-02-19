@@ -169,3 +169,6 @@
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
+[submodule "vim/bundle/js-indent"]
+	path = vim/bundle/js-indent
+	url = git@github.com:gavocanov/vim-js-indent.git
