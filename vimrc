@@ -20,7 +20,7 @@ let g:CommandTMatchWindowAtTop = 1
 " ack
 let s:ackcommand = executable('ack-grep') ? 'ack-grep' : 'ack'
 " let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir *-cov --ignore-dir out"
-let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir bower_components --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out --ignore-dir deps"
+let g:ackprg=s:ackcommand." -H --nocolor --nogroup --column --ignore-dir bower_components --ignore-dir node_modules --ignore-dir coverage.html --ignore-dir lib-cov --ignore-dir out --ignore-dir deps --ignore-dir coverage --ignore-dir project.xcworkspace"
 
 let g:acp_ignorecaseOption = 0
 " You complete me. <TAB> for snipmate
@@ -35,11 +35,12 @@ let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 " 自动关闭文档提示
 " autocmd CompleteDone * pclose
 
+set autowrite
 " set noswapfile
 set nocp nobackup nowritebackup
 set complete+=k
 set showcmd
-set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*lib-cov/*,node_modules/*,deps/*,*/deps/*,*.jpg,*.gif,*.png
+set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*coverage/*,*lib-cov/*,node_modules/*,deps/*,*/deps/*,*.jpg,*.gif,*.png,*.xcodeproj/*
 
 " basic settings
 set scrolloff=5
@@ -99,6 +100,7 @@ colo mymolokai
 if $COLO=='light'
     colo github
     hi SpecialKey   guifg=#FFFFFF ctermfg=231  guibg=#FFDDDD ctermbg=224  gui=NONE cterm=NONE
+    hi Todo         guifg=#F8F8FF ctermfg=231  guibg=#FFFF66 ctermbg=227  gui=UNDERLINE cterm=UNDERLINE
 endif
 " colo bubblegum
 if has('gui_running')
@@ -199,12 +201,15 @@ nmap <unique> <leader>w <Plug>TaskList
 " goto
 nnoremap <unique> <silent> <Leader>g :CommandTFlush<CR>:CommandT<CR>
 nnoremap <unique> <silent> <Leader>s :split<CR>:CommandTFlush<CR>:CommandT<CR>
+nnoremap <unique> <silent> <Leader>v :vsplit<CR>:CommandTFlush<CR>:CommandT<CR>
 " buffer
 nnoremap <unique> <silent> <Leader>b :CommandTBuffer<CR>
 
 " NERDTree toggle
-nnoremap <leader>f :NERDTreeFIND<CR>
+"nnoremap <leader>f :NERDTreeFIND<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
+" NETRW
+nnoremap <leader>e :Explore<CR>
 " taglist
 nnoremap <leader>t :TagbarToggle<CR>
 " <CR> close completion menu

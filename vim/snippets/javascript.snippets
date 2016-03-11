@@ -9,6 +9,24 @@ snippet f
 	function (${1}) {
 		${2}
 	}
+#f
+snippet f
+	(${1}) => {
+		${2}
+	}
+#d
+snippet d
+	describe('${1:staff}', () => {
+		it('${2:should success}', (${3:done}) => {
+			${4:fail('not implemented')}
+			${5:done()}
+		})
+	})
+snippet it
+	it('${1:should success}', (${2:done}) => {
+		${3:fail('not implemented')}
+		${4:done()}
+	})
 #ff
 snippet ff
 	function(err, ${1:data}) {
