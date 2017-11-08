@@ -7,11 +7,9 @@ let mapleader = ","
 
 " call pathogen to load the plugins
 filetype off
-let g:pathogen_disabled = ['neocomplete', 'snippets', 'snipmate-nodejs', 'mango', 'monokai', 'command', 'command-t']
+let g:pathogen_disabled = ['neocomplete', 'snippets', 'snipmate-nodejs', 'mango', 'monokai']
 call pathogen#infect()
 filetype plugin indent on
-
-let g:localvimrc_ask = 0
 
 " let g:PaperColor_Dark_Override = { 'background' : '#1c1c1c', 'cursorline' : '#abcdef', 'matchparen' : '#3a3a3a', 'comment' : '#5f875f' }
 let g:PaperColor_Dark_Override = { 'background' : '#000000'}
@@ -34,8 +32,6 @@ let g:vim_haxe_haxe_src_dir='/opt/haxe/'
 " plugin settings
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
-
 " 自动关闭文档提示
 " autocmd CompleteDone * pclose
 
@@ -43,12 +39,11 @@ set autowrite
 " set noswapfile
 set nocp nobackup nowritebackup
 set complete+=k
-set completeopt-=preview
 set showcmd
 set wildignore+=*bower_components/*,*node_modules/*,*.pyc,*coverage/*,*lib-cov/*,node_modules/*,deps/*,*/deps/*,*.jpg,*.gif,*.png,*.xcodeproj/*
 
 " basic settings
-set scrolloff=2
+set scrolloff=5
 set background=dark
 
 " Encoding
@@ -68,7 +63,7 @@ set smarttab " 行首按tab将自动转换为空格
 set backspace=indent,eol,start  " more powerful backspacing
 set history=200
 set ruler
-"set number
+set number
 
 "set nohls " no search results highlight
 
@@ -204,8 +199,7 @@ nnoremap gf :vertical wincmd f<CR>
 nmap <unique> <leader>w <Plug>TaskList
 
 " goto
-nnoremap <unique> <silent> <Leader>g :CtrlPMixed<CR>
-"nnoremap <unique> <silent> <Leader>g :CommandTFlush<CR>:CommandT<CR>
+nnoremap <unique> <silent> <Leader>g :CommandTFlush<CR>:CommandT<CR>
 nnoremap <unique> <silent> <Leader>s :split<CR>:CommandTFlush<CR>:CommandT<CR>
 nnoremap <unique> <silent> <Leader>v :vsplit<CR>:CommandTFlush<CR>:CommandT<CR>
 " buffer
