@@ -3,14 +3,34 @@
 """"""""""""""""""""""""
 " https://github.com/junegunn/vim-plug
 " :PlugUpgrade to upgrade vim-plug itself
+" :PlugInstall to install
+" :PlugInstall! to force reinstall
+" :PlugUpdate to update
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer --go-completer'}  " Put .ycm_extra_conf.py in any folder above you file
-Plug 'editorconfig/editorconfig-vim'  " put .editorconfig in your root directory
+" Editor Basic
+
+" Multi cursor
+Plug 'terryma/vim-multiple-cursors'
+" Find and replace
+Plug 'dyng/ctrlsf.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Raimondi/delimitMate'   " ( ) { } .e.g
 Plug 'scrooloose/nerdcommenter' " [count]<leader> cc cn c<space> cm ci cs cy c$ cA cl cb cu
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'editorconfig/editorconfig-vim'  " put .editorconfig in your root directory
+
+" Git support
+Plug 'tpope/vim-fugitive'
+
+" Syntax checker
+Plug 'vim-syntastic/syntastic'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer --go-completer'}  " Put .ycm_extra_conf.py in any folder above you file
+
+" For javascript
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
+Plug 'leafgarland/typescript-vim'
 call plug#end()
+
 set rtp+=/usr/local/opt/fzf " installed fzf with homebrew"
 
 
@@ -25,6 +45,7 @@ set tabstop=4
 set shiftwidth=4
 
 colo mymolokai
+
 
 """"""""""""""""""""""""
 "     Key Mapping      "
@@ -46,9 +67,23 @@ nmap <leader>wq :wq<CR>
 nnoremap <leader>e :Explore<CR>
 nmap <leader>g :FZF<CR>
 
-""""""""""""""""""""""""
-"         YCM          "
-""""""""""""""""""""""""
-let g:ycm_confirm_extra_conf = 0
-nnoremap <leader>r :YcmCompleter GoTo<CR>
 
+""""""""""""""""""""""""
+"   Plugins Settings   "
+""""""""""""""""""""""""
+" delimitMate
+let delimitMate_expand_cr = 1
+
+" YCM
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_autoclose_preview_window_after_completion= 1
+nnoremap <leader>r :YcmCompleter GoTo<CR>
+nnoremap gd :YcmCompleter GoTo<CR>
+
+" CtrlSF
+"Find selected word
+vmap <leader>f <Plug>CtrlSFVwordExec
+"Find word in cursor
+"nmap <leader>f <Plug>CtrlSFCwordPath
+"Find word in cursor with boundary
+nmap <leader>f <Plug>CtrlSFCCwordPath<CR>

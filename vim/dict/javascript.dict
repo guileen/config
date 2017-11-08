@@ -1,16 +1,5 @@
 Array
 Date
-GM_addStyle
-GM_deleteValue
-GM_listValues
-GM_log
-GM_getResourceURL
-GM_getResourceText
-GM_getValue
-GM_openInTab
-GM_setValue
-GM_registerMenuCommand
-GM_xmlhttpRequest
 Math
 Number
 Object
