@@ -154,3 +154,12 @@
 [submodule "vim/bundle/js-indent"]
 	path = vim/bundle/js-indent
 	url = git@github.com:gavocanov/vim-js-indent.git
+[submodule "vim/bundle/localvimrc"]
+	path = vim/bundle/localvimrc
+	url = git@github.com:embear/vim-localvimrc.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = git@github.com:kien/ctrlp.vim.git
+[submodule "vim/bundle/es.next.syntax"]
+	path = vim/bundle/es.next.syntax
+	url = git@github.com:othree/es.next.syntax.vim.git
