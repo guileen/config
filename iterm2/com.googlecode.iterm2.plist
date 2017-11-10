@@ -14,6 +14,8 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>AutoHideTmuxClientSession</key>
 	<false/>
 	<key>CheckTestRelease</key>
@@ -362,13 +364,13 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>459 247 796 473 0 0 1440 900 </string>
+	<string>459 148 796 473 0 0 1440 900 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1440 900 0 0 1440 877 </string>
+	<string>0 175 1050 702 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>-1284 947 1050 702 -1440 34 1440 2537 </string>
+	<string>199 69 1050 702 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>153 136 810 552 0 0 1280 697 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -545,6 +547,10 @@
 			<false/>
 			<key>Background Image Location</key>
 			<string></string>
+			<key>Badge Text</key>
+			<string>\(function iterm2_print_user_vars
+  set -l git_branch (git branch ^/dev/null | sed -n '/\* /s///p')
+\(user.gitBranch) \(user.time)</string>
 			<key>Blend</key>
 			<real>0.30000001192092896</real>
 			<key>Blink Allowed</key>
@@ -981,6 +987,8 @@
 			<true/>
 			<key>Shortcut</key>
 			<string></string>
+			<key>Show Mark Indicators</key>
+			<false/>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Smart Cursor Color</key>
@@ -1087,16 +1095,7 @@
 			<key>Transparency</key>
 			<real>0.20688100961538461</real>
 			<key>Triggers</key>
-			<array>
-				<dict>
-					<key>action</key>
-					<string>HighlightTrigger</string>
-					<key>parameter</key>
-					<integer>1005</integer>
-					<key>regex</key>
-					<string>.*ERRO.*</string>
-				</dict>
-			</array>
+			<array/>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -3516,7 +3515,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-11-10T08:04:57Z</date>
+	<date>2017-11-10T10:45:08Z</date>
 	<key>SUSkippedVersion</key>
 	<string>3.1.beta.8</string>
 	<key>SavePasteHistory</key>
