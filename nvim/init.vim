@@ -42,7 +42,7 @@ Plug 'dag/vim-fish', { 'for': 'fish'}
 
 call plug#end()
 
-"set rtp+=/usr/local/opt/fzf " installed fzf with homebrew"
+set rtp+=/usr/local/opt/fzf " installed fzf with homebrew"
 
 
 """"""""""""""""""""""""
@@ -77,8 +77,8 @@ nmap <leader>wq :wq<CR>
 " NETRW
 nnoremap <leader>e :Explore<CR>
 " Go to file
-"nmap <leader>g :FZF<CR>
-nmap <leader>g :CtrlPMixed<CR>
+nmap <leader>g :FZF<CR>
+"nmap <leader>g :CtrlPMixed<CR>
 
 
 """"""""""""""""""""""""
