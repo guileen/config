@@ -11,9 +11,14 @@ call plug#begin('~/.vim/plugged')
 
 " Multi cursor
 Plug 'terryma/vim-multiple-cursors'
+" Surround motion cs ds
+Plug 'tpope/vim-surround'
 " Find and replace
 Plug 'dyng/ctrlsf.vim'
+" Goto file
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'kien/ctrlp.vim', {'on': ['CtrlP', 'CtrlPMixed']}
+" close pair () {} 
 Plug 'Raimondi/delimitMate'   " ( ) { } .e.g
 Plug 'scrooloose/nerdcommenter' " [count]<leader> cc cn c<space> cm ci cs cy c$ cA cl cb cu
 Plug 'editorconfig/editorconfig-vim'  " put .editorconfig in your root directory
@@ -22,16 +27,22 @@ Plug 'editorconfig/editorconfig-vim'  " put .editorconfig in your root directory
 Plug 'tpope/vim-fugitive'
 
 " Syntax checker
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer --go-completer'}  " Put .ycm_extra_conf.py in any folder above you file
+
+" For tagbar
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
 " For javascript
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 Plug 'leafgarland/typescript-vim'
+
+Plug 'dag/vim-fish', { 'for': 'fish'}
+
 call plug#end()
 
-set rtp+=/usr/local/opt/fzf " installed fzf with homebrew"
+"set rtp+=/usr/local/opt/fzf " installed fzf with homebrew"
 
 
 """"""""""""""""""""""""
@@ -65,7 +76,9 @@ nmap <leader>q :q<CR>
 nmap <leader>wq :wq<CR>
 " NETRW
 nnoremap <leader>e :Explore<CR>
-nmap <leader>g :FZF<CR>
+" Go to file
+"nmap <leader>g :FZF<CR>
+nmap <leader>g :CtrlPMixed<CR>
 
 
 """"""""""""""""""""""""
@@ -87,3 +100,6 @@ vmap <leader>f <Plug>CtrlSFVwordExec
 "nmap <leader>f <Plug>CtrlSFCwordPath
 "Find word in cursor with boundary
 nmap <leader>f <Plug>CtrlSFCCwordPath<CR>
+
+" Tagbar
+nmap <leader>t :TagbarToggle<CR>
