@@ -17,7 +17,7 @@
 	path = vim/bundle/vim-stylus
 	url = git://github.com/wavded/vim-stylus.git
 [submodule "tools/vim-pathogen"]
-	path = tools/vim-pathogen
+	path = vim.old/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
 [submodule "vim/bundle/tagbar"]
 	path = vim.old/bundle/tagbar
@@ -86,7 +86,7 @@
 	path = vim.old/bundle/vim-multiple-cursors
 	url = git@github.com:terryma/vim-multiple-cursors.git
 [submodule "tools/youdao-dict-cli"]
-	path = tools/youdao-dict-cli
+	path = bin/youdao-dict-cli
 	url = git@github.com:qhwa/Command-Line-Youdao-Dictionary.git
 [submodule "vim/bundle/netrw"]
 	path = vim.old/bundle/netrw
