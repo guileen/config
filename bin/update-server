@@ -1,6 +1,0 @@
-#! /bin/sh
-cd ~/configs
-git pull
-sh ~/configs/tools/install-server.sh
-
-

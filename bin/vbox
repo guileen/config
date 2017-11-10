@@ -1,6 +1,0 @@
-#! /bin/sh
-
-setxkbmap us
-VirtualBox&
-sleep 10
-xmodmap ~/.Xmodmap

@@ -1,2 +1,0 @@
-#! /bin/sh
-google-chrome --app="http://www.google.com/search?btnI=I%27m+Feeling+Lucky&q=$*"
