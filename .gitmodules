@@ -91,9 +91,6 @@
 [submodule "vim/bundle/netrw"]
 	path = vim.old/bundle/netrw
 	url = git@github.com:vim-scripts/netrw.vim.git
-[submodule "vim/bundle/YouCompleteMe"]
-	path = vim.old/bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
 [submodule "vim/bundle/greplace"]
 	path = vim.old/bundle/greplace
 	url = git@github.com:vim-scripts/greplace.vim.git

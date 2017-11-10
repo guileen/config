@@ -16,3 +16,4 @@ endf
 
 :au BufNewFile,BufRead * call DetectNode()
 au BufNewFile,BufRead wscript setfiletype python
+au BufRead,BufNewFile *.json setlocal ft=javascript

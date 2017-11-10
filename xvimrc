@@ -1,2 +1,0 @@
-nmap ,g :xccmd openQuickly<CR>
-nmap ,r :xccmd refactorRename<CR>

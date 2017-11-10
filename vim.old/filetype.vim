@@ -19,11 +19,12 @@ set foldenable
 let g:vim_markdown_folding_disabled=1
 let g:syntastic_javascript_checkers = ['eslint']
 
+autocmd FileType make setlocal noexpandtab
 autocmd BufRead *.as set filetype=actionscript
 autocmd BufRead *.mxml set filetype=mxml
 autocmd BufRead *.hx set filetype=haxe
 autocmd BufRead *.ccss set filetype=clevercss
-" autocmd BufRead *.js set shiftwidth=2
+autocmd BufRead *.js set shiftwidth=2
 autocmd BufRead *.jade,*.haml,*.html set shiftwidth=2
 autocmd BufRead *.md,*.markdown noremap <F8> :Mm<Enter>
 autocmd BufRead *.coffee noremap <F8> :!coffee -p %<Enter>
