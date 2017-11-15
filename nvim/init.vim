@@ -28,7 +28,14 @@ Plug 'tpope/vim-fugitive'
 
 " Syntax checker
 "Plug 'vim-syntastic/syntastic'
+
+"Completion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer --go-completer'}  " Put .ycm_extra_conf.py in any folder above you file
+"Plug 'roxma/nvim-completion-manager'
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"  let g:deoplete#enable_at_startup = 1
+"endif
 
 " For tagbar
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
@@ -52,8 +59,20 @@ syntax on
 set nocp nobackup nowritebackup
 set backspace=indent,eol,start  " more powerful backspacing
 set number
+" Tab
 set tabstop=4
 set shiftwidth=4
+set noexpandtab " 自动将tab展开成空格
+" 以 \t.. 显示制表符
+set list
+"»···»··· ·»»»·»»» —–––—––– ·›››·›››
+"»›››»››› ·–––·––– ›–––›––– –›››–›››
+set listchars=tab:»·,trail:¬,nbsp:_
+
+" Folding
+set nofoldenable
+set foldminlines=10
+set foldnestmax=3
 
 colo mymolokai
 
@@ -79,17 +98,20 @@ nnoremap <leader>e :Explore<CR>
 " Go to file
 nmap <leader>g :FZF<CR>
 "nmap <leader>g :CtrlPMixed<CR>
+" Search selelcted
+vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
 
 """"""""""""""""""""""""
 "   Plugins Settings   "
 """"""""""""""""""""""""
 " delimitMate
-let delimitMate_expand_cr = 1
+let g:delimitMate_expand_cr = 2
 
 " YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion= 1
+let g:ycm_key_list_stop_completion = ['<Enter>']
 nnoremap <leader>r :YcmCompleter GoTo<CR>
 nnoremap gd :YcmCompleter GoTo<CR>
 

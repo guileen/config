@@ -23,6 +23,6 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 function iterm2_print_user_vars
   set -l git_branch (git branch ^/dev/null | sed -n '/\* /s///p')
   iterm2_set_user_var gitBranch "$git_branch"
-  set -lx time (date '+%m-%d %H:%M')
+  set -lx time (date '+%m-%d %H:%M:%S')
   iterm2_set_user_var time "$time"
 end
