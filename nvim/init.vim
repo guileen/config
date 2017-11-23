@@ -142,6 +142,7 @@ imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 " AutoPair
 " ( conflict with CompleteParameter
 let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+inoremap <buffer> <silent> ) <C-R>=AutoPairsInsert(')')<CR>
 
 " CtrlSF
 "Find selected word
