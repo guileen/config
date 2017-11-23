@@ -19,7 +19,9 @@ Plug 'dyng/ctrlsf.vim'
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'kien/ctrlp.vim', {'on': ['CtrlP', 'CtrlPMixed']}
 " close pair () {} 
-Plug 'Raimondi/delimitMate'   " ( ) { } .e.g
+"Plug 'Raimondi/delimitMate'   " ( ) { } .e.g
+Plug 'jiangmiao/auto-pairs'
+
 Plug 'scrooloose/nerdcommenter' " [count]<leader> cc cn c<space> cm ci cs cy c$ cA cl cb cu
 Plug 'editorconfig/editorconfig-vim'  " put .editorconfig in your root directory
 
@@ -36,6 +38,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-comp
 "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "  let g:deoplete#enable_at_startup = 1
 "endif
+Plug 'tenfyzhong/CompleteParameter.vim'
 
 " For tagbar
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
@@ -74,6 +77,13 @@ set nofoldenable
 set foldminlines=10
 set foldnestmax=3
 
+" Split
+set splitbelow
+set splitright
+
+" Enable mouse drag
+set mouse=nv
+
 colo mymolokai
 
 
@@ -91,15 +101,21 @@ nmap <leader>p "+P
 vmap <leader>y "+y
 " save map
 nmap <leader>w :w<CR>
-nmap <leader>q :q<CR>
-nmap <leader>wq :wq<CR>
+nnoremap q :q<CR>
 " NETRW
 nnoremap <leader>e :Explore<CR>
 " Go to file
 nmap <leader>g :FZF<CR>
 "nmap <leader>g :CtrlPMixed<CR>
 " Search selelcted
-vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
+vnoremap / y/<C-R>"
+" Toggle search highlight
+nnoremap <leader>xh :set hlsearch! hlsearch?<CR>
+
+" Terminal
+nnoremap <leader>t :vsplit term://fish<CR>:vertical resize 30<CR>i
+vnoremap <leader>? y:vsplit term://fy <C-R>"<CR>:vertical resize 30<CR>
+:tnoremap <Esc> <C-\><C-N>
 
 
 """"""""""""""""""""""""
@@ -107,6 +123,7 @@ vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 """"""""""""""""""""""""
 " delimitMate
 let g:delimitMate_expand_cr = 2
+let g:delimitMate_backspace = 1
 
 " YCM
 let g:ycm_confirm_extra_conf = 0
@@ -114,6 +131,17 @@ let g:ycm_autoclose_preview_window_after_completion= 1
 let g:ycm_key_list_stop_completion = ['<Enter>']
 nnoremap <leader>r :YcmCompleter GoTo<CR>
 nnoremap gd :YcmCompleter GoTo<CR>
+
+" CompleteParameter
+inoremap <silent><expr> ( complete_parameter#pre_complete("()")
+smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+
+" AutoPair
+" ( conflict with CompleteParameter
+let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 
 " CtrlSF
 "Find selected word
@@ -124,4 +152,4 @@ vmap <leader>f <Plug>CtrlSFVwordExec
 nmap <leader>f <Plug>CtrlSFCCwordPath<CR>
 
 " Tagbar
-nmap <leader>t :TagbarToggle<CR>
+nmap <leader>xt :TagbarToggle<CR>

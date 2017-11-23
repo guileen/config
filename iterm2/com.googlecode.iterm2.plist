@@ -354,7 +354,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>379 218 445 77 0 0 1280 697 </string>
+	<string>452 37 445 77 0 0 1440 877 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>676 421 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
@@ -364,7 +364,7 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>459 148 796 473 0 0 1440 900 </string>
+	<string>459 235 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -550,7 +550,7 @@
 			<key>Badge Text</key>
 			<string>\(function iterm2_print_user_vars
   set -l git_branch (git branch ^/dev/null | sed -n '/\* /s///p')
-\(user.gitBranch) \(user.time)</string>
+\(user.gitBranch) \(user.time) \(user.ppwd)</string>
 			<key>Blend</key>
 			<real>0.30000001192092896</real>
 			<key>Blink Allowed</key>
@@ -3361,6 +3361,10 @@
 	<string>77C995DF-AB5A-418D-B9F1-36AEB2077654</string>
 	<key>NoSyncLastTipTime</key>
 	<real>530764042.45405602</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncSilenceAnnoyingBellAutomatically</key>
@@ -3515,7 +3519,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-11-10T10:45:08Z</date>
+	<date>2017-11-21T03:02:00Z</date>
 	<key>SUSkippedVersion</key>
 	<string>3.1.beta.8</string>
 	<key>SavePasteHistory</key>

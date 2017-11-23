@@ -1,4 +1,7 @@
 My Config
 =========
 
-fish + neovim
+fish + neovim.
+
+mononoki font.
+molokai style.

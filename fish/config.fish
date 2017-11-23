@@ -25,4 +25,5 @@ function iterm2_print_user_vars
   iterm2_set_user_var gitBranch "$git_branch"
   set -lx time (date '+%m-%d %H:%M:%S')
   iterm2_set_user_var time "$time"
+  iterm2_set_user_var ppwd (prompt_pwd)
 end
