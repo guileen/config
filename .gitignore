@@ -13,3 +13,4 @@ abs/
 */.*
 */*?download
 bin/gfw
+configstore
