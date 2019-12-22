@@ -13,4 +13,8 @@ abs/
 */.*
 */*?download
 bin/gfw
+# add 2020
 configstore
+fish/functions
+fish/fundle
+fish/fish_variables

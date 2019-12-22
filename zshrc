@@ -21,3 +21,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Anaconda my env
+source activate python37
+
+# AutoJump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+#zsh completions have been installed to:
+#  /usr/local/share/zsh/site-functions

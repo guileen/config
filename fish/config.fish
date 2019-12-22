@@ -5,15 +5,14 @@ fundle plugin 'jhillyerd/plugin-git'
 #fundle init --profile
 fundle init
 
+bass source ~/.config/profile
 
-bass source ~/.profile
-
-set -gx PATH $GOPATH/bin ~/anaconda2/bin ~/bin ~/config/bin ~/projects/go/bin /usr/local/bin /usr/local/sbin $ANDROID_SDK_ROOT/platform-tools $PATH /sbin ~/projects/mongodb/bin
 set fish_greeting
 
 #autojump
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 
+bass source ~/.nvm/nvm.sh
 function nvm
     bass source ~/.nvm/nvm.sh ';' nvm $argv
 end
