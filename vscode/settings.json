@@ -1,0 +1,107 @@
+{
+    "window.zoomLevel": 3,
+    "go.formatTool": "goimports",
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "editor.minimap.enabled": false,
+    "editor.folding": true,
+    "editor.glyphMargin": false,
+    "vim.leader": ",",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "<leader>", "w" ],
+            "after": [ ":", "w" , "<enter>"]
+        },
+        {
+            "before": [ "<leader>", "q" ],
+            "after": [ ":", "q" , "<enter>"]
+        },
+        {
+            "before": [ "<leader>", "g" ],
+            "commands": [ "workbench.action.quickOpen" ]
+        },
+        {
+            "before": [ "<leader>", "e" ],
+            "commands": [
+                "workbench.view.explorer",
+                "workbench.action.focusLeftGroup",
+            ]
+        },
+        {
+            "before": [ "<leader>", "b" ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility",
+                "workbench.action.focusLeftGroup",
+            ]
+        },
+        {
+            "before": [ "<leader>", "f" ],
+            "commands": [
+                "editor.action.organizeImports",
+                "editor.action.formatDocument",
+                "editor.action.codeAction",
+            ]
+        },
+        {
+            "before": [ "<leader>", "n" ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ]
+        },
+        {
+            "before": [ "<leader>", "m" ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [ "<leader>", "o" ],
+            "commands": [
+                "editor.action.organizeImports"
+            ]
+        },
+
+
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true
+    },
+    "vim.useSystemClipboard": true,
+    "terminal.integrated.rendererType": "canvas",
+    "terminal.integrated.scrollback": 500,
+    "jscpd.exclude": [
+        "**/*.min.js",
+        "**/coverage/**",
+        "**/dist/**",
+        "**/test/**",
+        "**/node_modules/**"
+    ],
+    "files.exclude": {
+        "**/node_modules": false,
+        "**/.nyc_output": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    },
+    "breadcrumbs.enabled": false,
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript"
+    },
+    "emmet.includeLanguages": {
+        "wxml": "html"
+    },
+    "minapp-vscode.disableAutoConfig": true,
+    "tslint.jsEnable": true,
+    "files.autoSave": "off",
+    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "todo-tree.tree.showScanModeButton": false,
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": true,
+    "zenMode.centerLayout": false,
+    "zenMode.hideLineNumbers": false,
+}
