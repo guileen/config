@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 3,
+    "window.zoomLevel": 2,
     "go.formatTool": "goimports",
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
@@ -114,4 +114,16 @@
     "editor.renderControlCharacters": true,
     "zenMode.centerLayout": false,
     "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.insert": "#111111",
+    "vim.statusBarColors.normal": "#111111",
+    "vim.statusBarColors.visual": "#444444",
+    "vim.statusBarColors.visualblock": "#444444",
+    "vim.statusBarColors.visualline": "#444444",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#111111",
+        "statusBar.noFolderBackground": "#111111",
+        "statusBar.debuggingBackground": "#111111"
+    },
 }
