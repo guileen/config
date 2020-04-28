@@ -10,4 +10,7 @@ cp $src $dest
 git commit $dest -m 'update vscode settings.json'
 # merge remote change
 git pull
+echo cp $dest $src
 cp $dest $src
+git push
+echo "sync done."
