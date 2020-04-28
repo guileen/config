@@ -67,6 +67,18 @@
             ]
         },
         {
+            "before": [ "<leader>", "j" ],
+            "commands": [
+                "workbench.action.focusBelowGroup",
+            ]
+        },
+        {
+            "before": [ "<leader>", "k" ],
+            "commands": [
+                "workbench.action.focusAboveGroup",
+            ]
+        },
+        {
             "before": [ "<leader>", "l" ],
             "commands": [
                 "workbench.action.focusRightGroup",
@@ -126,4 +138,5 @@
         "statusBar.noFolderBackground": "#111111",
         "statusBar.debuggingBackground": "#111111"
     },
+    "vim.statusBarColors.commandlineinprogress": "#444444",
 }
