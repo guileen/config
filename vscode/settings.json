@@ -60,8 +60,18 @@
                 "editor.action.organizeImports"
             ]
         },
-
-
+        {
+            "before": [ "<leader>", "h" ],
+            "commands": [
+                "workbench.action.focusLeftGroup",
+            ]
+        },
+        {
+            "before": [ "<leader>", "l" ],
+            "commands": [
+                "workbench.action.focusRightGroup",
+            ]
+        },
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.tslint": true
