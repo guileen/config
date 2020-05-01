@@ -24,6 +24,8 @@
             "before": [ "<leader>", "e" ],
             "commands": [
                 "workbench.view.explorer",
+                // "workbench.action.nextSideBarView",
+                // "workbench.action.previousSideBarView",
                 "workbench.action.focusLeftGroup",
             ]
         },
@@ -84,6 +86,12 @@
                 "workbench.action.focusRightGroup",
             ]
         },
+        {
+            "before": [ "<leader>", "z" ],
+            "commands": [
+                "workbench.action.toggleZenMode"
+            ]
+        },
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.tslint": true
@@ -139,4 +147,5 @@
         "statusBar.debuggingBackground": "#111111"
     },
     "vim.statusBarColors.commandlineinprogress": "#444444",
+    "go.useLanguageServer": true,
 }
