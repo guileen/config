@@ -7,6 +7,8 @@ fundle init
 
 # bass is slow. use sed | source - instead.
 #bass source ~/.config/profile
+
+# https://stackoverflow.com/questions/29667714/convert-bash-function-to-fishs
 function posix-source
     # gnu sed, brew install gnu-sed
     gsed -re 's/export (.*)=(.*)/set -x \1 \2/g' -e 's/^([^\s]*)=(.*)/set \1 \2/g' -e 's/\$\((.*)\)/(\1)/g' $argv[1] | source -
