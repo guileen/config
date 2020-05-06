@@ -1,7 +1,7 @@
 #!/bin/sh
 
 src="$HOME/Library/ApplicationSupport/Code/User/settings.json"
-dest=$(dirname $0)/settings.json
+dest=$(dirname $0)/vscode/settings.json
 
 # sync local change
 echo cp $src $dest
