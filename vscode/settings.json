@@ -87,6 +87,12 @@
             ]
         },
         {
+            "before": [ "<leader>", "x" ],
+            "commands": [
+                "workbench.action.closeEditorsInGroup",
+            ]
+        },
+        {
             "before": [ "<leader>", "z" ],
             "commands": [
                 "workbench.action.toggleZenMode"
@@ -147,5 +153,5 @@
         "statusBar.debuggingBackground": "#111111"
     },
     "vim.statusBarColors.commandlineinprogress": "#444444",
-    "go.useLanguageServer": true,
+    "go.useLanguageServer": false,
 }
