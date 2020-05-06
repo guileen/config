@@ -8,7 +8,7 @@ echo cp $src $dest
 cp $src $dest 
 git commit $dest -m 'update vscode settings.json'
 # merge remote change
-git pull
+git pull --ff-only
 echo cp $dest $src
 cp $dest $src
 git push

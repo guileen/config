@@ -11,7 +11,9 @@ fundle init
 # https://stackoverflow.com/questions/29667714/convert-bash-function-to-fishs
 function posix-source
     # gnu sed, brew install gnu-sed
-    gsed -re 's/export (.*)=(.*)/set -x \1 \2/g' -e 's/^([^\s]*)=(.*)/set \1 \2/g' -e 's/\$\((.*)\)/(\1)/g' $argv[1] | source -
+    #gsed -re 's/export (.*)=(.*)/set -x \1 \2/g' -e 's/^([^\s]*)=(.*)/set \1 \2/g' -e 's/\$\((.*)\)/(\1)/g' $argv[1] | source -
+    # Mac OS sed
+    sed -E 's/export (.*)=(.*)/set -x \1 \2/g' $argv[1] | sed -E 's/^([^\s]*)=(.*)/set \1 \2/g' | sed -E 's/\$\((.*)\)/(\1)/g' | source -
 end
 posix-source ~/.config/profile
 
