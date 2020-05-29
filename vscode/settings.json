@@ -1,6 +1,5 @@
 {
     "window.zoomLevel": 2,
-    "go.formatTool": "goimports",
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
     "editor.minimap.enabled": false,
@@ -98,12 +97,18 @@
                 "workbench.action.toggleZenMode"
             ]
         },
+        {
+            "before": [ "<leader>", "." ],
+            "commands": [
+                // "editor.action.codeAction",
+                "go.fill.struct",
+            ]
+        },
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.tslint": true
     },
     "vim.useSystemClipboard": true,
-    "terminal.integrated.rendererType": "canvas",
     "terminal.integrated.scrollback": 500,
     "jscpd.exclude": [
         "**/*.min.js",
@@ -153,5 +158,13 @@
         "statusBar.debuggingBackground": "#111111"
     },
     "vim.statusBarColors.commandlineinprogress": "#444444",
-    "go.useLanguageServer": false,
+    "go.useLanguageServer": true,
+    "terminal.integrated.rendererType": "dom",
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--fast"
+    ],
+    "commentTranslate.multiLineMerge": true,
+    "commentTranslate.targetLanguage": "zh-CN",
+    "vscode_vibrancy.opacity": 0.2,
 }
