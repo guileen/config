@@ -22,11 +22,6 @@ set fish_greeting
 #autojump
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 
-function nvm
-    bass source ~/.nvm/nvm.sh ';' nvm $argv
-end
-
-
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 function iterm2_print_user_vars
