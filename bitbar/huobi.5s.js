@@ -4,7 +4,18 @@ var https= require('https')
 
 render();
 
+var s =  "▁▂▃▄▅▆▇█"
+
 function render() {
+  /*
+  getKline((msg, err)=>{
+    if (err) {
+      console.log(err)
+    } else {
+      // console.log(msg)
+    }
+  })
+  */
   getMarket((msg, err)=>{
     if(err) {
       console.log('err')
@@ -18,9 +29,8 @@ function render() {
   })
 }
 
-
-function getMarket(callback) {
-  https.get('https://api.huobi.pro/market/detail?symbol=btcusdt',{timeout:1000}, (resp) => {
+function getJSON(url, callback) {
+  https.get(url,{timeout:1000}, (resp) => {
       var data = '';
       resp.on('data', (chunk) => {
         data += chunk;
@@ -29,13 +39,21 @@ function getMarket(callback) {
       resp.on('end', () => {
         try{
           var response = JSON.parse(data);
-	  callback(response)
+          callback(response)
         }catch(error){
-	  callback(null, err)
+          callback(null, err)
         }
       });
   
     }).on("error", (err) => {
         callback(null, err);
     });
+}
+
+function getMarket(callback) {
+  getJSON('https://api.huobi.pro/market/detail?symbol=btcusdt', callback);
+}
+
+function getKline(callback) {
+  getJSON('https://api.huobi.pro/market/history/kline?symbol=btcusdt&period=15min&size=6', callback);
 }
