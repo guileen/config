@@ -32,13 +32,8 @@ Plug 'tpope/vim-fugitive'
 "Plug 'vim-syntastic/syntastic'
 
 "Completion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer --go-completer'}  " Put .ycm_extra_conf.py in any folder above you file
-"Plug 'roxma/nvim-completion-manager'
-"if has('nvim')
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"  let g:deoplete#enable_at_startup = 1
-"endif
-Plug 'tenfyzhong/CompleteParameter.vim'
+"Plug 'neovim/nvim-lspconfig'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " For tagbar
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
@@ -125,24 +120,11 @@ vnoremap <leader>? y:vsplit term://fy <C-R>"<CR>:vertical resize 30<CR>
 let g:delimitMate_expand_cr = 2
 let g:delimitMate_backspace = 1
 
-" YCM
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_autoclose_preview_window_after_completion= 1
-let g:ycm_key_list_stop_completion = ['<Enter>']
-nnoremap <leader>r :YcmCompleter GoTo<CR>
-nnoremap gd :YcmCompleter GoTo<CR>
-
-" CompleteParameter
-inoremap <silent><expr> ( complete_parameter#pre_complete("()")
-smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
-imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 
 " AutoPair
 " ( conflict with CompleteParameter
 let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
-inoremap <buffer> <silent> ) <C-R>=AutoPairsInsert(')')<CR>
+"inoremap <buffer> <silent> ) <C-R>=AutoPairsInsert(')')<CR>
 
 " CtrlSF
 "Find selected word
@@ -154,3 +136,7 @@ nmap <leader>f <Plug>CtrlSFCCwordPath<CR>
 
 " Tagbar
 nmap <leader>xt :TagbarToggle<CR>
+
+" Coc
+inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+

@@ -10,4 +10,5 @@ export EDITOR="vim"
 alias ls='ls -G'
 alias ll='ls -l -S -h'
 alias typora="open -a typora"
+alias vim='nvim'
 
