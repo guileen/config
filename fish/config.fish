@@ -1,6 +1,7 @@
 if not functions -q fundle; echo "install fundle"; eval (curl -sfL https://git.io/fundle-install); end
 #fundle plugin 'edc/bass'
 fundle plugin 'jhillyerd/plugin-git'
+#fundle plugin 'oh-my-fish/plugin-foreign-env'
 # if fundle got slow
 #fundle init --profile
 fundle init
@@ -16,6 +17,7 @@ function posix-source
     sed -E 's/export (.*)=(.*)/set -x \1 \2/g' $argv[1] | sed -E 's/^([^\s]*)=(.*)/set \1 \2/g' | sed -E 's/\$\((.*)\)/(\1)/g' | source -
 end
 posix-source ~/.config/profile
+#fenv source ~/.config/profile
 
 set -x JAVA_HOME (/usr/libexec/java_home)
 
