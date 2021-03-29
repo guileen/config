@@ -17,6 +17,8 @@ function posix-source
 end
 posix-source ~/.config/profile
 
+set -x JAVA_HOME (/usr/libexec/java_home)
+
 set fish_greeting
 
 #autojump
@@ -31,3 +33,5 @@ function iterm2_print_user_vars
   iterm2_set_user_var time "$time"
   iterm2_set_user_var ppwd (prompt_pwd)
 end
+set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/node@12/bin" $fish_user_paths

@@ -273,4 +273,6 @@ if &t_Co > 255
        hi NonText         ctermfg=239
        hi SpecialKey      ctermfg=239
    endif
+   hi CocErrorHighlight ctermbg=198
+   hi CocWarningHighlight ctermbg=234
 end
