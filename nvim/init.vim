@@ -17,7 +17,8 @@ Plug 'tpope/vim-surround'
 Plug 'dyng/ctrlsf.vim'
 " Goto file
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'kien/ctrlp.vim', {'on': ['CtrlP', 'CtrlPMixed']}
+"Plug 'kien/ctrlp.vim', {'on': ['CtrlP', 'CtrlPMixed']}
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " close pair () {} 
 "Plug 'Raimondi/delimitMate'   " ( ) { } .e.g
 Plug 'jiangmiao/auto-pairs'
@@ -100,8 +101,9 @@ nnoremap q :q<CR>
 " NETRW
 nnoremap <leader>e :Explore<CR>
 " Go to file
-nmap <leader>g :FZF<CR>
+"nmap <leader>g :FZF<CR>
 "nmap <leader>g :CtrlPMixed<CR>
+nmap <leader>g :Clap files<CR>
 " Search selelcted
 vnoremap / y/<C-R>"
 " Toggle search highlight
