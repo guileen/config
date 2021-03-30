@@ -35,3 +35,9 @@ function iterm2_print_user_vars
 end
 set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/node@12/bin" $fish_user_paths
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /usr/local/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
