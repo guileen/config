@@ -3,6 +3,8 @@ export PATH=$HOME/.config/bin:$HOME/go/bin:$HOME/anaconda3/bin:/usr/local/opt/py
 export NPM_CONFIG_REGISTRY=https://registry.npm.taobao.org
 export JAVA_HOME="$(/usr/libexec/java_home)"
 
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
 export EDITOR="vim"
 
 alias ls='ls -G'
