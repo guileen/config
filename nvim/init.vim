@@ -37,7 +37,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " For tagbar
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'liuchengxu/vista.vim'
+
+" For Status line
+Plug 'liuchengxu/eleline.vim'
+
 
 " For javascript
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
@@ -115,7 +119,7 @@ vnoremap / y/<C-R>"
 nnoremap <leader>xh :set hlsearch! hlsearch?<CR>
 
 " Terminal
-nnoremap <leader>t :vsplit term://fish<CR>:vertical resize 30<CR>i
+nnoremap <leader>sh :vsplit term://fish<CR>:vertical resize 30<CR>i
 vnoremap <leader>? y:vsplit term://fy <C-R>"<CR>:vertical resize 30<CR>
 :tnoremap <Esc> <C-\><C-N>
 
@@ -142,7 +146,7 @@ vmap <leader>f <Plug>CtrlSFVwordExec
 nmap <leader>f <Plug>CtrlSFCCwordPath<CR>
 
 " Tagbar
-nmap <leader>xt :TagbarToggle<CR>
+nmap <leader>t :Vista coc<CR>
 
 " Coc
 inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
