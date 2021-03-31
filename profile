@@ -13,3 +13,4 @@ alias typora="open -a typora"
 alias vim='nvim'
 
 alias e="vim -c ':Clap filer'"
+alias eg="vim -c ':Clap files'"
