@@ -27,7 +27,8 @@ Plug 'scrooloose/nerdcommenter' " [count]<leader> cc cn c<space> cm ci cs cy c$ 
 Plug 'editorconfig/editorconfig-vim'  " put .editorconfig in your root directory
 
 " Git support
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Syntax checker
 "Plug 'vim-syntastic/syntastic'
@@ -42,18 +43,12 @@ Plug 'liuchengxu/vista.vim'
 " For Status line
 Plug 'liuchengxu/eleline.vim'
 
-
-" For javascript
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
-Plug 'leafgarland/typescript-vim'
-
-Plug 'dag/vim-fish', { 'for': 'fish'}
+" All in one highlight
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
 set rtp+=/usr/local/opt/fzf " installed fzf with homebrew"
-
 
 """"""""""""""""""""""""
 "     vim Settings     "
@@ -113,6 +108,7 @@ nnoremap <leader>e :Explore<CR>
 "nmap <leader>g :FZF<CR>
 "nmap <leader>g :CtrlPMixed<CR>
 nmap <leader>g :Clap files<CR>
+nmap <leader>o :Clap filer<CR>
 " Search selelcted
 vnoremap / y/<C-R>"
 " Toggle search highlight
@@ -139,11 +135,11 @@ let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 
 " CtrlSF
 "Find selected word
-vmap <leader>f <Plug>CtrlSFVwordExec
+vmap <leader>fd <Plug>CtrlSFVwordExec
 "Find word in cursor
 "nmap <leader>f <Plug>CtrlSFCwordPath
 "Find word in cursor with boundary
-nmap <leader>f <Plug>CtrlSFCCwordPath<CR>
+nmap <leader>fd <Plug>CtrlSFCCwordPath<CR>
 
 " Tagbar
 nmap <leader>t :Vista coc<CR>
@@ -154,6 +150,15 @@ inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<T
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+"inoremap <silent><expr> <C-i> coc#refresh()
+"inoremap <silent><expr> <A-/> coc#refresh()
+
+
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -164,3 +169,13 @@ nmap <silent> gr <Plug>(coc-references)
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> <F2> <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
+autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
