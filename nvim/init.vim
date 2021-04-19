@@ -29,6 +29,7 @@ Plug 'editorconfig/editorconfig-vim'  " put .editorconfig in your root directory
 " Git support
 "Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'zivyangll/git-blame.vim'
 
 " Syntax checker
 "Plug 'vim-syntastic/syntastic'
@@ -146,18 +147,19 @@ nmap <leader>t :Vista coc<CR>
 
 " Coc
 inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-"inoremap <silent><expr> <C-i> coc#refresh()
+"inoremap <silent><expr> <C-m> coc#refresh()
 "inoremap <silent><expr> <A-/> coc#refresh()
 
 
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 
 
 " GoTo code navigation.
