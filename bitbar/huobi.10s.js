@@ -1,6 +1,7 @@
 #!/usr/local/bin/node
 
-var http= require('http')
+//var http= require('http')
+var https = require('https')
 
 render();
 
@@ -30,7 +31,7 @@ function render() {
 }
 
 function getJSON(url, callback) {
-  http.get(url,{timeout:1000}, (resp) => {
+  https.get(url,{timeout:1000}, (resp) => {
       var data = '';
       resp.on('data', (chunk) => {
         data += chunk;
@@ -51,8 +52,13 @@ function getJSON(url, callback) {
 }
 
 function getMarket(callback) {
+  getJSON('https://api.huobi.com/market/detail?symbol=btcusdt', callback);
+}
+/*
+function getMarket(callback) {
   getJSON('http://ipub.io/huobi/market/detail?symbol=btcusdt', callback);
 }
+*/
 
 function getKline(callback) {
   getJSON('http://ipub.io/huobi/market/history/kline?symbol=btcusdt&period=15min&size=6', callback);
